@@ -35,6 +35,9 @@ group :production do
 	gem 'pg'
 end
 
+gem 'simple_form'
+gem 'inherited_resources' 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
