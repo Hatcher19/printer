@@ -1,0 +1,16 @@
+<%= simple_form_for(@order, html: {class: ''}) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.input :product_status, :collection => Order::PRODUCTSTATUS %>
+    <%= f.input :end_date, label: "Due date", as: :date %>
+    <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
+    <%= f.input :ship, as: :select %>
+    <%= f.input :order_type, :collection => Order::TYPE %>
+    <% if f.object.new_record? %>
+        <%= f.hidden_field :order_status, :value => "new" %>
+        <%= f.hidden_field :art_status, :value => "pending" %>
+	<% end %>
+
+    <br>
+    <%= f.submit "Submit", class: "btn btn-primary order-submit" %> 
+<% end %>
