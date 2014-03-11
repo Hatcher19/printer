@@ -1,4 +1,6 @@
 class OrdersController < InheritedResources::Base
+	#devise user authentication. 
+	before_filter :authenticate_user!
 
 	def index
 		@orders = Order.all
