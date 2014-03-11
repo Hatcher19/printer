@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="span9">
+    <h1>Orders</h1>
+  </div>
+  <div class="span3">
+    <br>
+    <%= link_to 'Create Order', new_order_path, class: 'btn btn-primary pull-right' %>
+  </div>
+</div>
+<br>
+<table class="table table-striped">
+  <tr>
+    <th class="first-column">ID</th>
+    <th class="second-column">Email</th>
+    <th class="first-column">Created At</th>
+  </tr>
+     <% @users.each do |user| %>
+       <tr>
+         <td class="first-column"><%= link_to user.id, user %></td>
+         <td class="first-column"><%= link_to user.email, user %></td>
+         <td class="first-column"><%= link_to user.created_at, user %></td>
+      </tr>
+    <% end %>
+</table>
+
+<br />

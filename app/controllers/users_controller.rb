@@ -1,6 +1,6 @@
 class UsersController < InheritedResources::Base
 	def index
-		@sers = User.all
+		@users = User.all
 	end
 
 	def new
