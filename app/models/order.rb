@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+	belongs_to :customer
 
 	STATUS = %w(new approved complete cancelled hold)
 	ARTSTATUS = %w(pending approved)

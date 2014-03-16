@@ -39,6 +39,5 @@ class OrdersController < InheritedResources::Base
 	end  
 
 	def order_params
-      params.require(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status)
-    end
+      params.require(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status, :customer_id)
 end

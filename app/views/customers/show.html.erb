@@ -1,0 +1,39 @@
+<div class="row-fluid">
+	<div class="row">
+		<div class="span5">
+			<h3>organization</h3>
+			<%= @customer.organization %>
+			<h3>Purchaser</h3>
+			<%= @customer.customer_name %>
+			<h3>email</h3>
+			<%= @customer.customer_email %>
+			<h3>Phone #</h3>
+			<%= @customer.customer_phone %>
+		</div>
+		<div class="span5">
+			<table class="table table-striped">
+			    <tr>
+			      <th class="first-column">ID</th>
+			      <th class="second-column">Name</th>
+			      <th class="first-column">Category</th>
+			      <th class="first-column">Status</th>
+			      <th class="first-column">Art</th>
+			      <th class="first-column">Product</th>
+			      <th class="first-column">Due Date</th>
+			      <th></th>
+			    </tr>
+			        <% @customer.orders.each do |order| %>
+				        <tr>
+				           <td class="first-column"><%= link_to order.id, order %></td>
+				           <td class="first-column"><%= link_to order.name, order %></td>
+				           <td class="first-column"><%= link_to order.category, order %></td>
+				           <td class="first-column"><%= link_to order.order_status, order %></td>
+				           <td class="first-column"><%= link_to order.art_status, order %></td>
+				           <td class="first-column"><%= link_to order.product_status, order %></td>
+				           <td class="first-column"><%= link_to order.end_date, order %></td>
+				        </tr>
+			        <% end %>
+			</table>
+		</div>
+	</div>
+</div>

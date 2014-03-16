@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="span3">
+    <h1>Customers</h1>
+  </div>
+  <div class="span3 pull-right">
+    <br>
+    <%= link_to 'Create Customer', new_customer_path, class: 'btn btn-primary btn-mini pull-right' %>
+  </div>
+</div>
+<br>
+<% if Customer.exists? %>
+  <table class="table table-striped">
+    <tr>
+      <th class="second-column">organization</th>
+      <th class="first-column">Purchaser</th>
+      <th class="first-column">Email</th>
+      <th class="first-column">Phone</th>
+      <th class="first-column">Customer Since</th>
+      <th></th>
+    </tr>
+       <% @customers.each do |customer| %>
+         <tr>
+           <td class="first-column"><%= link_to customer.organization, customer %></td>
+           <td class="first-column"><%= link_to customer.customer_name, customer %></td>
+           <td class="first-column"><%= link_to customer.customer_email, customer %></td>
+           <td class="first-column"><%= link_to customer.customer_phone, customer %></td>
+           <td class="first-column"><%= link_to customer.created_at, customer %></td>
+        </tr>
+      <% end %>
+  </table>
+<% else %>
+<div class="row-fluid">
+  <div class="row">
+    <div class="span3">
+      
+    </div>
+    <div class="span4">
+      <br><br><br><br><br><br><br><br><br>
+      <div class="row">
+        <center> Currently, you have 0 orders. Try createing one! </center>
+      </div>
+      <div class="row">
+        <center> <%= link_to 'Create Order', new_order_path, class: 'btn btn-primary pull-right' %> </center>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<br />

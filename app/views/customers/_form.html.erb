@@ -1,0 +1,12 @@
+<%= simple_form_for(@customer, html: {class: ''}) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :organization %>
+    <%= f.input :customer_name %>
+    <%= f.input :customer_email %>
+    <%= f.input :customer_phone %>
+    <% if f.object.new_record? %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% end %>
+    <br>
+    <%= f.submit "Submit", class: "btn btn-primary order-submit" %> 
+<% end %>

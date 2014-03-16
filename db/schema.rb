@@ -12,6 +12,17 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20140310223840) do
+  create_table "customers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "organization"
+    t.string   "customer_name"
+    t.string   "customer_email"
+    t.string   "customer_phone"
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.integer  "order_id"
+  end
 
   create_table "orders", force: true do |t|
     t.datetime "created_at"
@@ -24,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140310223840) do
     t.boolean  "ship"
     t.string   "product_status"
     t.string   "art_status"
+    t.integer  "customer_id"
   end
 
   create_table "users", force: true do |t|

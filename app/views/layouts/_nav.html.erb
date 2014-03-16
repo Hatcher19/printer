@@ -3,9 +3,9 @@
 		<div class="span4">
 			<div class="brand pull-left">
 				<% if user_signed_in? %>
-					Print On Rails
+					<%= link_to 'Print On Rails', root_path %>
 				<% else %>
-					Print On Rails
+					<%= link_to 'Print On Rails', root_path %>
 				<% end %>
 			</div>
 		</div>
@@ -14,7 +14,7 @@
 		<div class="span4">
 			<div class="pull-right">
 				<% if user_signed_in? %>
-					Hello, <%= current_user.email %>
+					Hello, <%= link_to "#{current_user.email}", current_user %>
 					<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 				<% else %>
 					<%= link_to "Login", new_user_session_path, class: "btn btn-default btn-lg" %>
