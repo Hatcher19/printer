@@ -1,4 +1,6 @@
 <div class="row">
+  <div class="span2">
+  </div>
   <div class="span3">
     <h1>Orders</h1>
   </div>
@@ -8,47 +10,52 @@
   </div>
 </div>
 <br>
-<% if Order.exists? %>
-  <table class="table table-striped">
-    <tr>
-      <th class="first-column">ID</th>
-      <th class="second-column">Name</th>
-      <th class="first-column">Category</th>
-      <th class="first-column">Status</th>
-      <th class="first-column">Art</th>
-      <th class="first-column">Product</th>
-      <th class="first-column">Due Date</th>
-      <th></th>
-    </tr>
-       <% @orders.each do |order| %>
-         <tr>
-           <td class="first-column"><%= link_to order.id, order %></td>
-           <td class="first-column"><%= link_to order.name, order %></td>
-           <td class="first-column"><%= link_to order.category, order %></td>
-           <td class="first-column"><%= link_to order.order_status, order %></td>
-           <td class="first-column"><%= link_to order.art_status, order %></td>
-           <td class="first-column"><%= link_to order.product_status, order %></td>
-           <td class="first-column"><%= link_to order.end_date, order %></td>
-        </tr>
-      <% end %>
-  </table>
-<% else %>
-<div class="row-fluid">
-  <div class="row">
-    <div class="span3">
-      
-    </div>
-    <div class="span4">
-      <br><br><br><br><br><br><br><br><br>
-      <div class="row">
-        <center> Currently, you have 0 orders. Try createing one! </center>
-      </div>
-      <div class="row">
-        <center> <%= link_to 'Create Order', new_order_path, class: 'btn btn-primary pull-right' %> </center>
-      </div>
-    </div>
+<div class="row">
+  <div class="span2">
   </div>
-</div>
-<% end %>
+  <% if Order.exists? %>
+    <div class="span9">
+      <table class="table table-striped">
+        <tr>
+          <th class="first-column">ID</th>
+          <th class="second-column">Name</th>
+          <th class="first-column">Category</th>
+          <th class="first-column">Status</th>
+          <th class="first-column">Art</th>
+          <th class="first-column">Product</th>
+          <th class="first-column">Due Date</th>
+          <th></th>
+        </tr>
+          <% @orders.each do |order| %>
+             <tr>
+               <td class="first-column"><%= link_to order.id, order %></td>
+               <td class="first-column"><%= link_to order.name, order %></td>
+               <td class="first-column"><%= link_to order.category, order %></td>
+               <td class="first-column"><%= link_to order.order_status, order %></td>
+               <td class="first-column"><%= link_to order.art_status, order %></td>
+               <td class="first-column"><%= link_to order.product_status, order %></td>
+               <td class="first-column"><%= link_to order.end_date, order %></td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+  <% else %>
+    <div class="row-fluid">
+      <div class="row">
+        <div class="span3">
+          
+        </div>
+        <div class="span4">
+          <br><br><br><br><br><br><br><br><br>
+          <div class="row">
+            <center> Currently, you have 0 orders. Try createing one! </center>
+          </div>
+          <div class="row">
+            <center> <%= link_to 'Create Order', new_order_path, class: 'btn btn-primary pull-right' %> </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
 <br />

@@ -1,1 +1,50 @@
 @import 'bootstrap';
+
+.pull-right {
+	margin-right: 5px;
+}
+
+/**************nav******************/
+.navigation {
+	background-color: #333844;
+	height: 50px;
+	line-height: 50px;
+}
+.brand {
+	background-color: #E26244;
+	width: 125px;
+	height: 50px;
+	margin-left: 0px;
+}
+.brand a {
+	color: #fff;
+	text-decoration: none;
+}
+.current-user a {
+	color: #E26244;
+	margin-right: 10px;
+	text-decoration: none;
+}
+.logout a {
+	color: #727A8B;
+	margin-right: 10px;
+	text-decoration: none;
+}
+
+/**************sidebar-nav******************/
+.sidebar-nav-fixed {
+    position:fixed;
+    margin-left: 0px;
+    height: 100%;
+    width: 125px;
+    background-color: #333844;
+ }
+.sidebar-section a {
+	color: #727A8B;
+	text-decoration: none;
+ }
+.sidebar-section {
+	width: 100%;
+	height: 75px;
+	margin-top: 20px;
+}

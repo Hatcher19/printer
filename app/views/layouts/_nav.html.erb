@@ -1,26 +1,30 @@
 <div class="row-fluid navigation">
-	<div class="row">
-		<div class="span4">
+		<div class="span1">
 			<div class="brand pull-left">
-				<% if user_signed_in? %>
-					<%= link_to 'Print On Rails', root_path %>
-				<% else %>
-					<%= link_to 'Print On Rails', root_path %>
-				<% end %>
+				<center>
+					<% if user_signed_in? %>
+						<%= link_to 'Print On Rails', root_path %>
+					<% else %>
+						<%= link_to 'Print On Rails', root_path %>
+					<% end %>
+				</center>
 			</div>
 		</div>
-		<div class="span4">
+		<div class="span7">
 		</div>
 		<div class="span4">
 			<div class="pull-right">
 				<% if user_signed_in? %>
-					Hello, <%= link_to "#{current_user.email}", current_user %>
-					<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+					<span class="current-user">
+						<%= link_to "Hello, #{current_user.email}", current_user %>
+					</span>
+					<span class="logout">
+						<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+					</span>
 				<% else %>
 					<%= link_to "Login", new_user_session_path, class: "btn btn-default btn-lg" %>
 					<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
 				<% end %>
 			</div>
 		</div>
-	</div>
 </div>
