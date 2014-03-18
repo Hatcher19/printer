@@ -1,19 +1,20 @@
-<div class="row">
-  <div class="span2">
+<% if Order.exists? %>
+  <div class="row titlebar">
+    <div class="span2">
+    </div>
+    <div class="span3">
+      <h1>Orders</h1>
+    </div>
+    <div class="span2 pull-right">
+      <br>
+      <div class="create-button">
+        <center><%= link_to 'New Order', new_order_path %></center>
+      </div>
+    </div>
   </div>
-  <div class="span3">
-    <h1>Orders</h1>
-  </div>
-  <div class="span3 pull-right">
-    <br>
-    <%= link_to 'Create Order', new_order_path, class: 'btn btn-primary btn-mini pull-right' %>
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="span2">
-  </div>
-  <% if Order.exists? %>
+  <br>
+    <div class="span2">
+    </div>
     <div class="span9">
       <table class="table table-striped">
         <tr>
@@ -40,22 +41,24 @@
       </table>
     </div>
   <% else %>
-    <div class="row-fluid">
-      <div class="row">
-        <div class="span3">
-          
-        </div>
-        <div class="span4">
-          <br><br><br><br><br><br><br><br><br>
-          <div class="row">
-            <center> Currently, you have 0 orders. Try createing one! </center>
+<br><br><br>
+  <div class="row-fluid">
+    <div class="row">
+      <div class="span5">
+      </div>
+      <div class="span3 no-margin-left">
+        <div class="no-data">
+          <center>
+            Currently, there are <span id="orange">0</span> orders.
+            <br> Try createing one!
+            <div class="create-button">
+              <%= link_to 'Create New Order', new_order_path %>
+            </div>
+            </center>
           </div>
-          <div class="row">
-            <center> <%= link_to 'Create Order', new_order_path, class: 'btn btn-primary pull-right' %> </center>
-          </div>
-        </div>
       </div>
     </div>
+  </div>
   <% end %>
 
 <br />

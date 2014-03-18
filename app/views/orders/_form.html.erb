@@ -1,17 +1,36 @@
-<%= simple_form_for(@order, html: {class: ''}) do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :name %>
-    <%= f.input :customer_id, :collection => Customer.where(:user_id => current_user.id), :label_method => :organization, :value_method => :id %>
-    <%= f.input :product_status, :collection => Order::PRODUCTSTATUS %>
-    <%= f.input :end_date, label: "Due date", as: :date %>
-    <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
-    <%= f.input :ship, as: :select %>
-    <%= f.input :order_type, :collection => Order::TYPE %>
-    <% if f.object.new_record? %>
-        <%= f.hidden_field :order_status, :value => "new" %>
-        <%= f.hidden_field :art_status, :value => "pending" %>
-	<% end %>
+<div class="row titlebar">
+    <div class="span2">
+    </div>
+    <div class="span3">
+        <h1>New Order</h1>
+    </div>
+    <div class="span2 pull-right">
+      <br>
+        <div class="cancel-button">
+          <center><%= link_to 'Cancel', orders_path %></center>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span2">
+    </div>
+    <div class="span3">
+        <%= simple_form_for(@order, html: {class: ''}) do |f| %>
+            <%= f.error_notification %>
+            <%= f.input :name %>
+            <%= f.input :customer_id, :collection => Customer.where(:user_id => current_user.id), :label_method => :organization, :value_method => :id %>
+            <%= f.input :product_status, :collection => Order::PRODUCTSTATUS %>
+            <%= f.input :end_date, label: "Due date", as: :date %>
+            <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
+            <%= f.input :ship, as: :select %>
+            <%= f.input :order_type, :collection => Order::TYPE %>
+            <% if f.object.new_record? %>
+                <%= f.hidden_field :order_status, :value => "new" %>
+                <%= f.hidden_field :art_status, :value => "pending" %>
+        	<% end %>
 
-    <br>
-    <%= f.submit "Submit", class: "btn btn-primary order-submit" %> 
-<% end %>
+            <br>
+            <%= f.submit "Create Order" %> 
+        <% end %>
+    </div>
+</div>

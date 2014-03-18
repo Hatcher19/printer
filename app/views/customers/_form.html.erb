@@ -1,12 +1,31 @@
-<%= simple_form_for(@customer, html: {class: ''}) do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :organization %>
-    <%= f.input :customer_name %>
-    <%= f.input :customer_email %>
-    <%= f.input :customer_phone %>
-    <% if f.object.new_record? %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
+<div class="row titlebar">
+    <div class="span2">
+    </div>
+    <div class="span4">
+        <h1>New Customer</h1>
+    </div>
+    <div class="span2 pull-right">
+      <br>
+        <div class="cancel-button">
+          <center><%= link_to 'Cancel', customers_path %></center>
+        </div>
+    </div>
+</div>
+  <br>
+
+<div class="span2">
+</div>
+<div class="span3">
+    <%= simple_form_for(@customer, html: {class: ''}) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :organization, label: "Company/ Organization" %>
+        <%= f.input :customer_name, label: "Purchaser's Name" %>
+        <%= f.input :customer_email, label: "Email" %>
+        <%= f.input :customer_phone, label: "Phone Number" %>
+        <% if f.object.new_record? %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+        <% end %>
+        <br>
+        <%= f.submit "Create Customer" %> 
     <% end %>
-    <br>
-    <%= f.submit "Submit", class: "btn btn-primary order-submit" %> 
-<% end %>
+</div>

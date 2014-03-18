@@ -1,26 +1,35 @@
-<div class="row">
-  <div class="span9">
-    <h1>Users</h1>
+<div class="row titlebar">
+  <div class="span2">
   </div>
   <div class="span3">
+    <h1>Users</h1>
+  </div>
+  <div class="span2 pull-right">
     <br>
-    <%= link_to 'Create User', new_user_registration_path, class: 'btn btn-primary pull-right' %>
+    <div class="create-button">
+      <center><%= link_to 'New User', new_user_path %></center>
+    </div>
   </div>
 </div>
-<br>
-<table class="table table-striped">
-  <tr>
-    <th class="first-column">ID</th>
-    <th class="second-column">Email</th>
-    <th class="first-column">Created At</th>
-  </tr>
-     <% @users.each do |user| %>
-       <tr>
-         <td class="first-column"><%= link_to user.id, user %></td>
-         <td class="first-column"><%= link_to user.email, user %></td>
-         <td class="first-column"><%= link_to user.created_at, user %></td>
+<div class="row">
+  <div class="span2">
+  </div>
+  <div class="span9">
+    <table class="table table-striped">
+      <tr>
+        <th class="first-column">ID</th>
+        <th class="second-column">Email</th>
+        <th class="first-column">Created At</th>
       </tr>
-    <% end %>
-</table>
+         <% @users.each do |user| %>
+           <tr>
+             <td class="first-column"><%= link_to user.id, user %></td>
+             <td class="first-column"><%= link_to user.email, user %></td>
+             <td class="first-column"><%= link_to user.created_at, user %></td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
 
 <br />
