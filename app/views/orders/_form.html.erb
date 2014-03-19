@@ -6,9 +6,9 @@
     </div>
     <div class="span2 pull-right">
       <br>
-        <div class="cancel-button">
-          <center><%= link_to 'Cancel', orders_path %></center>
-        </div>
+        <%= link_to orders_path do %>
+            <center><div class="cancel-button">Cancel</div></center>
+        <% end %>
     </div>
 </div>
 <div class="row-fluid">

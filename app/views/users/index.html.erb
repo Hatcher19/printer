@@ -6,9 +6,9 @@
   </div>
   <div class="span2 pull-right">
     <br>
-    <div class="create-button">
-      <center><%= link_to 'New User', new_user_path %></center>
-    </div>
+    <%= link_to new_user_path do %>
+      <center><div class="create-button">New User</div></center>
+    <% end %>
   </div>
 </div>
 <div class="row">
