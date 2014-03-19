@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310223840) do
+ActiveRecord::Schema.define(version: 20140318162657) do
+
+  create_table "accounts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "company"
+  end
+
   create_table "customers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -38,6 +45,25 @@ ActiveRecord::Schema.define(version: 20140310223840) do
     t.integer  "customer_id"
   end
 
+  create_table "products", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "style"
+    t.string   "color"
+    t.integer  "quantity"
+    t.integer  "xs"
+    t.integer  "small"
+    t.integer  "med"
+    t.integer  "large"
+    t.integer  "xl"
+    t.integer  "xxl"
+    t.integer  "xxxl"
+    t.integer  "ivxl"
+    t.integer  "vxl"
+    t.integer  "vixl"
+    t.integer  "order_id"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -51,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140310223840) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -8,8 +8,7 @@ class OrdersController < InheritedResources::Base
 
 	def new
 		@order = Order.new
-		# @order.line_items.build
-		# @order.artworks.build
+		@order.products.build
 	end
 
 	def show
@@ -39,6 +38,7 @@ class OrdersController < InheritedResources::Base
 	end  
 
 	def order_params
-      params.require(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status, :customer_id)
+        params.require(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status, :customer_id,
+      								  :products_attributes => [:id, :style, :color, :quantity, :xs, :small, :medium, :large, :xl, :xxl, :xxxl, :ivxl, :vxl, :vixl])
 	end
 end

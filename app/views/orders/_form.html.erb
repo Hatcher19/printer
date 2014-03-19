@@ -24,6 +24,9 @@
             <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
             <%= f.input :ship, as: :select %>
             <%= f.input :order_type, :collection => Order::TYPE %>
+            <%= f.fields_for :products do |builder| %>
+                <%= render "products/form", :f => builder %>
+            <% end %>
             <% if f.object.new_record? %>
                 <%= f.hidden_field :order_status, :value => "new" %>
                 <%= f.hidden_field :art_status, :value => "pending" %>

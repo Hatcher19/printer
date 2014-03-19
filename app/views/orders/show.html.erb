@@ -1,11 +1,24 @@
+<div class="row titlebar">
+    <div class="span2">
+    </div>
+    <div class="span6">
+        <h1><%= "#{@order.id} - #{@order.name}" %></h1>
+    </div>
+    <div class="span2 pull-right">
+    	<%= link_to orders_path do %>
+			<center><div class="view-all-button">View All</div></center>
+		<% end %>
+    </div>
+    <div class="span2 pull-right">
+    	<%= link_to new_order_path do %>
+			<center><div class="create-button">New Order</div></center>
+		<% end %>
+    </div>
+</div>
 <div class="row-fluid">
 	<div class="span2">
 	</div>
 	<div class="span10">
-		<h3>ID</h3>
-		<%= @order.id %>
-		<h3>Name</h3>
-		<%= @order.name %>
 		<h3>Status</h3>
 		<%= @order.order_status %>
 		<h3>Product Status</h3>
@@ -27,5 +40,34 @@
 		<%= @order.customer.organization %>
 		<%= @order.customer.customer_name %>
 		<%= @order.customer.customer_email %>
+		<h3>Product</h3>
+			<% for product in @order.products %>
+				<h3>Style</h3>
+				<%= h product.style %>
+				<h3>Color</h3>
+				<%= h product.color %> 
+				<h3>Quantity</h3>
+				<%= h product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %>
+				<h3>XS</h3>
+				<%= h product.xs %>
+				<h3>Small</h3>
+				<%= h product.small %>
+				<h3>Medium</h3>
+				<%= h product.med %>
+				<h3>Large</h3>
+				<%= h product.large %>
+				<h3>XL</h3>
+				<%= h product.xl %>
+				<h3>2XL</h3>
+				<%= h product.xxl %>
+				<h3>3XL</h3>
+				<%= h product.xxxl %>
+				<h3>4XL</h3>
+				<%= h product.ivxl %>
+				<h3>5XL</h3>
+				<%= h product.vxl %>
+				<h3>6XL</h3>
+				<%= h product.vixl %>
+			<% end %>
 	</div>
 </div>
