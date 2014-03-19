@@ -6,41 +6,45 @@
       <h1>Orders</h1>
     </div>
     <div class="span2 pull-right">
-      <br>
-      <div class="create-button">
-        <center><%= link_to 'New Order', new_order_path %></center>
-      </div>
+      <%= link_to new_order_path do %>
+        <center><div class="create-button">New Order</div></center>
+      <% end %>
     </div>
   </div>
-  <br>
+  <div class="row">
     <div class="span2">
     </div>
-    <div class="span9">
+    <div class="span8">
       <table class="table table-striped">
         <tr>
-          <th class="first-column">ID</th>
-          <th class="second-column">Name</th>
-          <th class="first-column">Category</th>
-          <th class="first-column">Status</th>
-          <th class="first-column">Art</th>
-          <th class="first-column">Product</th>
-          <th class="first-column">Due Date</th>
-          <th></th>
+          <th><%= sort_link @search, :id, "ID" %></th>
+          <th><%= sort_link @search, :name, "Name" %></th>
+          <th><%= sort_link @search, :category, "Category" %></th>
+          <th><%= sort_link @search, :order_status, "Status" %></th>
+          <th><%= sort_link @search, :art_status, "Art Status" %></th>
+          <th><%= sort_link @search, :product_status, "Product Status" %></th>
+          <th><%= sort_link @search, :end_date, "Due Date" %></th>
         </tr>
-          <% @orders.each do |order| %>
-             <tr>
-               <td class="first-column"><%= link_to order.id, order %></td>
-               <td class="first-column"><%= link_to order.name, order %></td>
-               <td class="first-column"><%= link_to order.category, order %></td>
-               <td class="first-column"><%= link_to order.order_status, order %></td>
-               <td class="first-column"><%= link_to order.art_status, order %></td>
-               <td class="first-column"><%= link_to order.product_status, order %></td>
-               <td class="first-column"><%= link_to order.end_date, order %></td>
-            </tr>
-          <% end %>
+        <% @orders.each do |order| %>
+           <tr>
+             <td class="first-column"><%= link_to order.id, order %></td>
+             <td class="first-column"><%= link_to order.name, order %></td>
+             <td class="first-column"><%= link_to order.category, order %></td>
+             <td class="first-column"><%= link_to order.order_status, order %></td>
+             <td class="first-column"><%= link_to order.art_status, order %></td>
+             <td class="first-column"><%= link_to order.product_status, order %></td>
+             <td class="first-column"><%= link_to order.end_date, order %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
-  <% else %>
+    <div class="span1">
+    </div>
+    <div class="span3 filters">
+      <%= render "filters" %>
+    </div>
+  </div>
+<% else %>
 <br><br><br>
   <div class="row-fluid">
     <div class="row">

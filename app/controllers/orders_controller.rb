@@ -3,7 +3,9 @@ class OrdersController < InheritedResources::Base
 	before_filter :authenticate_user!
 
 	def index
-		@orders = Order.all
+		@search = Order.search(params[:q])
+		@orders = @search.result
+		@search.build_condition if @search.conditions.empty?
 	end
 
 	def new

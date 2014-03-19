@@ -20,7 +20,11 @@
             <%= f.input :name %>
             <%= f.input :customer_id, :collection => Customer.where(:user_id => current_user.id), :label_method => :organization, :value_method => :id %>
             <%= f.input :product_status, :collection => Order::PRODUCTSTATUS %>
-            <%= f.input :end_date, label: "Due date", as: :date %>
+            <%= f.label :end_date, label: "Due date" %>
+            <%= f.text_field :end_date, 'data-behaviour' => 'datepicker' %>
+            <script type="text/javascript">
+              $('[data-behaviour~=datepicker]').datepicker();
+            </script>
             <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
             <%= f.input :ship, as: :select %>
             <%= f.input :order_type, :collection => Order::TYPE %>

@@ -39,6 +39,8 @@ gem 'simple_form'
 gem 'inherited_resources' 
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'ransack'
+gem 'bootstrap-datepicker-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
