@@ -5,16 +5,21 @@
     <div class="span3">
       <h1>Orders</h1>
     </div>
-    <div class="span2 pull-right">
+    <div class="span5">
+    </div>
+    <div class="span2">
       <%= link_to new_order_path do %>
         <center><div class="create-button">New Order</div></center>
       <% end %>
+    </div>
+    <div class="span3 pull-right filters">
+      <%= render "filters" %>
     </div>
   </div>
   <div class="row">
     <div class="span2">
     </div>
-    <div class="span8">
+    <div class="span10">
       <table class="table table-striped">
         <tr>
           <th><%= sort_link @search, :id, "ID" %></th>
@@ -37,11 +42,6 @@
           </tr>
         <% end %>
       </table>
-    </div>
-    <div class="span1">
-    </div>
-    <div class="span3 filters">
-      <%= render "filters" %>
     </div>
   </div>
 <% else %>

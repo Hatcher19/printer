@@ -87,7 +87,17 @@ text-decoration: none;
 	-webkit-border-radius: 4px 4px 4px 4px;
 	color: #fff;
 }
-.cancel-button {
+.filter {
+	background-color: #5BBD30;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 20px;
+	padding: 5px;
+	border-radius: 4px 4px 4px 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	color: #fff;
+}.cancel-button {
 	background-color: #E95136;
 	height: 30px;
 	line-height: 30px;
@@ -126,11 +136,12 @@ input, button {
 }
 button {
 	line-height: 30px;
+	background-color: #5BBD30;
 }
 /**************titlebar******************/
 .titlebar {
 	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 /**************product-form******************/
 #product_style {
@@ -217,4 +228,16 @@ button {
 #new_product > div.input.integer.optional.product_vixl {
 	float: left;
 	margin-right: 5px;
+}
+/**************filters******************/
+.filters{
+	position: fixed;
+	right:0;
+}
+.filter-label {
+	margin: 1px;
+}
+.filter-field {
+	margin-bottom: 2px;
+	height: 25px;
 }

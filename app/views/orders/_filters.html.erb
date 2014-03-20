@@ -1,33 +1,33 @@
+<div class="row">
+	<h3>Filters</h3>
+	<h5>Search by</h5>
 <%= search_form_for @search do |f| %>
-	<%= f.label :id_cont, "Order #" %>
-	<%= f.text_field :id_cont %>
-	<%= f.label :name_cont, "Name" %>
-	<%= f.text_field :name_cont %>
-	<h3>Customer</h3>
-	<%= f.label :customer_organization_cont, "Customer" %>
-	<%= f.text_field :customer_organization_cont  %>
-	<%= f.label :customer_customer_name_cont, "Purchaser" %>
-	<%= f.text_field :customer_customer_name_cont  %>
-	<%= f.label :category_cont, "Category" %>
-	<%= f.select :category_cont, Order::CATEGORY, {:include_blank => ''} %>
-	<%= f.label :order_type_cont, "Type" %>
-	<%= f.select :order_type_cont, Order::TYPE, {:include_blank => ''} %>
-	<%= f.label :order_status_cont, "Order Status" %>
-	<%= f.select :order_status_cont, Order::STATUS, {:include_blank => ''} %>
-	<%= f.label :art_status_cont, "Art Status" %>
-	<%= f.select :art_status_cont, Order::ARTSTATUS, {:include_blank => ''} %>
-	<%= f.label :product_status_cont, "Product Status" %>
-	<%= f.select :product_status_cont, Order::PRODUCTSTATUS, {:include_blank => ''} %>
-	<%= f.label :ship_cont, "Shipping?" %>
-	<%= f.select :ship_cont, Order::SHIP, {:include_blank => ''} %>
-	<%= f.label :end_date_eq, "Due Date" %>
-	<%= f.text_field :end_date_eq, 'data-behaviour' => 'datepicker' %>
+<center>
+	<%= f.text_field :id_cont, class: "filter-field", placeholder: "Order No." %>
+	<%= f.text_field :name_cont, class: "filter-field", placeholder: "Order Name" %>
+	<%= f.text_field :customer_organization_cont, class: "filter-field", placeholder: "Custom Organization/ Company"  %>
+	<%= f.text_field :customer_customer_name_cont, class: "filter-field", placeholder: "Purchaser's Name"  %>
+	<%= f.text_field :end_date_eq, 'data-behaviour' => 'datepicker', class: "filter-field", placeholder: "Due Date" %>
 	<script type="text/javascript">
 	  $('[data-behaviour~=datepicker]').datepicker();
 	</script>
-
-	<br>
-	<%= button_tag(type: 'submit', class: "create-button") do %>
-	    <i class="icon-ok icon-white"></i> Filter
-	  <% end %>
+	
+	<%= f.select :category_cont, Order::CATEGORY, {:include_blank => 'Category'}, class: "filter-field" %>
+	<%= f.select :order_type_cont, Order::TYPE, {:include_blank => 'Type'}, class: "filter-field" %>
+	<%= f.select :order_status_cont, Order::STATUS, {:include_blank => 'Order Status'}, class: "filter-field" %>
+	<%= f.select :art_status_cont, Order::ARTSTATUS, {:include_blank => 'Art Status'}, class: "filter-field" %>
+	<%= f.select :product_status_cont, Order::PRODUCTSTATUS, {:include_blank => 'Product Status'}, class: "filter-field" %>
+	<%= f.select :ship_cont, Order::SHIP, {:include_blank => 'Shipping?'}, class: "filter-field", id: "bottom-filter" %>
+</center>
+</div>
+<div class="row"><center>
+	<div class="filter">
+		<%= f.submit "Filter" %>
+	</div>
+	<div>
+		<%= link_to orders_path do %>
+	    <div class="cancel-button">Clear</div></center>
+	    <% end %>
+	</div>
+</div>
 <% end %>
