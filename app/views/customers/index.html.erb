@@ -6,10 +6,9 @@
     <h1>Customers</h1>
   </div>
   <div class="span2 pull-right">
-    <br>
-    <div class="create-button">
-      <center><%= link_to 'New Customer', new_customer_path %></center>
-    </div>
+    <%= link_to new_customer_path do %>
+      <center><div class="create-button">New Customer</div></center>
+    <% end %>
   </div>
 </div>
 <br>

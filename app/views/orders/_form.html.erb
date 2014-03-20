@@ -34,6 +34,7 @@
             <% if f.object.new_record? %>
                 <%= f.hidden_field :order_status, :value => "new" %>
                 <%= f.hidden_field :art_status, :value => "pending" %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
         	<% end %>
 
             <br>

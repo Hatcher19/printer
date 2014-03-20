@@ -1,4 +1,51 @@
-<div>
-	<h3>ID</h3>
-	<%= @user.email %>
+<div class="row titlebar">
+    <div class="span2">
+    </div>
+    <div class="span6">
+        <h1><%= "#{@user.email}" %></h1>
+    </div>
+    <div class="span2 pull-right">
+    	<%= link_to users_path do %>
+			<center><div class="view-all-button">View All</div></center>
+		<% end %>
+    </div>
+    <div class="span2 pull-right">
+    	<%= link_to new_user_path do %>
+			<center><div class="create-button">New User</div></center>
+		<% end %>
+    </div>
+</div>
+
+<div class="row">
+	<div class="span2">
+	</div>
+	<div class="span9">
+		<table class="table table-striped">
+		  <tbody>
+		  	<h4><span id="orange">Orders</span> placed by <span id="orange"><%= @user.email %></span></h4>
+		  	<tr>
+	          <th><%= "ID" %></th>
+	          <th><%= "Name" %></th>
+	          <th><%= "Category" %></th>
+	          <th><%= "Status" %></th>
+	          <th><%= "Art Status" %></th>
+	          <th><%= "Product Status" %></th>
+	          <th><%= "Date" %></th>
+	        </tr>
+		    <% @user.orders.each do |order| %>
+		      <tr>
+		        <tr>
+	                <td class="first-column"><%= link_to order.id, order %></td>
+	                <td class="first-column"><%= link_to order.name, order %></td>
+	                <td class="first-column"><%= link_to order.category, order %></td>
+	                <td class="first-column"><%= link_to order.order_status, order %></td>
+	                <td class="first-column"><%= link_to order.art_status, order %></td>
+	                <td class="first-column"><%= link_to order.product_status, order %></td>
+	                <td class="first-column"><%= link_to order.created_at, order %></td>
+	            </tr>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
 </div>
