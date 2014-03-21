@@ -39,43 +39,49 @@
 		<h3>Shipping</h3>
 		<%= @order.ship %>
 		<h3>Customer</h3>
-		<%= @order.customer.organization %>
-		<%= @order.customer.customer_name %>
-		<%= @order.customer.customer_email %>
 		<h3>Product</h3>
 			<% for product in @order.products %>
-				<h3>Style</h3>
-				<%= h product.style %>
-				<h3>Color</h3>
-				<%= h product.color %> 
-				<h3>Quantity</h3>
-				<%= h product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %>
-				<h3>XS</h3>
-				<%= h product.xs %>
-				<h3>Small</h3>
-				<%= h product.small %>
-				<h3>Medium</h3>
-				<%= h product.med %>
-				<h3>Large</h3>
-				<%= h product.large %>
-				<h3>XL</h3>
-				<%= h product.xl %>
-				<h3>2XL</h3>
-				<%= h product.xxl %>
-				<h3>3XL</h3>
-				<%= h product.xxxl %>
-				<h3>4XL</h3>
-				<%= h product.ivxl %>
-				<h3>5XL</h3>
-				<%= h product.vxl %>
-				<h3>6XL</h3>
-				<%= h product.vixl %>
+				<table class="table table-striped">
+			        <tr>
+			          <th>Style</th>
+			          <th>Color</th>
+			          <th>Quantity</th>
+			          <th>XS</th>
+			          <th>S</th>
+			          <th>M</th>
+			          <th>L</th>
+			          <th>XL</th>
+			          <th>2XL</th>
+			          <th>3XL</th>
+			          <th>4XL</th>
+			          <th>5XL</th>
+			          <th>6XL</th>
+			        </tr>
+			        <% @order.artworks.each do |artwork| %>
+			           <tr>
+			             <td class="first-column"><%= h product.style %></td>
+			             <td class="first-column"><%= h product.color %></td>
+			             <td class="first-column"><%= h product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %></td>
+			             <td class="first-column"><%= h product.xs %></td>
+			             <td class="first-column"><%= h product.small %></td>
+			             <td class="first-column"><%= h product.med %></td>
+			             <td class="first-column"><%= h product.large %></td>
+			             <td class="first-column"><%= h product.xl %></td>
+			             <td class="first-column"><%= h product.xxl %></td>
+			             <td class="first-column"><%= h product.xxxl %></td>
+			             <td class="first-column"><%= h product.ivxl %></td>
+			             <td class="first-column"><%= h product.vxl %></td>
+			             <td class="first-column"><%= h product.vixl %></td>
+			          </tr>
+			        <% end %>
+			      </table>
 			<% end %>
 			<% for artwork in @order.artworks %>
 				<h3>color</h3>
 				<%= h artwork.color %> 
 				<h3>file</h3>
-				<%= h artwork.file %> 
+				<%= image_tag artwork.file_url(:thumb) if artwork.file? %>
+				<%= link_to "Download Artwork", artwork.file_url.to_s, download: ["#{@order.name}-#{@order.id}-#{artwork.location}"], class: "create-button" %>
 				<h3>location</h3>
 				<%= h artwork.location %> 
 			<% end %>

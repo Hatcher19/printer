@@ -1,4 +1,4 @@
-<%= f.input :file, label: 'File' %>
+<%= f.file_field :file, label: 'File' %>
 <%= f.input :color, label: 'Color' %>
-<%= f.input :location, label: 'Location' %>
+<%= f.input :location, :collection => Artwork::LOCATION %>
 <%= f.label :_destroy, "Remove Product" %>

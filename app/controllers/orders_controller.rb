@@ -43,6 +43,6 @@ class OrdersController < InheritedResources::Base
 	def order_params
         params.require(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status, :customer_id, :user_id,
       								  :products_attributes => [:id, :style, :color, :quantity, :xs, :small, :medium, :large, :xl, :xxl, :xxxl, :ivxl, :vxl, :vixl],
-      								  :artworks_attributes => [:id, :artwork, :color, :location])
+      								  :artworks_attributes => [:id, :file, :color, :location])
 	end
 end

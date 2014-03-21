@@ -41,6 +41,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'ransack'
 gem 'bootstrap-datepicker-rails'
+gem "mini_magick"
+gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
