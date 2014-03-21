@@ -30,6 +30,9 @@
             <%= f.fields_for :products do |builder| %>
                 <%= render "products/form", :f => builder %>
             <% end %>
+            <%= f.fields_for :artworks do |builder| %>
+                <%= render "artworks/form", :f => builder %>
+            <% end %>
             <% if f.object.new_record? %>
                 <%= f.hidden_field :order_status, :value => "new" %>
                 <%= f.hidden_field :art_status, :value => "pending" %>

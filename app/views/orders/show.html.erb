@@ -71,5 +71,13 @@
 				<h3>6XL</h3>
 				<%= h product.vixl %>
 			<% end %>
+			<% for artwork in @order.artworks %>
+				<h3>color</h3>
+				<%= h artwork.color %> 
+				<h3>file</h3>
+				<%= h artwork.file %> 
+				<h3>location</h3>
+				<%= h artwork.location %> 
+			<% end %>
 	</div>
 </div>
