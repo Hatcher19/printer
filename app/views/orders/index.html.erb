@@ -1,12 +1,12 @@
-<% if Order.exists? %>
   <div class="row titlebar">
     <div class="span2">
     </div>
     <div class="span3">
       <h1>Orders</h1>
     </div>
-    <div class="span5">
+    <div class="span4">
     </div>
+    <% if Order.exists? %>
     <div class="span2">
       <%= link_to new_order_path do %>
         <center><div class="create-button">New Order</div></center>
@@ -19,7 +19,7 @@
   <div class="row">
     <div class="span2">
     </div>
-    <div class="span10">
+    <div class="span8">
       <table class="table table-striped">
         <tr>
           <th><%= sort_link @search, :id, "ID" %></th>
@@ -38,7 +38,7 @@
              <td class="first-column"><%= link_to order.order_status, order %></td>
              <td class="first-column"><%= link_to order.art_status, order %></td>
              <td class="first-column"><%= link_to order.product_status, order %></td>
-             <td class="first-column"><%= link_to order.end_date, order %></td>
+             <td class="first-column"><%= link_to order.end_date.strftime("%m/%d/%y"), order %></td>
           </tr>
         <% end %>
       </table>
@@ -55,9 +55,9 @@
           <center>
             Currently, there are <span id="orange">0</span> orders.
             <br> Try createing one!
-            <div class="create-button">
-              <%= link_to 'Create New Order', new_order_path %>
-            </div>
+              <%= link_to new_order_path do %>
+                <center><div class="create-button">New Order</div></center>
+              <% end %>
             </center>
           </div>
       </div>

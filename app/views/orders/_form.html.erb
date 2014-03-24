@@ -22,7 +22,9 @@
             <%= f.label :end_date, label: "Due date" %>
             <%= f.text_field :end_date, 'data-behaviour' => 'datepicker' %>
             <script type="text/javascript">
-              $('[data-behaviour~=datepicker]').datepicker();
+            $(document).ready(function(){
+              $('[data-behaviour=datepicker]').datepicker({format: 'yyyy-mm-dd'});
+            });
             </script>
             <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
             <%= f.input :ship, as: :select %>

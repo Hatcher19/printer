@@ -1,5 +1,8 @@
 @import 'bootstrap';
-
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600);
+body {
+	font-family: 'Open Sans', sans-serif;
+}
 .pull-right {
 	margin-right: 5px;
 }
@@ -8,6 +11,10 @@ text-decoration: none;
 }
 a:hover {
 text-decoration: none;
+}
+.nav-tabs {
+ border-bottom: none; 
+margin-bottom: 0px;
 }
 
 /**************nav******************/
@@ -143,6 +150,34 @@ button {
 	margin-top: 50px;
 	margin-bottom: 40px;
 }
+.id-name {
+	font-size: 36px;
+	margin-top: 20px;
+	margin-left: 0px;
+}
+#sold-by a {
+	font-size: 16px;
+}
+.sold-category {
+	margin-top: 10px;
+	margin-left: 0px;
+}
+.triangle-up-left {
+    width: 0;
+    height: 0;
+    padding-bottom: 25%;
+    padding-left: 25%;
+    overflow: hidden;
+}
+.triangle-up-left:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: -500px;
+    border-bottom: 500px solid transparent;
+    border-left: 500px solid #4679BD;
+}
 /**************product-form******************/
 #product_style {
 	width: 75px;
@@ -240,4 +275,72 @@ button {
 .filter-field {
 	margin-bottom: 2px;
 	height: 25px;
+}
+/**************calender******************/
+.calender-date {
+	margin: 5px;
+	border-width: 0px;
+}
+.calender-date.span2.pull-right.well {
+	padding: 0px;
+}
+#due-created {
+	background-color: #BD3B2D;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 3px 3px 0px 0px;
+	-moz-border-radius: 3px 3px 0px 0px;
+	-webkit-border-radius: 3px 3px 0px 0px;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+#due-created-start {
+	background-color: green;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 3px 3px 0px 0px;
+	-moz-border-radius: 3px 3px 0px 0px;
+	-webkit-border-radius: 3px 3px 0px 0px;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+#year {
+	background-color: #BD3B2D;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 0px 0px 3px 3px;
+	-moz-border-radius: 0px 0px 3px 3px;
+	-webkit-border-radius: 0px 0px 3px 3px;
+	padding: 5px;
+	margin-top: 15px;
+}
+#year-start {
+	background-color: green;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 0px 0px 3px 3px;
+	-moz-border-radius: 0px 0px 3px 3px;
+	-webkit-border-radius: 0px 0px 3px 3px;
+	padding: 5px;
+	margin-top: 15px;
+}
+#day {
+	font-size: 40px;
+	font-weight:bold;
+	margin-top: 3px;
+}
+#month {
+	font-size: 12px;
+	font-weight:bold;
+}
+
+
+
+#trapezium {
+   height: 0; 
+   width: 40px;
+   border-bottom: 40px solid #c3c3c3;
+   border-left: 20px solid transparent;
+   border-right: 20px solid transparent;
+   color: #fff;
 }

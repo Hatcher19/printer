@@ -5,9 +5,10 @@
         <h1>New Customer</h1>
     </div>
     <div class="span2 pull-right">
-      <br>
-        <div class="cancel-button">
-          <center><%= link_to 'Cancel', customers_path %></center>
+        <div class="span2 pull-right">
+            <%= link_to customers_path do %>
+                <center><div class="cancel-button">Cancel</div></center>
+            <% end %>
         </div>
     </div>
 </div>

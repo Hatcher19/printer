@@ -1,10 +1,10 @@
-<% if Customer.exists? %>
 <div class="row titlebar">
   <div class="span2">
   </div>
   <div class="span3">
     <h1>Customers</h1>
   </div>
+  <% if Customer.exists? %>
   <div class="span2 pull-right">
     <%= link_to new_customer_path do %>
       <center><div class="create-button">New Customer</div></center>
@@ -47,9 +47,9 @@
           <center>
             Currently, there are <span id="orange">0</span> customers.
             <br> Try createing one!
-            <div class="create-button">
-              <%= link_to 'Create New Customer', new_customer_path, class: 'create-button' %>
-            </div>
+            <%= link_to new_customer_path do %>
+                <center><div class="create-button">New Customer</div></center>
+              <% end %>
             </center>
           </div>
       </div>

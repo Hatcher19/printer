@@ -1,89 +1,204 @@
 <div class="row titlebar">
     <div class="span2">
     </div>
-    <div class="span6">
-        <h1><%= "#{@order.id} - #{@order.name}" %></h1>
-    </div>
-    <div class="span2 pull-right">
-    	<%= link_to orders_path do %>
-			<center><div class="view-all-button">View All</div></center>
-		<% end %>
-    </div>
-    <div class="span2 pull-right">
-    	<%= link_to new_order_path do %>
-			<center><div class="create-button">New Order</div></center>
-		<% end %>
-    </div>
+    <div class="span8">
+    	<div class="row id-name">
+    		<%= "#{@order.name}" %>
+    		<span class="badge badge-info"><%= "#{@order.id}" %></span>
+    		<span class="badge badge-warning"><%= "#{@order.order_type}" %></span>
+    	</div>
+    	<div class="row sold-category">
+    		<!-- TODO: linke is taking to index -->
+        	<span id="sold-by"><%= link_to "#{@order.user.email}", user_path(@user_id) %></h1>
+        		- <%= @order.category %>
+    	</div>
+    	<div class="row">
+		    	<div class="span2">
+			    	<h4>Status</h4>
+					<% if @order.order_status == 'new' %>
+						<div class="progress">
+							<div class="bar bar-danger" style="width: 33%;"><%= @order.order_status %></div>
+						</div>
+					<% elsif @order.order_status == 'approved' %>
+					    <div class="progress bar-success">
+							<div class="bar" style="width: 66%;"><%= @order.order_status %></div>
+						</div>
+					<% elsif @order.order_status == 'complete' %>
+					    <div class="progress bar-success">
+							<div class="bar" style="width: 100%;"><%= @order.order_status %></div>
+						</div>
+					<% elsif @order.order_status == 'hold' %>
+					    <div class="progress bar-warning">
+							<div class="bar" style="width: 100%;"><%= @order.order_status %></div>
+						</div>
+					<% elsif @order.order_status == 'cancelled' %>
+					    <div class="progress bar-danger">
+							<div class="bar" style="width: 100%;"><%= @order.order_status %></div>
+						</div>
+					<% end %>
+				</div>
+				<div class="span2">
+					<h4>Product</h4>
+					<% if @order.product_status == 'Purchase' %>
+						<div class="progress">
+							<div class="bar bar-info" style="width: 35%;"><%= @order.product_status %></div>
+						</div>
+					<% elsif @order.product_status == 'ordered' %>
+					    <div class="progress bar-success">
+							<div class="bar" style="width: 50%;"><%= @order.product_status %></div>
+						</div>
+					<% elsif @order.product_status == 'partial' %>
+					    <div class="progress bar-warning">
+							<div class="bar" style="width: 75%;"><%= @order.product_status %></div>
+						</div>
+					<% elsif @order.product_status == 'received' %>
+					    <div class="progress bar-danger">
+							<div class="bar" style="width: 100%;"><%= @order.product_status %></div>
+						</div>
+					<% end %>
+				</div>
+				<div class="span2">
+					<h4>Art</h4>
+					<% if @order.art_status == 'pending' %>
+						<div class="progress">
+							<div class="bar bar-info" style="width: 50%;"><%= @order.art_status %></div>
+						</div>
+					<% elsif @order.art_status == 'approved' %>
+					    <div class="progress bar-success">
+							<div class="bar" style="width: 100%;"><%= @order.art_status %></div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+	    </div>
+	<div class="calender-date span2 pull-right well">
+		<center>
+			<div id="due-created">
+				Due
+			</div>
+			<div id="month">
+				<%= @order.end_date.strftime("%B") %>
+			</div>
+			<div id="day">
+				<%= @order.end_date.strftime("%d") %>
+			</div>
+			<div id="year">
+				<%= @order.end_date.strftime("%Y") %>
+			</div>
+		</center>
+	</div>
+<!-- 	<div class="calender-date span2 pull-right well">
+		<center>
+			<div id="due-created-start">
+				Created
+			</div>
+			<div id="month-start">
+				<%= @order.created_at.localtime.strftime("%B") %>
+			</div>
+			<div id="day">
+				<%= @order.created_at.localtime.strftime("%d") %>
+			</div>
+			<div id="year-start">
+				<%= @order.created_at.localtime.strftime("%Y") %>
+			</div>
+		</center>
+	</div> -->
 </div>
-<div class="row-fluid">
+<div class="row">
 	<div class="span2">
 	</div>
-	<div class="span10">
-		<h3>Status</h3>
-		<%= @order.order_status %>
-		<h3>Sold By</h3>
-		<%= @order.user_id %>
-		<h3>Product Status</h3>
-		<%= @order.product_status %>
-		<h3>Art Status</h3>
-		<%= @order.art_status %>
-		<h3>Category</h3>
-		<%= @order.category %> 
-		<h3>Type</h3>
-		<%= @order.order_type %>
-		<h3>Sold by</h3>
-		<h3>Start Date</h3>
-		<%= @order.created_at %>
-		<h3>Due Date</h3>
-		<%= @order.end_date %>
-		<h3>Shipping</h3>
-		<%= @order.ship %>
-		<h3>Customer</h3>
-		<h3>Product</h3>
-			<% for product in @order.products %>
-				<table class="table table-striped">
-			        <tr>
-			          <th>Style</th>
-			          <th>Color</th>
-			          <th>Quantity</th>
-			          <th>XS</th>
-			          <th>S</th>
-			          <th>M</th>
-			          <th>L</th>
-			          <th>XL</th>
-			          <th>2XL</th>
-			          <th>3XL</th>
-			          <th>4XL</th>
-			          <th>5XL</th>
-			          <th>6XL</th>
-			        </tr>
-			        <% @order.artworks.each do |artwork| %>
-			           <tr>
-			             <td class="first-column"><%= h product.style %></td>
-			             <td class="first-column"><%= h product.color %></td>
-			             <td class="first-column"><%= h product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %></td>
-			             <td class="first-column"><%= h product.xs %></td>
-			             <td class="first-column"><%= h product.small %></td>
-			             <td class="first-column"><%= h product.med %></td>
-			             <td class="first-column"><%= h product.large %></td>
-			             <td class="first-column"><%= h product.xl %></td>
-			             <td class="first-column"><%= h product.xxl %></td>
-			             <td class="first-column"><%= h product.xxxl %></td>
-			             <td class="first-column"><%= h product.ivxl %></td>
-			             <td class="first-column"><%= h product.vxl %></td>
-			             <td class="first-column"><%= h product.vixl %></td>
-			          </tr>
-			        <% end %>
-			      </table>
-			<% end %>
-			<% for artwork in @order.artworks %>
-				<h3>color</h3>
-				<%= h artwork.color %> 
-				<h3>file</h3>
-				<%= image_tag artwork.file_url(:thumb) if artwork.file? %>
-				<%= link_to "Download Artwork", artwork.file_url.to_s, download: ["#{@order.name}-#{@order.id}-#{artwork.location}"], class: "create-button" %>
-				<h3>location</h3>
-				<%= h artwork.location %> 
-			<% end %>
+	<div class="span8">
+		<ul class="nav nav-tabs">
+		  <li class="active">
+		    <%= link_to "Product" %>
+		  </li>
+		</ul>
+		<% for product in @order.products %>
+			<table class="table table-striped">
+		        <tr>
+		          <th>Style</th>
+		          <th>Color</th>
+		          <th>Quantity</th>
+		          <th>XS</th>
+		          <th>S</th>
+		          <th>M</th>
+		          <th>L</th>
+		          <th>XL</th>
+		          <th>2XL</th>
+		          <th>3XL</th>
+		          <th>4XL</th>
+		          <th>5XL</th>
+		          <th>6XL</th>
+		        </tr>
+		        <% @order.products.each do |product| %>
+		           <tr>
+		             <td class="first-column"><%= h product.style %></td>
+		             <td class="first-column"><%= h product.color %></td>
+		             <td class="first-column"><%= h product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %></td>
+		             <td class="first-column"><%= h product.xs %></td>
+		             <td class="first-column"><%= h product.small %></td>
+		             <td class="first-column"><%= h product.med %></td>
+		             <td class="first-column"><%= h product.large %></td>
+		             <td class="first-column"><%= h product.xl %></td>
+		             <td class="first-column"><%= h product.xxl %></td>
+		             <td class="first-column"><%= h product.xxxl %></td>
+		             <td class="first-column"><%= h product.ivxl %></td>
+		             <td class="first-column"><%= h product.vxl %></td>
+		             <td class="first-column"><%= h product.vixl %></td>
+		          </tr>
+		        <% end %>
+		      </table>
+		<% end %>
+	</div>
+	<div class="span1">
+	</div>
+	<div class="span3">
+		<div class="row">
+			<ul class="nav nav-tabs">
+			  <li class="active">
+			    <%= link_to @order.customer.organization, customer_path %>
+			  </li>
+			</ul>
+		</div>
+		<div class="row">
+			Purchaser: <%= link_to @order.customer.customer_name, customer_path %>
+		</div>
+		<div class="row">
+			<%= @order.ship %>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="span2">
+	</div>
+	<div class="span8">
+		<ul class="nav nav-tabs">
+		  <li class="active">
+		    <%= link_to "Artwork" %>
+		  </li>
+		</ul>
+		<% for artwork in @order.artworks %>
+			<table class="table table-striped">
+				<tr>
+					<th></th>
+					<th>Location</th>
+					<th>Color</th>
+					<th></th>
+				</tr>
+				<% @order.artworks.each do |artwork| %>
+					<tr>
+						<td><%= image_tag artwork.file_url(:thumb) if artwork.file? %></td>
+						<td><%= h artwork.color %></td>
+						<td><%= h artwork.location %></td>
+						<td><%= link_to artwork.file_url.to_s, download: ["#{@order.name}-#{@order.id}-#{artwork.location}"] do %>
+					        <center><div class="create-button">Download</div></center>
+					      <% end %></td>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
 	</div>
 </div>

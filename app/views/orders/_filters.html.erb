@@ -3,13 +3,15 @@
 	<h5>Search by</h5>
 <%= search_form_for @search do |f| %>
 <center>
-	<%= f.text_field :id_cont, class: "filter-field", placeholder: "Order No." %>
+	<%= f.text_field :id_eq, class: "filter-field", placeholder: "Order No." %>
 	<%= f.text_field :name_cont, class: "filter-field", placeholder: "Order Name" %>
 	<%= f.text_field :customer_organization_cont, class: "filter-field", placeholder: "Custom Organization/ Company"  %>
 	<%= f.text_field :customer_customer_name_cont, class: "filter-field", placeholder: "Purchaser's Name"  %>
 	<%= f.text_field :end_date_eq, 'data-behaviour' => 'datepicker', class: "filter-field", placeholder: "Due Date" %>
 	<script type="text/javascript">
-	  $('[data-behaviour~=datepicker]').datepicker();
+	$(document).ready(function(){
+	  $('[data-behaviour=datepicker]').datepicker({format: 'yyyy-mm-dd'});
+	});
 	</script>
 	
 	<%= f.select :category_cont, Order::CATEGORY, {:include_blank => 'Category'}, class: "filter-field" %>
@@ -26,7 +28,7 @@
 	</div>
 	<div>
 		<%= link_to orders_path do %>
-	    <div class="cancel-button">Clear</div></center>
+	    <div class="cancel-button" id="clear">Clear</div></center>
 	    <% end %>
 	</div>
 </div>
