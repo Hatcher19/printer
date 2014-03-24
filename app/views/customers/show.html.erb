@@ -60,3 +60,14 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="span2">
+	</div>
+	<div class="span6">
+		<% for address in @customer.addresses %>
+			<%= h address.line_one.titleize %><br>
+			<%= h address.line_two.titleize %><br>
+			<%= h "#{address.city.capitalize}, #{address.state.capitalize} #{address.zip}" %>
+		<% end %>
+	</div>
+</div>

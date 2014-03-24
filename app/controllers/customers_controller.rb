@@ -8,8 +8,7 @@ class CustomersController < InheritedResources::Base
 
 	def new
 		@customer = Customer.new
-		# @order.line_items.build
-		# @order.artworks.build
+		@customer.addresses.build
 	end
 
 	def show
@@ -32,14 +31,15 @@ class CustomersController < InheritedResources::Base
 	  end
 
 	def update  
-	  @customer = Customer.find(params[:id])  
-	  if @customer.update_attributes(params[:customer])  
-	    flash[:notice] = "Successfully updated customer."  
-	  end  
-	  respond_with(@customer)  
+		@customer = Customer.find(params[:id])  
+			if @customer.update_attributes(params[:customer])  
+				flash[:notice] = "Successfully updated customer."  
+			end  
+		respond_with(@customer)  
 	end  
 
 	def customer_params
-      params.require(:customer).permit(:id, :organization, :customer_name, :customer_email, :customer_phone, :account_id, :user_id, :order_id)
+      params.require(:customer).permit(:id, :organization, :customer_name, :customer_email, :customer_phone, :account_id, :user_id, :order_id,
+      									:addresses_attributes => [:id, :line_one, :line_two, :city, :state, :zip])
     end
 end

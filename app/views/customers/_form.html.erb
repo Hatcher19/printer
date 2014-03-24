@@ -23,6 +23,9 @@
         <%= f.input :customer_name, label: "Purchaser's Name" %>
         <%= f.input :customer_email, label: "Email" %>
         <%= f.input :customer_phone, label: "Phone Number" %>
+        <%= f.fields_for :addresses do |builder| %>
+                <%= render "addresses/form", :f => builder %>
+            <% end %>
         <% if f.object.new_record? %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
         <% end %>

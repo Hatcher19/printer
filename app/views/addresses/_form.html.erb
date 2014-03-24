@@ -1,0 +1,11 @@
+<div class="row">
+	<%= f.input :line_one, label: 'address 1' %>
+</div>
+<div class="row">
+	<%= f.input :line_two, label: 'address 2' %>
+</div>
+<div class="row">
+	<%= f.input :city, label: 'City' %>
+	<%= f.input :state, :collection => Address::STATE %>
+	<%= f.input :zip, label: 'Zip' %>
+</div>

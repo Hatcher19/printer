@@ -1,11 +1,16 @@
 Por::Application.routes.draw do
   root :to => "pages#home"
-  devise_for :users, :controllers => { :registrations => "registrations" }
-  resources :users, only: [:index, :show]
+  devise_for :users, :controllers => { :accounts => "accounts" }
+  resources :users, only: [:index, :show, :update, :create, :new]
   resources :orders, only: [:index, :show, :update, :create, :new]
+  resources :accounts, only: [:index, :show, :update, :create, :new]
   resources :customers, only: [:index, :show, :update, :create, :new]
   resources :products, only: [:show, :update, :create, :new]
+  resources :addresses, only: [:show, :update, :create, :new]
   resources :artworks, only: [:show, :update, :create, :new]
+  resources :orders do
+    resources :users
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

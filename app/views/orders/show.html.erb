@@ -164,7 +164,16 @@
 			Purchaser: <%= link_to @order.customer.customer_name, customer_path %>
 		</div>
 		<div class="row">
-			<%= @order.ship %>
+			Shipping: <%= @order.ship %>
+			<% for address in @order.customer.addresses %>
+				<% if @order.ship == 'true' %>
+					<%= h customer.address.line_one %>
+					<%= h customer.address.line_two %>
+					<%= h customer.address.city %>
+					<%= h customer.address.state %>
+					<%= h customer.address.zip %>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>
