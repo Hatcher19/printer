@@ -30,13 +30,15 @@ class CustomersController < InheritedResources::Base
 	    end
 	  end
 
-	def update  
-		@customer = Customer.find(params[:id])  
-			if @customer.update_attributes(params[:customer])  
-				flash[:notice] = "Successfully updated customer."  
-			end  
-		respond_with(@customer)  
-	end  
+	def update
+		@customer = Customer.find(params[:id])
+
+		if @customer.update_attributes(customer_params)
+			redirect_to customer_path, notice:  "Your Customer has been successfully updated."
+		else
+			render action: "edit"
+		end
+	end 
 
 	def customer_params
       params.require(:customer).permit(:id, :organization, :customer_name, :customer_email, :customer_phone, :account_id, :user_id, :order_id,
