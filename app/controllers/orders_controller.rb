@@ -32,13 +32,15 @@ class OrdersController < InheritedResources::Base
 	    end
 	  end
 
-	def update  
-	  @order = Order.find(params[:id])  
-	  if @order.update_attributes(params[:order])  
-	    flash[:notice] = "Successfully updated order."  
-	  end  
-	  respond_with(@order)  
-	end  
+	def update
+		@order = Order.find(params[:id])
+
+		if @order.update_attributes(order_params)
+			redirect_to order_path, notice:  "Your order has been successfully updated."
+		else
+			render action: "edit"
+		end
+	end 
 
 	def order_params
         params.require(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status, :customer_id, :user_id,

@@ -16,33 +16,38 @@
     <div class="span3">
         <%= simple_form_for(@order, html: {class: ''}) do |f| %>
             <%= f.error_notification %>
-            <%= f.input :name %>
-            <%= f.input :customer_id, :collection => Customer.where(:user_id => current_user.id), :label_method => :organization, :value_method => :id %>
-            <%= f.input :product_status, :collection => Order::PRODUCTSTATUS %>
-            <%= f.label :end_date, label: "Due date" %>
-            <%= f.text_field :end_date, 'data-behaviour' => 'datepicker' %>
-            <script type="text/javascript">
-            $(document).ready(function(){
-              $('[data-behaviour=datepicker]').datepicker({format: 'yyyy-mm-dd'});
-            });
-            </script>
-            <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
-            <%= f.input :ship, as: :select %>
-            <%= f.input :order_type, :collection => Order::TYPE %>
-            <%= f.fields_for :products do |builder| %>
-                <%= render "products/form", :f => builder %>
-            <% end %>
-            <%= f.fields_for :artworks do |builder| %>
-                <%= render "artworks/form", :f => builder %>
-            <% end %>
-            <% if f.object.new_record? %>
-                <%= f.hidden_field :order_status, :value => "new" %>
-                <%= f.hidden_field :art_status, :value => "pending" %>
-                <%= f.hidden_field :user_id, :value => current_user.id %>
-        	<% end %>
-
-            <br>
-            <%= f.submit "Create Order" %> 
+                <%= f.input :name %>
+                <%= f.input :customer_id, :collection => Customer.where(:user_id => current_user.id), :label_method => :organization, :value_method => :id %>
+                <% if f.object.new_record? %>
+                    <%= f.hidden_field :order_status, :value => "new" %>
+                    <%= f.hidden_field :art_status, :value => "pending" %>
+                <% else %>
+                    <%= f.input :order_status, :collection => Order::STATUS %>
+                    <%= f.input :art_status, :collection => Order::ARTSTATUS %>
+                <% end %>
+                <%= f.input :product_status, :collection => Order::PRODUCTSTATUS %>
+                <%= f.label :end_date, label: "Due date" %>
+                <%= f.text_field :end_date, 'data-behaviour' => 'datepicker' %>
+                <script type="text/javascript">
+                $(document).ready(function(){
+                  $('[data-behaviour=datepicker]').datepicker({format: 'yyyy-mm-dd'});
+                });
+                </script>
+                <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
+                <%= f.input :ship, as: :select %>
+                <%= f.input :order_type, :collection => Order::TYPE %>
+                <%= f.fields_for :products do |builder| %>
+                    <%= render "products/form", :f => builder %>
+                <% end %>
+                <%= f.fields_for :artworks do |builder| %>
+                    <%= render "artworks/form", :f => builder %>
+                <% end %>
+                <% if f.object.new_record? %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <%= f.submit "Create Order" %>
+                <% else %>
+                    <%= f.submit "Update Order" %>
+                <% end %>
         <% end %>
     </div>
 </div>

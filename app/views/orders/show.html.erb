@@ -12,27 +12,28 @@
         	<span id="sold-by"><%= link_to "#{@order.user.email}", user_path(@user_id) %></h1>
         		- <%= @order.category %>
     	</div>
+    	<br>
     	<div class="row">
 		    	<div class="span2">
 			    	<h4>Status</h4>
 					<% if @order.order_status == 'new' %>
-						<div class="progress">
-							<div class="bar bar-danger" style="width: 33%;"><%= @order.order_status %></div>
+						<div class="progress progress-danger">
+							<div class="bar" style="width: 33%;"><%= @order.order_status %></div>
 						</div>
 					<% elsif @order.order_status == 'approved' %>
-					    <div class="progress bar-success">
+					    <div class="progress progress-info">
 							<div class="bar" style="width: 66%;"><%= @order.order_status %></div>
 						</div>
 					<% elsif @order.order_status == 'complete' %>
-					    <div class="progress bar-success">
+					    <div class="progress progress-success">
 							<div class="bar" style="width: 100%;"><%= @order.order_status %></div>
 						</div>
 					<% elsif @order.order_status == 'hold' %>
-					    <div class="progress bar-warning">
+					    <div class="progress progress-warning">
 							<div class="bar" style="width: 100%;"><%= @order.order_status %></div>
 						</div>
 					<% elsif @order.order_status == 'cancelled' %>
-					    <div class="progress bar-danger">
+					    <div class="progress progress-danger">
 							<div class="bar" style="width: 100%;"><%= @order.order_status %></div>
 						</div>
 					<% end %>
@@ -40,19 +41,19 @@
 				<div class="span2">
 					<h4>Product</h4>
 					<% if @order.product_status == 'Purchase' %>
-						<div class="progress">
-							<div class="bar bar-info" style="width: 35%;"><%= @order.product_status %></div>
+						<div class="progress progress-danger">
+							<div class="bar" style="width: 35%;"><%= @order.product_status %></div>
 						</div>
 					<% elsif @order.product_status == 'ordered' %>
-					    <div class="progress bar-success">
+					    <div class="progress progress-warning">
 							<div class="bar" style="width: 50%;"><%= @order.product_status %></div>
 						</div>
 					<% elsif @order.product_status == 'partial' %>
-					    <div class="progress bar-warning">
+					    <div class="progress progress-info">
 							<div class="bar" style="width: 75%;"><%= @order.product_status %></div>
 						</div>
 					<% elsif @order.product_status == 'received' %>
-					    <div class="progress bar-danger">
+					    <div class="progress progress-success">
 							<div class="bar" style="width: 100%;"><%= @order.product_status %></div>
 						</div>
 					<% end %>
@@ -60,11 +61,11 @@
 				<div class="span2">
 					<h4>Art</h4>
 					<% if @order.art_status == 'pending' %>
-						<div class="progress">
-							<div class="bar bar-info" style="width: 50%;"><%= @order.art_status %></div>
+						<div class="progress progress-danger">
+							<div class="bar" style="width: 50%;"><%= @order.art_status %></div>
 						</div>
 					<% elsif @order.art_status == 'approved' %>
-					    <div class="progress bar-success">
+					    <div class="progress progress-success">
 							<div class="bar" style="width: 100%;"><%= @order.art_status %></div>
 						</div>
 					<% end %>
@@ -87,6 +88,11 @@
 			</div>
 		</center>
 	</div>
+	<div class="span1" id="triangle-topright">
+      <%= link_to edit_order_path do %>
+        <center><div class="create-button">Edit</div></center>
+      <% end %>
+    </div>
 <!-- 	<div class="calender-date span2 pull-right well">
 		<center>
 			<div id="due-created-start">
