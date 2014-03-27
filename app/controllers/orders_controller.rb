@@ -23,14 +23,14 @@ class OrdersController < InheritedResources::Base
 	    respond_with(@order)  
 	  end 
 
-	  def create
-	    @order = Order.new(order_params)
-	    if @order.save
-	      redirect_to @order, notice: 'Order was successfully created.'
-	    else
-	      render action: 'new'
-	    end
-	  end
+	def create
+		@order = Order.new(order_params)
+			if @order.save
+				redirect_to @order, notice: 'Order was successfully created.'
+			else
+				render action: 'new'
+			end
+	end
 
 	def update
 		@order = Order.find(params[:id])

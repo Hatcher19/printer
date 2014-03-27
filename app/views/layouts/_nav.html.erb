@@ -22,8 +22,12 @@
 						<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 					</span>
 				<% else %>
-					<%= link_to "Login", new_user_session_path, class: "btn btn-default btn-lg" %>
-					<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+					<%= link_to new_user_session_path do %>
+						<center><div class="create-button">Login</div></center>
+					<% end %>
+					<%= link_to new_profile_path do %>
+						<center><div class="cancel-button">Sign Up</div></center>
+					<% end %>
 				<% end %>
 			</div>
 		</div>

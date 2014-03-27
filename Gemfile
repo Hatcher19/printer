@@ -45,6 +45,7 @@ gem 'ransack'
 gem 'bootstrap-datepicker-rails'
 gem "mini_magick"
 gem 'carrierwave'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

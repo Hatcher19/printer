@@ -1,0 +1,20 @@
+<br><br><br>
+<div class="row">
+    <div class="span2">
+    </div>
+    <div class="span3">
+        <%= simple_form_for(@profile, html: {class: ''}) do |f| %>
+            <%= f.error_notification %>
+                <%= f.input :company %>
+                <%= f.fields_for :users do |builder| %>
+	                <%= text_field_tag :email, nil, :required => true, :autofocus => true %>
+		            <%= password_field_tag :password, nil, :required => true %>
+		            <%= password_field_tag :password_confirmation, nil, :required => true %>
+                <% end %>
+                <% if f.object.new_record? %>
+                    <%= f.submit "Create Order" %>
+                <% else %>
+                    <%= f.submit "Update Order" %>
+                <% end %>
+        <% end %>
+    </div>
