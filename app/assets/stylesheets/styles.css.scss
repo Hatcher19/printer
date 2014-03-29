@@ -333,3 +333,56 @@ button {
 	font-size: 12px;
 	font-weight:bold;
 }
+/**************product-form******************/
+.product-input-string input {
+	float: left;
+	width: 60px;
+	margin-right: 3px;
+}
+.product-input-integer input {
+	float: left;
+	width: 40px;
+	margin-right: 3px;
+}
+.product-input-integer {
+	float: left;
+	width: 50px;
+	margin-right: 5px;
+}
+.product-input-string {
+	float: left;
+	width: 50px;
+	margin-right: 30px;
+}
+/**************order-form******************/
+#order_name {
+	margin: 0px;
+	width: 150px;
+}
+#order_customer_id {
+	margin: 0px;
+	width: 150px;
+}
+#order_order_type {
+	margin: 0px;
+	width: 150px;
+}
+#order_ship {
+	margin: 0px;
+	width: 150px;
+}
+#order_product_status {
+	margin: 0px;
+	width: 150px;
+}
+#order_end_date {
+	margin: 0px;
+	width: 150px;
+}
+#order_category {
+	margin: 0px;
+	width: 150px;
+}
+#product-inputs {
+	margin-left: 40px;
+}
