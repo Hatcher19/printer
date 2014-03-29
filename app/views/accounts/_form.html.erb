@@ -3,9 +3,9 @@
     <div class="span2">
     </div>
     <div class="span3">
-        <%= simple_form_for(@profile, html: {class: ''}) do |f| %>
+        <%= simple_form_for(@account, html: {class: ''}) do |f| %>
             <%= f.error_notification %>
-                <%= f.input :company %>
+                <%= f.input :subdomain, label: 'Company Name' %>
                 <%= f.fields_for :users do |builder| %>
 	                <%= text_field_tag :email, nil, :required => true, :autofocus => true %>
 		            <%= password_field_tag :password, nil, :required => true %>

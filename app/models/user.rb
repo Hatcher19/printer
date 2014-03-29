@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         belongs_to :profile
+         belongs_to :account
          validates_uniqueness_of :email, :allow_blank => false
          has_many :customers
          has_many :orders

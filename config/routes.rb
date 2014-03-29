@@ -15,7 +15,7 @@ Por::Application.routes.draw do
   resources :customers do
     resources :addresses
   end
-  resources :profiles do
+  resources :accounts do
     resources :users
   end
   # The priority is based upon order of creation: first created -> highest priority.
