@@ -91,8 +91,13 @@
                 <% end %>
         </div>
     </div>
+    <div class="row">
+        <div class="span3">
+        </div>
+        <div class="span3">
                 <% if f.object.new_record? %>
                     <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <%= f.hidden_field :account_id, :value => current_user.account_id %>
                     <%= f.submit "Create Order" %>
                 <% else %>
                     <%= f.submit "Update Order" %>

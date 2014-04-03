@@ -1,34 +1,34 @@
 <div class="row-fluid navigation-fixed">
-		<div class="span1">
-			<div class="brand pull-left">
-				<center>
-					<% if user_signed_in? %>
-						<%= link_to 'Print On Rails', root_path %>
-					<% else %>
-						<%= link_to 'Print On Rails', root_path %>
-					<% end %>
-				</center>
-			</div>
-		</div>
-		<div class="span7">
-		</div>
-		<div class="span4">
-			<div class="pull-right">
+	<div class="span1">
+		<div class="brand pull-left">
+			<center>
 				<% if user_signed_in? %>
-					<span class="current-user">
-						<%= link_to "Hello, #{current_user.email}", current_user %>
-					</span>
-					<span class="logout">
-						<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-					</span>
+					<%= link_to current_user.account.subdomain.titleize, root_path %>
 				<% else %>
-					<%= link_to new_user_session_path do %>
-						<center><div class="create-button">Login</div></center>
-					<% end %>
-					<%= link_to new_profile_path do %>
-						<center><div class="cancel-button">Sign Up</div></center>
-					<% end %>
+					<%= link_to 'Print On Rails', root_path %>
 				<% end %>
-			</div>
+			</center>
 		</div>
+	</div>
+	<% if user_signed_in? %>
+		<div class="pull-right">
+			<span class="current-user">
+				<%= link_to "Hello, #{current_user.email}", current_user %>
+			</span>
+			<span class="logout">
+				<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+			</span>
+		</div>
+	<% else %>
+		<div class="span1 pull-right">
+			<%= link_to new_user_session_path do %>
+				<center><div class="nav-login-button">Login</div></center>
+			<% end %>
+		</div>
+		<div class="span1 pull-right">
+			<%= link_to new_account_path do %>
+				<center><div class="nav-signup-button">Sign Up</div></center>
+			<% end %>
+		</div>
+	<% end %>
 </div>

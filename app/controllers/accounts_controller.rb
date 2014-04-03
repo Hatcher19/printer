@@ -11,7 +11,7 @@ class AccountsController < InheritedResources::Base
 			if @account.save
 				@user = @account.users.create(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation], :account_id => params[:account_id] )
 				sign_in(@user)
-				redirect_to @user, notice: 'Account was successfully created.'
+				redirect_to @users, notice: 'Account was successfully created.'
 			else
 				render action: 'new'
 			end

@@ -17,15 +17,13 @@
   <div class="span9">
     <table class="table table-striped">
       <tr>
-        <th class="first-column">ID</th>
         <th class="second-column">Email</th>
-        <th class="first-column">Created At</th>
+        <th class="first-column">User Since</th>
       </tr>
-         <% @users.each do |user| %>
+         <% current_user.account.users.each do |user| %>
            <tr>
-             <td class="first-column"><%= link_to user.id, user %></td>
              <td class="first-column"><%= link_to user.email, user %></td>
-             <td class="first-column"><%= link_to user.created_at, user %></td>
+             <td class="first-column"><%= link_to user.created_at.strftime("%m/%d/%y"), user %></td>
           </tr>
         <% end %>
     </table>

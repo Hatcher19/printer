@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+	<div class="row titlebar">
+		<div class="span2">
+		</div>
+		<div class="span3">
+			<h1>Dashboard</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2">
+		</div>
+		<div class="span5">
+			<%= "#{current_user.account.orders.count} orders" %>
+			<%= "#{current_user.account.users.count} users" %>
+			<%= "#{current_user.account.customers.count} customers" %>
+		</div>
+	</div>
+<% end %>

@@ -13,6 +13,7 @@
                 <% end %>
             <% if f.object.new_record? %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :account_id, :value => current_user.account_id %>
             <% end %>
             <br>
     </div>

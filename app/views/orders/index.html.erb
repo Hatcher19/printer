@@ -30,7 +30,7 @@
           <th><%= sort_link @search, :product_status, "Product Status" %></th>
           <th><%= sort_link @search, :end_date, "Due Date" %></th>
         </tr>
-        <% @orders.each do |order| %>
+        <% current_user.account.orders.each do |order| %>
            <tr>
              <td class="first-column"><%= link_to order.id, order %></td>
              <td class="first-column"><%= link_to order.name, order %></td>
