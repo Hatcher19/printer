@@ -9,9 +9,9 @@ class AccountsController < InheritedResources::Base
 	def create
 		@account = Account.new(account_params)
 			if @account.save
-				@user = @account.users.create(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation], :account_id => params[:account_id] )
+				@user = @account.users.create(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation], :account_id => params[:account_id], :role => params[:role] )
 				sign_in(@user)
-				redirect_to @users, notice: 'Account was successfully created.'
+				redirect_to @user, notice: 'Account was successfully created.'
 			else
 				render action: 'new'
 			end
@@ -29,6 +29,6 @@ class AccountsController < InheritedResources::Base
 
 	def account_params
         params.require(:account).permit(:id, :subdomain,
-      								  :users_attributes => [:id, :email, :password, :password_confirmation, :profile_id, :created_at, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_at, :last_sign_in_ip, :sign_in_count, :updated_at])
+      								  :users_attributes => [:id, :email, :password, :password_confirmation, :profile_id, :created_at, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_at, :last_sign_in_ip, :sign_in_count, :updated_at, :role])
 	end
 end

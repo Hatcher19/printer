@@ -1,4 +1,12 @@
 class UsersController < InheritedResources::Base
+	before_filter :new_user, :only => [:new, :create]
+
+	load_and_authorize_resource
+
+	def new_user
+	@user = User.new(user_params)
+	end
+
 	def index
 		@users = User.all
 	end
@@ -36,6 +44,6 @@ class UsersController < InheritedResources::Base
 	end  
 
 	def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :account_id)
+      params.fetch(:user).permit(:email, :password, :password_confirmation, :account_id, :role) if params[:user]
     end
 end

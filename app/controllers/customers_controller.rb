@@ -1,6 +1,7 @@
 class CustomersController < InheritedResources::Base
 	#devise user authentication. 
 	before_filter :authenticate_user!
+	load_and_authorize_resource
 
 	def index
 		@customers = Customer.all

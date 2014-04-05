@@ -18,8 +18,10 @@
         <%= simple_form_for(@user, html: {class: ''}) do |f| %>
             <%= f.error_notification %>
             <%= f.input :email, :required => true, :autofocus => true %>
+            <%= f.input :role, label: 'Role', as: :select, :collection => User::ROLES %>
             <%= f.password_field :password, :required => true %>
             <%= f.password_field :password_confirmation, :required => true %>
+            <%= f.hidden_field :account_id, :value => current_user.account_id %>
             <br>
             <%= f.submit "Create User" %> 
         <% end %>

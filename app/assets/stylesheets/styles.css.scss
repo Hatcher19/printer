@@ -16,6 +16,9 @@ text-decoration: none;
  border-bottom: none; 
 margin-bottom: 0px;
 }
+.row {
+	margin-left: 0px;
+}
 
 /**************nav******************/
 .navigation-fixed {
@@ -25,10 +28,10 @@ margin-bottom: 0px;
 	background-color: #333844;
 	height: 50px;
 	line-height: 50px;
+	width: 100%;
 }
 .brand {
 	background-color: #E26244;
-	width: 125px;
 	height: 50px;
 	margin-left: 0px;
 }
@@ -73,18 +76,39 @@ margin-bottom: 0px;
     position:fixed;
     margin-left: 0px;
     height: 100%;
-    width: 125px;
     background-color: #333844;
 
  }
-.sidebar-section a {
-	color: #727A8B;
+.sidebar-nav-fixed li a img {
+	margin-right: 7px;
+}
+.sidebar-nav-fixed li a {
+	color: #fff;
+	font-weight: bold;
+}
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+	color: #333844;
+	background-color: #fff;
+	font-weight: bold;
+}
+.nav > li > a:hover {
 	text-decoration: none;
- }
-.sidebar-section {
-	width: 100%;
-	height: 75px;
-	margin-top: 20px;
+	background-color: #fff;
+	color: #333844;
+	font-weight: bold;
+}
+.nav-pills.nav-stacked > li > a {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.nav-pills > li > a {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	-webkit-border-radius: 0px; 
+	-moz-border-radius: 0px;
+	border-radius: 0px; 
 }
 /**************global-index******************/
 .no-data {

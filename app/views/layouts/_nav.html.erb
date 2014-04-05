@@ -1,14 +1,12 @@
-<div class="row-fluid navigation-fixed">
-	<div class="span1">
-		<div class="brand pull-left">
-			<center>
-				<% if user_signed_in? %>
-					<%= link_to current_user.account.subdomain.titleize, root_path %>
-				<% else %>
-					<%= link_to 'Print On Rails', root_path %>
-				<% end %>
-			</center>
-		</div>
+<div class="row navigation-fixed">
+	<div class="span2 brand pull-left">
+		<center>
+			<% if user_signed_in? %>
+				<%= link_to current_user.account.subdomain.titleize, root_path %>
+			<% else %>
+				<%= link_to 'Print On Rails', root_path %>
+			<% end %>
+		</center>
 	</div>
 	<% if user_signed_in? %>
 		<div class="pull-right">
