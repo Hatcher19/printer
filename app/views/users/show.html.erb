@@ -1,13 +1,8 @@
 <div class="row titlebar">
-    <div class="span2">
+    <div class="span3">
     </div>
     <div class="span6">
         <h1><%= "#{@user.email}" %></h1>
-    </div>
-    <div class="span2 pull-right">
-    	<%= link_to users_path do %>
-			<center><div class="view-all-button">View All</div></center>
-		<% end %>
     </div>
     <div class="span2 pull-right">
     	<%= link_to new_user_path do %>
@@ -17,7 +12,7 @@
 </div>
 
 <div class="row">
-	<div class="span2">
+	<div class="span3">
 	</div>
 	<div class="span9">
 		<table class="table table-striped">

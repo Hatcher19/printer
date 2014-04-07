@@ -1,66 +1,43 @@
+<div class="row">
+        <div class="span3">
+        </div>
+        <div class="span5">
+            <h3>General Info</h3>
+        </div>
+        <div class="span1">
+        </div>
+        <div class="span2">
+        </div>
+    </div>
 <%= simple_form_for(@order, html: {class: ''}) do |f| %>
     <%= f.error_notification %>
     <div class="row">
-        <div class="span2">
+        <div class="span5">
         </div>
-        <div class="span2 order-input">
+        <div class="span4">
             <%= f.input :name, label: "Order Name" %>
         </div>
-    </div>
-    <div class="row">
-        <div class="span2">
-        </div>
-        <div class="span2">
+        <div class="span4">
             <%= f.input :customer_id, :collection => Customer.where(:user_id => current_user.id), :label_method => :organization, :value_method => :id %>
         </div>
     </div>
     <div class="row">
-        <div class="span2">
+        <div class="span5">
         </div>
-        <div class="span2">
+        <div class="span4">
             <%= f.input :order_type, label: 'Type', as: :select, :collection => Order::TYPE %>
         </div>
-    </div>
-    <div class="row">
-        <div class="span2">
-        </div>
-        <div class="span2">
+        <div class="span4">
             <%= f.input :ship, as: :select, :collection => Order::SHIP %>
         </div>
     </div>
     <div class="row">
-        <div class="span2">
+        <div class="span5">
         </div>
-        <div class="span2">
-            <% if f.object.new_record? %>
-                <%= f.hidden_field :order_status, :value => "new" %>
-            <% else %>
-                <%= f.input :order_status %>
-            <% end %>
+        <div class="span4">
+            <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
         </div>
-    </div>
-    <div class="row">
-        <div class="span2">
-        </div>
-        <div class="span2">
-            <% if f.object.new_record? %>
-                <%= f.hidden_field :art_status, :value => "pending" %>
-            <% else %>
-                <%= f.input :art_status %>
-            <% end %>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span2">
-        </div>
-        <div class="span2">
-            <%= f.input :product_status, :collection => Order::PRODUCTSTATUS %>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span2">
-        </div>
-        <div class="span2">
+        <div class="span4">
             <%= f.label :end_date, label: "Due date" %>
             <%= f.text_field :end_date, label: 'Due Date','data-behaviour' => 'datepicker' %>
                 <script type="text/javascript">
@@ -70,38 +47,71 @@
                 </script>
         </div>
     </div>
+    <br>
+    <br>
     <div class="row">
-        <div class="span2">
+        <div class="span3">
         </div>
-        <div class="span2">
-            <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
+        <div class="span4">
+            <% if f.object.new_record? %>
+                <%= f.hidden_field :order_status, :value => "new" %>
+            <% else %>
+                <%= f.input :order_status %>
+            <% end %>
+        </div>
+        <div class="span1">
+        </div>
+        <div class="span4">
+            <% if f.object.new_record? %>
+                <%= f.hidden_field :art_status, :value => "pending" %>
+            <% else %>
+                <%= f.input :art_status %>
+            <% end %>
         </div>
     </div>
-    <div class="row">
-        <%= f.fields_for :products do |builder| %>
-            <%= render "products/form", :f => builder %>
-        <% end %>
-    </div>
-    <div class="row">
-        <div class="span2">
+    <div class="row hero-unit" id="products">
+        <div class="span3">
         </div>
-        <div class="span2">
+        <div class="span9">
+            <h3>Products</h3>
+            <%= f.fields_for :products do |builder| %>
+                <%= render "products/form", :f => builder %>
+            <% end %>
+            <%= f.input :product_status, :collection => Order::PRODUCTSTATUS %>
+        </div>
+    </div>
+    <div class="row" id="products">
+        <div class="span3">
+        </div>
+        <div class="span9">
+            <h3>File Upload</h3>
             <%= f.fields_for :artworks do |builder| %>
                     <%= render "artworks/form", :f => builder %>
                 <% end %>
         </div>
     </div>
-    <div class="row">
-        <div class="span3">
+    <div class="row hero-unit">
+        <div class="span5">
         </div>
         <div class="span3">
-                <% if f.object.new_record? %>
-                    <%= f.hidden_field :user_id, :value => current_user.id %>
-                    <%= f.hidden_field :account_id, :value => current_user.account_id %>
-                    <%= f.submit "Create Order" %>
-                <% else %>
-                    <%= f.submit "Update Order" %>
-                <% end %>
+            <% if f.object.new_record? %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :account_id, :value => current_user.account_id %>
+                <%= f.submit "Create Order" %>
+            <% else %>
+                <%= f.submit "Update Order" %>
+            <% end %>
+        </div>
+        <div class="span3">
+            <%= link_to orders_path do %>
+                <center><div class="cancel-button">Cancel</div></center>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="span2 pull-right">
+        
+    </div>
         <% end %>
     </div>
 </div>

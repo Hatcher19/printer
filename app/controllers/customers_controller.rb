@@ -1,7 +1,13 @@
 class CustomersController < InheritedResources::Base
 	#devise user authentication. 
 	before_filter :authenticate_user!
+	before_filter :new_customer, :only => [:new, :create]
+
 	load_and_authorize_resource
+
+	def new_customer
+		@customer = Customer.new(customer_params)
+	end
 
 	def index
 		@customers = Customer.all
@@ -42,7 +48,7 @@ class CustomersController < InheritedResources::Base
 	end 
 
 	def customer_params
-      params.require(:customer).permit(:id, :organization, :customer_name, :customer_email, :customer_phone, :account_id, :user_id, :order_id,
-      									:addresses_attributes => [:id, :line_one, :line_two, :city, :state, :zip])
+      params.fetch(:customer).permit(:id, :organization, :customer_name, :customer_email, :customer_phone, :account_id, :user_id,
+      									:addresses_attributes => [:id, :line_one, :line_two, :city, :state, :zip, :customer_id]) if params[:customer]
     end
 end

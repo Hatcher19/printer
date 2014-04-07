@@ -1,11 +1,43 @@
-<div class="row">
-	<%= f.input :line_one, label: 'address 1' %>
+<div class="row address">
+    <div class="span4">
+    </div>
+    <div class="span8">
+        <div class="user-form-header">
+            <center>Addresses</center>
+        </div>
+    </div>
 </div>
 <div class="row">
-	<%= f.input :line_two, label: 'address 2' %>
+    <div class="span4">
+    </div>
+    <div class="span8 user-form">
+        <div class="row customer-form-row">
+        	<div class="span1">
+            </div>
+            <div class="span4">
+                <%= f.input :line_one, label: 'Street' %>
+                <%= f.input :line_two, label: 'Apt/ Suite' %>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row">
-	<%= f.input :city, label: 'City' %>
-	<%= f.input :state, :collection => Address::STATE %>
-	<%= f.input :zip, label: 'Zip' %>
+    <div class="span4">
+    </div>
+    <div class="span8 user-form">
+        <div class="row customer-form-row">
+        	<div class="span1">
+            </div>
+            <div class="span2">
+               <%= f.input :city, label: 'City' %>
+            </div>
+            <div class="span1">
+            	<%= f.input :state, :collection => Address::STATE %>
+            </div>
+            <div class="span2">
+            	<%= f.input :zip, label: 'Zip' %>
+            	<%= f.hidden_field :customer_id %>
+            </div>
+        </div>
+    </div>
 </div>

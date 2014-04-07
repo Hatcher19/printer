@@ -1,43 +1,85 @@
-<div class="row">
-    <div class="span3">
+<div class="row titlebar">
+    <div class="span2">
     </div>
-    <div class="span4">
-        <%= simple_form_for(@customer, html: {class: ''}) do |f| %>
-            <%= f.error_notification %>
-            <%= f.input :organization, label: "Company/ Organization" %>
-            <%= f.input :customer_name, label: "Purchaser's Name" %>
-            <%= f.input :customer_email, label: "Email" %>
-            <%= f.input :customer_phone, label: "Phone Number" %>
-            <%= f.fields_for :addresses do |builder| %>
-                    <%= render "addresses/form", :f => builder %>
-                <% end %>
-            <% if f.object.new_record? %>
-                <%= f.hidden_field :user_id, :value => current_user.id %>
-                <%= f.hidden_field :account_id, :value => current_user.account_id %>
-            <% end %>
-            <br>
+    <div class="span3">
     </div>
 </div>
 <div class="row">
-    <div class="span2">
+    <div class="span4">
     </div>
-    <div class="span2">
-        <% if f.object.new_record? %>
-            <%= f.submit "Create Customer" %>
-        <% else %>
-        <%= f.submit "Update Customer" %>
-        <% end %>
+    <div class="span8">
+        <div class="user-form-header">
+            <center>Customer Form</center>
+        </div>
     </div>
-    <div class="span2">
-        <% if f.object.new_record? %>
-            <%= link_to customers_path do %>
-                <center><div class="cancel-button">Cancel</div></center>
-            <% end %>
-        <% else %>
-            <%= link_to customer_path do %>
-                <center><div class="cancel-button">Cancel</div></center>
-            <% end %>
-        <% end %>
+</div>
+<%= simple_form_for(@customer, html: {class: ''}) do |f| %>
+<div class="row">
+    <div class="span4">
+    </div>
+    <div class="span8 user-form">
+        <div class="row customer-form-row">
+            <div class="span1">
+            </div>
+            <div class="span3">
+                <%= f.error_notification %>
+                <%= f.input :organization, label: "Organization" %>
+            </div>
+            <div class="span3">
+                <%= f.input :customer_name, label: "Purchaser's Name" %>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span4">
+    </div>
+    <div class="span8 user-form">
+        <div class="row customer-form-row">
+            <div class="span1">
+            </div>
+            <div class="span3">
+                <%= f.input :customer_email, label: "Email" %>
+            </div>
+            <div class="span3">
+                <%= f.input :customer_phone, label: "Phone Number" %>
+            </div>
+        </div>
+    </div>
+</div>
+<%= f.fields_for :addresses do |builder| %>
+        <%= render "addresses/form", :f => builder %>
+    <% end %>
+<% if f.object.new_record? %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :account_id, :value => current_user.account_id %>
+<% end %>
+<div class="row">
+    <div class="span4">
+    </div>
+    <div class="span8">
+        <div class="row">
+            <div class="span1">
+            </div>
+            <div class="span3">
+                <% if f.object.new_record? %>
+                    <%= f.submit "Create Customer", :class => "customer-form-create-button" %>
+                <% else %>
+                    <%= f.submit "Update Customer" %>
+                <% end %>
+            </div>
+            <div class="span3 customer-cancel">
+                <% if f.object.new_record? %>
+                    <%= link_to customers_path do %>
+                        <center><div class="customer-form-cancel">Cancel</div></center>
+                    <% end %>
+                <% else %>
+                    <%= link_to customer_path do %>
+                        <center><div class="customer-form-cancel">Cancel</div></center>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
     </div>
 </div>
 <% end %>

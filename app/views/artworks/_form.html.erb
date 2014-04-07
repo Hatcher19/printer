@@ -1,4 +1,3 @@
 <%= f.file_field :file, label: 'File' %>
 <%= f.input :color, label: 'Ink/ Thread Color' %>
-<%= f.input :location, :collection => Artwork::LOCATION %>
-<%= f.label :_destroy, "Remove Product" %>
+<%= f.input :location, :collection => Artwork::LOCATION, label: 'Print Location' %>

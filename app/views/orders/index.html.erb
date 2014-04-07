@@ -1,12 +1,12 @@
   <div class="row titlebar">
-    <div class="span2">
+    <div class="span3">
     </div>
+    <% if Order.exists? %>
     <div class="span3">
       <h1>Orders</h1>
     </div>
     <div class="span4">
     </div>
-    <% if Order.exists? %>
     <div class="span2">
       <%= link_to new_order_path do %>
         <center><div class="create-button">New Order</div></center>
