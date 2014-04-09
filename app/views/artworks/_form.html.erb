@@ -1,3 +1,14 @@
-<%= f.file_field :file, label: 'File' %>
-<%= f.input :color, label: 'Ink/ Thread Color' %>
-<%= f.input :location, :collection => Artwork::LOCATION, label: 'Print Location' %>
+<div class="row">
+	<div class="span2">
+		<%= f.file_field :file %>
+	</div>
+	<div class="span3">
+		<%= f.input :color, label: 'Print Color' %>
+	</div>
+	<div class="span1">
+	</div>
+
+	<div class="span3">
+		<%= f.input :location, :collection => Artwork::LOCATION, label: 'Location' %>
+	</div>
+</div>

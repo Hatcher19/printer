@@ -201,7 +201,14 @@ button {
 /**************filters******************/
 .filters{
 	position: fixed;
-	right:0;
+	right: 10px;
+	bottom: 10px;
+}
+.filters h3{
+	margin: 0px;
+}
+.filters h5{
+	margin: 0px;
 }
 .filter-label {
 	margin: 1px;
@@ -209,6 +216,9 @@ button {
 .filter-field {
 	margin-bottom: 2px;
 	height: 25px;
+}
+#clear {
+	width:100%;
 }
 /**************calender******************/
 .calender-date {
