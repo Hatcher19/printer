@@ -1,5 +1,5 @@
 <div class="row navigation-fixed">
-	<div class="span2 brand pull-left">
+	<div class="span3 brand pull-left">
 		<center>
 			<% if user_signed_in? %>
 				<%= link_to current_user.account.subdomain.titleize, root_path %>
@@ -18,14 +18,14 @@
 			</span>
 		</div>
 	<% else %>
-		<div class="span1 pull-right">
+		<div class="span2 pull-right">
 			<%= link_to new_user_session_path do %>
-				<center><div class="nav-login-button">Login</div></center>
+				<center><div class="green-button">Login</div></center>
 			<% end %>
 		</div>
-		<div class="span1 pull-right">
+		<div class="span2 pull-right">
 			<%= link_to new_account_path do %>
-				<center><div class="nav-signup-button">Sign Up</div></center>
+				<center><div class="blue-button">Sign Up</div></center>
 			<% end %>
 		</div>
 	<% end %>

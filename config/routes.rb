@@ -20,6 +20,9 @@ Por::Application.routes.draw do
     resources :orders
     resources :customers
   end
+  resources :orders do
+    collection { post :search, to: 'orders#index' }
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

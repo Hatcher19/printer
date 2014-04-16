@@ -4,14 +4,32 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	background-color: #fff;
 }
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0px;
+}
 .pull-right {
 	margin-right: 5px;
+}
+.well {
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+.hero-unit {
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+.content {
+	margin-left: 25px;
 }
 a:link {
 text-decoration: none;
 }
 a:hover {
 text-decoration: none;
+color: #fff;
 }
 .nav-tabs {
  border-bottom: none; 
@@ -25,6 +43,9 @@ margin-bottom: 0px;
 float: left;
 min-height: 1px;
 margin-left: 0px;
+}
+.index {
+	margin-left: 25px;
 }
 
 
@@ -40,8 +61,6 @@ margin-left: 0px;
 }
 .brand {
 	background-color: #E26244;
-	height: 50px;
-	margin-left: 0px;
 }
 .brand a {
 	color: #fff;
@@ -57,53 +76,39 @@ margin-left: 0px;
 	margin-right: 10px;
 	text-decoration: none;
 }
-.nav-login-button {
-	background-color: #65B44E;
-	height: auto;
-	line-height: 20px;
-	margin-top: 10px;
-	padding: 5px;
-	border-radius: 4px 4px 4px 4px;
-	-moz-border-radius: 4px 4px 4px 4px;
-	-webkit-border-radius: 4px 4px 4px 4px;
-	color: #fff;
-}
-.nav-signup-button {
-	background-color: #4D93DB;
-	height: auto;
-	line-height: 20px;
-	margin-top: 10px;
-	padding: 5px;
-	border-radius: 4px 4px 4px 4px;
-	-moz-border-radius: 4px 4px 4px 4px;
-	-webkit-border-radius: 4px 4px 4px 4px;
-	color: #fff;
-}
 /**************sidebar-nav******************/
 .sidebar-nav-fixed {
     position:fixed;
-    margin-left: 0px;
+    left: 0;
+	top: 50px;
     height: 100%;
     background-color: #333844;
 
  }
+ .current-user-logout {
+ 	background-color: #ccc;
+ 	height: 50px;
+ 	padding-top: 10px;
+
+ }
 .sidebar-nav-fixed li a img {
-	margin-right: 7px;
+	margin-right: 10px;
 }
 .sidebar-nav-fixed li a {
 	color: #fff;
 	font-weight: bold;
 }
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
-	color: #333844;
-	background-color: #fff;
+	background-color: #22252F;
 	font-weight: bold;
+	outline: 1px solid #111;
 }
 .nav > li > a:hover {
 	text-decoration: none;
-	background-color: #fff;
-	color: #333844;
+	color: #fff;
+	background-color: #22252F;
 	font-weight: bold;
+	outline: 1px solid #000;
 }
 .nav-pills.nav-stacked > li > a {
 	margin-bottom: 0px;
@@ -147,30 +152,26 @@ margin-left: 0px;
 	margin-top: 20px;
 	padding: 5px;
 	color: #fff;
-}.cancel-button {
+}.red-button {
 	background-color: #E95136;
-	height: 30px;
-	line-height: 30px;
-	margin-top: 20px;
-	padding: 5px;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 80%;
+	height: 100%;
+	margin-top: 10px;
+	font-size: auto;
+	padding: 10px;
 	color: #fff;
-	width: 61%;
-	margin-left: 15%;
 
 }
-.view-all-button {
-	background-color: #333844;
-	height: 30px;
-	line-height: 30px;
-	margin-top: 20px;
-	padding: 5px;
-	color: #fff;
-}
 input[type="submit"] {
-	margin-top: 20px;
 	background-color: #65B44E;
-	height: 40px;
-	padding: 5px;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 80%;
+	height: 100%;
+	margin-top: 10px;
+	font-size: 16px;
+	padding: 10px;
+	color: #fff;
 	width: 100%;
 }
 input, button {
@@ -181,10 +182,50 @@ button {
 	line-height: 30px;
 	background-color: #65B44E;
 }
+.green-button {
+	background-color: #65B44E;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 80%;
+	height: 100%;
+	font-size: auto;
+	padding: 10px;
+	color: #fff;
+}
+.green-button a {
+	color: #fff;
+}
+.blue-button {
+	background-color: #4D93DB;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 80%;
+	height: 100%;
+	font-size: auto;
+	padding: 10px;
+	color: #fff;
+}
+.blue-button a {
+	color: #fff;
+}
 /**************titlebar******************/
 .titlebar {
 	margin-top: 50px;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
+	height: 95px;
+	line-height: 98px;
+}
+.titlebar.well {
+	padding: 0px;
+}
+body > div.row.titlebar.well > div.span4 > h1 {
+line-height: 98px;
+margin-left: 25px;
+}
+body > div.row.titlebar.well > div.span6 > h1 {
+line-height: 98px;
+margin-left: 25px;
+}
+.titlebar-actions {
+	margin-top: 25%
 }
 .id-name {
 	font-size: 36px;
@@ -199,30 +240,20 @@ button {
 	margin-left: 0px;
 }
 /**************filters******************/
-.filters{
-	position: fixed;
-	right: 10px;
-	bottom: 10px;
+.filters {
+	margin-bottom: 20px;
+	margin-left: 25px;
 }
-.filters h3{
-	margin: 0px;
+.filter-actions {
+	margin-bottom: 30px;
 }
-.filters h5{
-	margin: 0px;
-}
-.filter-label {
-	margin: 1px;
-}
-.filter-field {
-	margin-bottom: 2px;
-	height: 25px;
-}
-#clear {
-	width:100%;
+.filter-action {
+	margin-right: 10px;
 }
 /**************calender******************/
 .calender-date {
 	margin: 5px;
+	margin-left: 25px;
 	border-width: 0px;
 }
 .calender-date.span2.pull-right.well {
@@ -278,60 +309,22 @@ button {
 	font-weight:bold;
 }
 /**************product-form******************/
-.product-input-string input {
-	float: left;
-	width: 60px;
-	margin-right: 3px;
+#product {
+	margin-bottom: 0px;
 }
-.product-input-integer input {
-	float: left;
-	width: 40px;
-	margin-right: 3px;
+#products {
+	margin-bottom: 10px;
+	margin-left: 25px;
 }
-.product-input-integer {
-	float: left;
-	width: 50px;
-	margin-right: 5px;
-}
-.product-input-string {
-	float: left;
-	width: 50px;
-	margin-right: 30px;
-}
-.user-form-header {
+.header {
 	background-color: #333844;
 	font-size: 30px;
-	padding: 15px;
+	height: 50px;
+	line-height: 50px;
 	color: #fff;
 	font-weight: bold;
 	border-bottom: 5px solid #E26244;
-}
-.user-form {
-	background-color: #EAEDF2;
-	border-color: #333844;
-	padding-top: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-}
-input#user_email {
-	width: 60%;
-	margin-left: 15%;
-}
-select#user_role {
-	width: 64%;
-	margin-left: 15%;
-}
-input#user_password {
-	width: 60%;
-	margin-left: 15%;
-}
-input#user_password_confirmation {
-	width: 60%;
-	margin-left: 15%;
-}
-label.email {
-	margin-left: 15%;
+	margin-bottom: 10px;
 }
 #new_user > div.user-form > div.input.select.optional.user_role > label {
 	margin-left: 15%;
@@ -349,4 +342,9 @@ label.password_confirmation {
 .user-form-row {
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+.order-titlebar {
+	margin-left: 25px;
+	margin-top: 10px;
+	line-height: 20px;
 }

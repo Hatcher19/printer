@@ -10,9 +10,12 @@ class OrdersController < InheritedResources::Base
 	end
 
 	def index
-		@search = Order.search(params[:q])
-		@orders = @search.result
-		@search.build_condition if @search.conditions.empty?
+		@search = current_user.account.orders.search(params[:q])
+		@orders = @search.result(:distinct => true) 
+		if params[:account_id_eq] && params[:account_id_eq]!=''  
+		  @q.build_grouping({:m => 'or', :account_id_eq => params[:account_id_eq], :account_id_null => true})  
+		end
+		 # @orders = current_user.account.orders.all 
 	end
 
 	def new
@@ -50,8 +53,15 @@ class OrdersController < InheritedResources::Base
 	end 
 
 	def order_params
-        params.fetch(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status, :customer_id, :user_id, :account_id,
+        params.fetch(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status, :customer_id, :user_id, :account_id, :_destroy,
       								  :products_attributes => [:id, :style, :color, :quantity, :xs, :small, :medium, :large, :xl, :xxl, :xxxl, :ivxl, :vxl, :vixl],
       								  :artworks_attributes => [:id, :file, :color, :location]) if params[:order]
 	end
+
+	def orders_filter
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 end

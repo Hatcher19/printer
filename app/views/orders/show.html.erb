@@ -1,12 +1,46 @@
+<div class="row titlebar well">
+    <div class="span3">
+    </div>
+    <div class="span7 order-titlebar">
+        <h1><%= "#{@order.name.titleize}" %></h1>
+        <span class="badge badge-info"><%= "#{@order.id}" %></span>
+		<span class="badge badge-warning"><%= "#{@order.order_type}" %></span>
+    </div>
+    <div class="span2 pull-right">
+        <%= link_to edit_order_path do %>
+			<center><div class="green-button titlebar-actions">Edit</div></center>
+	    <% end %>
+    </div>
+</div>
+<div class="row">
+	<div class="span3">
+	</div>
+	<div class="calender-date span2">
+		<center>
+			<div id="due-created">
+				Due
+			</div>
+			<div id="month">
+				<%= @order.end_date.strftime("%B") %>
+			</div>
+			<div id="day">
+				<%= @order.end_date.strftime("%d") %>
+			</div>
+			<div id="year">
+				<%= @order.end_date.strftime("%Y") %>
+			</div>
+		</center>
+	</div>
+	<div class="span2">
+	  <li class="active">
+	    <%= link_to @order.customer.organization, customer_path %>
+	  </li>
+	</div>
+</div>
 <div class="row titlebar">
     <div class="span3">
     </div>
-    <div class="span8">
-    	<div class="row id-name">
-    		<%= "#{@order.name}" %>
-    		<span class="badge badge-info"><%= "#{@order.id}" %></span>
-    		<span class="badge badge-warning"><%= "#{@order.order_type}" %></span>
-    	</div>
+    <div class="span9 content">
     	<div class="row sold-category">
     		<!-- TODO: linke is taking to index -->
         	<span id="sold-by"><%= link_to "#{@order.user.email}", user_path(@user_id) %></h1>
@@ -72,27 +106,6 @@
 				</div>
 			</div>
 	    </div>
-	<div class="calender-date span2 pull-right well">
-		<center>
-			<div id="due-created">
-				Due
-			</div>
-			<div id="month">
-				<%= @order.end_date.strftime("%B") %>
-			</div>
-			<div id="day">
-				<%= @order.end_date.strftime("%d") %>
-			</div>
-			<div id="year">
-				<%= @order.end_date.strftime("%Y") %>
-			</div>
-		</center>
-	</div>
-	<div class="span1">
-      <%= link_to edit_order_path do %>
-        <center><div class="create-button">Edit</div></center>
-      <% end %>
-    </div>
 <!-- 	<div class="calender-date span2 pull-right well">
 		<center>
 			<div id="due-created-start">
@@ -159,13 +172,6 @@
 	<div class="span1">
 	</div>
 	<div class="span3">
-		<div class="row">
-			<ul class="nav nav-tabs">
-			  <li class="active">
-			    <%= link_to @order.customer.organization, customer_path %>
-			  </li>
-			</ul>
-		</div>
 		<div class="row">
 			Purchaser: <%= link_to @order.customer.customer_name, customer_path %>
 		</div>

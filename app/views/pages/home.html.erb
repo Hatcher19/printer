@@ -1,26 +1,26 @@
 <% if user_signed_in? %>
-	<div class="row titlebar">
+	<div class="row titlebar well">
 		<div class="span3">
 		</div>
-		<div class="span3">
+		<div class="span4">
 			<h1>Dashboard</h1>
 		</div>
 	</div>
-	<div class="row dash-stats well">
-	<div class="span3">
+	<div class="row dash-stats">
+		<div class="span3">
+		</div>
+		<div class="span3">
+			<center><h1><%= current_user.account.orders.count %></h1><br>
+			<h3>Orders</h3></center>
+		</div>
+		<div class="span3">
+			<center><h1><%= current_user.account.customers.count %></h1></br><h3>Customers</h3></center>
+		</div>
+		<div class="span3">
+			<center><h1><%= current_user.account.users.count %></h1><br><h3>Users</h3></center>
+		</div>
+		<div class="span3">
+			<center><h1><%= current_user.orders.count %></h1><br><h3>My Orders</h3></center>
+		</div>
 	</div>
-	<div class="span3">
-		<center><h1><%= current_user.account.orders.count %></h1><br>
-		<h3>Orders</h3></center>
-	</div>
-	<div class="span3">
-		<center><h1><%= current_user.account.customers.count %></h1></br><h3>Customers</h3></center>
-	</div>
-	<div class="span3">
-		<center><h1><%= current_user.account.users.count %></h1><br><h3>Users</h3></center>
-	</div>
-	<div class="span3">
-		<center><h1><%= current_user.orders.count %></h1><br><h3>My Orders</h3></center>
-	</div>
-</div>
 <% end %>

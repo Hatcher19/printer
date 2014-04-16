@@ -41,12 +41,14 @@ gem 'simple_form'
 gem 'inherited_resources' 
 gem 'devise'
 gem 'bootstrap-sass'
-gem 'ransack'
+gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 gem 'bootstrap-datepicker-rails'
 gem "mini_magick"
 gem 'carrierwave'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'cancancan', '~> 1.7'
+gem 'nested_form'
+gem 'bootstrap-sass'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

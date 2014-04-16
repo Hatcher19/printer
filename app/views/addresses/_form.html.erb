@@ -1,22 +1,20 @@
-<div class="row address">
+<div class="row">
     <div class="span4">
     </div>
     <div class="span8">
-        <div class="user-form-header">
-            <center>Addresses</center>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="span4">
-    </div>
-    <div class="span8 user-form">
-        <div class="row customer-form-row">
+        <div class="row">
         	<div class="span1">
             </div>
             <div class="span4">
-                <%= f.input :line_one, label: 'Street' %>
-                <%= f.input :line_two, label: 'Apt/ Suite' %>
+                <h3>Addresses</h3>
+                <div class="input-prepend">
+                      <span class="add-on">Street</span>
+                        <%= f.text_field :line_one %>
+                </div>
+                <div class="input-prepend">
+                      <span class="add-on">Apt/ Suite</span>
+                        <%= f.text_field :line_two %>
+                </div>
             </div>
         </div>
     </div>
@@ -24,18 +22,26 @@
 <div class="row">
     <div class="span4">
     </div>
-    <div class="span8 user-form">
-        <div class="row customer-form-row">
+    <div class="span8">
+        <div class="row">
         	<div class="span1">
             </div>
             <div class="span2">
-               <%= f.input :city, label: 'City' %>
+               <div class="input-prepend">
+                      <span class="add-on">City</span>
+                        <%= f.text_field :city %>
+                </div>
             </div>
             <div class="span1">
-            	<%= f.input :state, :collection => Address::STATE %>
+            </div>
+            <div class="span1">
+                <%= f.select :state, :collection => Address::STATE %>
             </div>
             <div class="span2">
-            	<%= f.input :zip, label: 'Zip' %>
+                <div class="input-prepend">
+                      <span class="add-on">Zip</span>
+                        <%= f.text_field :zip %>
+                </div>
             	<%= f.hidden_field :customer_id %>
             </div>
         </div>

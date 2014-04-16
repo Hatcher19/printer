@@ -1,50 +1,39 @@
-<div class="row titlebar">
-    <div class="span2">
-    </div>
-    <div class="span3">
-    </div>
-</div>
-<div class="row">
-    <div class="span4">
-    </div>
-    <div class="span8">
-        <div class="user-form-header">
-            <center>Customer Form</center>
-        </div>
-    </div>
-</div>
 <%= simple_form_for(@customer, html: {class: ''}) do |f| %>
 <div class="row">
     <div class="span4">
     </div>
-    <div class="span8 user-form">
-        <div class="row customer-form-row">
+    <div class="span8">
+        <div class="row">
             <div class="span1">
             </div>
             <div class="span3">
+                <h3>Contact Info</h3>
                 <%= f.error_notification %>
-                <%= f.input :organization, label: "Organization" %>
-            </div>
-            <div class="span3">
-                <%= f.input :customer_name, label: "Purchaser's Name" %>
-            </div>
+                <div class="input-prepend">
+                  <span class="add-on">Organization</span>
+                    <%= f.text_field :organization %>
+                </div>
+                <div class="input-prepend">
+                      <span class="add-on">Purchaser</span>
+                        <%= f.text_field :customer_name %>
+                </div>
+                <div class="input-prepend">
+                      <span class="add-on">Email</span>
+                        <%= f.text_field :customer_email %>
+                </div>
+                <div class="input-prepend">
+                      <span class="add-on">Phone</span>
+                        <%= f.text_field :customer_phone %>
+                </div>
         </div>
     </div>
 </div>
+<br>
 <div class="row">
-    <div class="span4">
+    <div class="span3">
     </div>
-    <div class="span8 user-form">
-        <div class="row customer-form-row">
-            <div class="span1">
-            </div>
-            <div class="span3">
-                <%= f.input :customer_email, label: "Email" %>
-            </div>
-            <div class="span3">
-                <%= f.input :customer_phone, label: "Phone Number" %>
-            </div>
-        </div>
+    <div class="span4">
+        <h3></h3>
     </div>
 </div>
 <%= f.fields_for :addresses do |builder| %>
@@ -61,21 +50,23 @@
         <div class="row">
             <div class="span1">
             </div>
-            <div class="span3">
+            <div class="span2">
                 <% if f.object.new_record? %>
-                    <%= f.submit "Create Customer", :class => "customer-form-create-button" %>
+                    <%= f.submit "Create Customer", :class => "green-button" %>
                 <% else %>
                     <%= f.submit "Update Customer" %>
                 <% end %>
             </div>
-            <div class="span3 customer-cancel">
+            <div class="span1">
+            </div>
+            <div class="span2">
                 <% if f.object.new_record? %>
                     <%= link_to customers_path do %>
-                        <center><div class="customer-form-cancel">Cancel</div></center>
+                        <center><div class="red-button">Cancel</div></center>
                     <% end %>
                 <% else %>
                     <%= link_to customer_path do %>
-                        <center><div class="customer-form-cancel">Cancel</div></center>
+                        <center><div class="red-button">Cancel</div></center>
                     <% end %>
                 <% end %>
             </div>

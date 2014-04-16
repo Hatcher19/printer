@@ -1,39 +1,37 @@
-<div class="row titlebar">
-    <div class="span2">
-    </div>
-    <div class="span3">
-    </div>
-</div>
-<div class="row">
-    <div class="span6">
-    </div>
-    <div class="span5">
-        <div class="user-form-header">
-            <center>New User</center>
+<%= simple_form_for(@user, html: {class: ''}) do |f| %>
+    <div class="row">
+        <div class="span6">
         </div>
-        <%= simple_form_for(@user, html: {class: ''}) do |f| %>
-        <div class="user-form user-form-row">
+        <div class="span5">
             <%= f.error_notification %>
-            <%= f.input :email, :required => true, :autofocus => true, :class => "user-form-input" %>
-            <%= f.input :role, as: :select, :collection => User::ROLES %>
-            <%= f.label :password %>
-            <%= f.password_field :password, :required => true %>
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, :required => true %>
+            <div class="input-prepend">
+                  <span class="add-on">Email</span>
+                    <%= f.text_field :email %>
+            </div> 
+                <%= f.input :role, :collection => User::ROLES, include_blank: 'Role', label: false %>
+            <div class="input-prepend">
+                  <span class="add-on">Password</span>
+                    <%= f.text_field :password %>
+            </div>
+            <div class="input-prepend">
+                  <span class="add-on">Password Confirmation</span>
+                    <%= f.text_field :password_confirmation %>
+            </div>
             <%= f.hidden_field :account_id, :value => current_user.account_id %>
         </div>
-            <div class="row">
-                <div class="span1">
-                </div>
-                <div class="span2">
-                    <%= f.submit "Create User", :class => "form-create-button" %>
-                </div>
-                <div class="span2">
-                    <%= link_to users_path do %>
-                    <div class="user-cancel-button"><center>Cancel</center></div>
-                  <% end %>
-                </div>
-            </div>
-        <% end %>
     </div>
-</div>
+    <div class="row">
+        <div class="span6">
+        </div>
+        <div class="span2">
+            <%= f.submit "Create User", :class => "green-button" %>
+        </div>
+        <div class="span1">
+        </div>
+        <div class="span2">
+            <%= link_to users_path do %>
+            <div class="red-button"><center>Cancel</center></div>
+          <% end %>
+        </div>
+    </div>
+<% end %>

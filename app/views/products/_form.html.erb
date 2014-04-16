@@ -1,40 +1,32 @@
-<div class="row product-form">
-	<div class="span12" id="product-inputs">
-		<div class="product-input-string">
-			<%= f.input :style, label: 'Style' %>
-		</div>
-		<div class="product-input-string">
-			<%= f.input :color, label: 'Color' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :xs, label: 'XS' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :small, label: 'S' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :med, label: 'M' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :large, label: 'L' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :xl, label: 'XL' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :xxl, label: '2XL' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :xxxl, label: '3XL' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :ivxl, label: '4XL' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :vxl, label: '5XL' %>
-		</div>
-		<div class="product-input-integer">
-			<%= f.input :vixl, label: '6XL' %>
-		</div>
-	</div>
-</div><br>
+<table>
+	<tr>
+		<th>Style</th>
+		<th>Color</th>
+		<th>XS</th>
+		<th>S</th>
+		<th>M</th>
+		<th>L</th>
+		<th>XL</th>
+		<th>2XL</th>
+		<th>3XL</th>
+		<th>4XL</th>
+		<th>5XL</th>
+		<th>6XL</th>
+	</tr>
+	<tr class="well product-inputs">
+		<td><%= f.text_field :style, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :color, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :xs, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :small, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :med, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :large, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :xl, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :xxl, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :xxxl, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :ivxl, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :vxl, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.text_field :vixl, class: 'input-mini', id: 'product' %></td>
+		<td><%= f.link_to_remove "", :class => "icon-remove" %></td>
+		<td></td>
+	</tr>
+</table>
