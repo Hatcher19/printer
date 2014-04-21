@@ -20,7 +20,7 @@
 		<table class="span4">
 			<tr class="order-border">
 				<td>Order No.</td>
-				<td class="pull-right"><h4><%= @order.id %></h4></td>
+				<td class="pull-right"><h4><%= @order.uuid %></h4></td>
 			</tr>
 			<tr class="order-border">
 				<td>Name</td>
@@ -173,7 +173,7 @@
 					<tr>
 						<td><%= h artwork.color %></td>
 						<td><%= h artwork.location %></td>
-						<td class="span1"><%= link_to artwork.file_url.to_s, download: ["#{@order.name}-#{@order.id}-#{artwork.location}"] do %>
+						<td class="span1"><%= link_to artwork.file_url.to_s, download: ["#{@order.name}-#{@order.uuid}-#{artwork.location}"] do %>
 					        <center><div class="green-button">Download</div></center>
 					      <% end %></td>
 					</tr>

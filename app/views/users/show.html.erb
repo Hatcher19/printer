@@ -30,7 +30,7 @@
 		    <% @user.orders.each do |order| %>
 		      <tr>
 		        <tr>
-	                <td class="first-column"><%= link_to order.id, order %></td>
+	                <td class="first-column"><%= link_to order.uuid, order %></td>
 	                <td class="first-column"><%= link_to order.name, order %></td>
 	                <td class="first-column"><%= link_to order.category, order %></td>
 	                <td class="first-column"><%= link_to order.order_status, order %></td>

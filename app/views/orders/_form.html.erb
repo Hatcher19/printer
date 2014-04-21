@@ -107,7 +107,11 @@
         </div>
         <div class="span12">
             <%= f.link_to_add "Add Artwork", :artworks, class: "blue-button pull-right" %>
-            <%= f.select :art_status, Order::ARTSTATUS, {:include_blank => "Art Status"}, class: 'pull-right' %>
+            <% if f.object.new_record? %>
+                <%= f.select :art_status, :value => 'pending' %>
+            <% else %>
+                <%= f.select :art_status, Order::ARTSTATUS, {:include_blank => "Art Status"}, class: 'pull-right' %>
+            <% end %>
         </div>
     </div>
     <div class="row order-actions">
@@ -117,6 +121,7 @@
             <% if f.object.new_record? %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <%= f.hidden_field :account_id, :value => current_user.account_id %>
+                <%= f.hidden_field :uuid, :value => current_user.account.orders.count + 1 %>
                 <%= f.submit "Create" %>
             <% else %>
                 <%= f.submit "Update" %>

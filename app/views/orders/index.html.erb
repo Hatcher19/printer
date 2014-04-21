@@ -27,7 +27,7 @@
     <div class="span12">
         <table class="table table-striped table-condensed index">
         <tr>
-            <th><%= sort_link @search, :id, "#" %></th>
+            <th><%= sort_link @search, :uuid, "#" %></th>
             <th><%= sort_link @search, :name, "Name" %></th>
             <th><%= sort_link @search, :category, "Category" %></th>
             <th><%= sort_link @search, :order_status, "Status" %></th>
@@ -37,7 +37,7 @@
         </tr>
         <% @orders.each do |order| %>
         <tr>
-             <td class="first-column"><%= link_to order.id, order %></td>
+             <td class="first-column"><%= link_to order.uuid, order %></td>
              <td class="first-column"><%= link_to order.name, order %></td>
              <td class="first-column"><%= link_to order.category, order %></td>
              <td class="first-column"><%= link_to order.order_status, order %></td>
