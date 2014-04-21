@@ -43,7 +43,7 @@
 		  	<%= f.select :order_status_cont, Order::STATUS, {:include_blank => 'Order Status'}, class: "span2" %>
 		  	<%= f.select :art_status_cont, Order::ARTSTATUS, {:include_blank => 'Art Status'}, class: "span2" %>
 		  	<%= f.select :product_status_cont, Order::PRODUCTSTATUS, {:include_blank => 'Product Status'}, class: "span2" %>
-		  	<%= f.select :ship_eq, Order::SHIP, {:include_blank => 'Shipping?'}, class: "span2", id: "bottom-filter" %>
+		  	<%= f.select :shipping_eq, Order::SHIP, {:include_blank => 'Shipping?'}, class: "span2", id: "bottom-filter" %>
 	</div>
 </div>
 <div class="row filter-actions">

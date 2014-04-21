@@ -49,6 +49,6 @@ class CustomersController < InheritedResources::Base
 
 	def customer_params
       params.fetch(:customer).permit(:id, :organization, :customer_name, :customer_email, :customer_phone, :account_id, :user_id,
-      									:addresses_attributes => [:id, :line_one, :line_two, :city, :state, :zip, :customer_id]) if params[:customer]
+      									:addresses_attributes => [:id, :line_one, :line_two, :city, :state, :zip, :customer_id, :ship_type]) if params[:customer]
     end
 end

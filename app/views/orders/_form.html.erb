@@ -21,7 +21,7 @@
                 </div>
         </div>
         <div class="span4">
-            <%= f.input :customer_id, :collection => Customer.where(:user_id => current_user.id), label: false, include_blank: 'Organization', :value_method => :id %>
+            <%= f.select :customer_id, Customer.where(:user_id => current_user.id).map{|s|[s.organization, s.id]} %>
         </div>
     </div>
     <div class="row">
@@ -31,7 +31,7 @@
             <%= f.input :order_type, label: false, as: :select, :collection => Order::TYPE, include_blank: 'Type' %>
         </div>
         <div class="span4">
-            <%= f.input :ship, as: :select, :collection => Order::SHIP, include_blank: 'Shipping', label: false %>
+            <%= f.input :shipping, as: :select, :collection => Order::SHIP, include_blank: 'Shipping', label: false %>
         </div>
     </div>
     <div class="row">
@@ -102,27 +102,31 @@
                 <% end %>
         </div>
     </div>
-    <div class="row hero-unit order-actions">
-        <div class="span5">
+    <div class="row" id="products">
+        <div class="span3">
         </div>
-        <div class="span3 order-action">
+        <div class="span12">
+            <%= f.link_to_add "Add Artwork", :artworks, class: "blue-button pull-right" %>
+            <%= f.select :art_status, Order::ARTSTATUS, {:include_blank => "Art Status"}, class: 'pull-right' %>
+        </div>
+    </div>
+    <div class="row order-actions">
+        <div class="span6">
+        </div>
+        <div class="span2 order-action">
             <% if f.object.new_record? %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <%= f.hidden_field :account_id, :value => current_user.account_id %>
-                <%= f.submit "Create Order" %>
+                <%= f.submit "Create" %>
             <% else %>
-                <%= f.submit "Update Order" %>
+                <%= f.submit "Update" %>
             <% end %>
         </div>
-        <div class="span3">
+        <div class="span2">
             <%= link_to orders_path do %>
                 <center><div class="red-button">Cancel</div></center>
             <% end %>
         </div>
-    </div>
-
-    <div class="span2 pull-right">
-        
     </div>
         <% end %>
     </div>

@@ -12,5 +12,5 @@ class Order < ActiveRecord::Base
 	PRODUCTSTATUS = %w(purchase ordered partial received)
 	CATEGORY = %w(screenprint embroidery DTG heatpress)
     TYPE = %w(New Re-order)
-    SHIP = %w(true false)
+    SHIP = %w(yes no)
 end

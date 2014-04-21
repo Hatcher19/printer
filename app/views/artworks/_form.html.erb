@@ -1,16 +1,15 @@
-<div class="row">
-	<div class="span1">
-	</div>
-	<div class="span2">
-		<%= f.label "file" %>
-		<%= f.file_field :file %>
-	</div>
-	<div class="span3">
-		<%= f.input :color, label: 'Print Color' %>
-	</div>
-	<div class="span1">
-	</div>
-	<div class="span3">
-		<%= f.input :location, :collection => Artwork::LOCATION, label: 'Location' %>
-	</div>
-</div>
+<table class="content">
+	<tr>
+		<th>File</th>
+		<th></th>
+		<th>Print Color</th>
+		<th></th>
+		<th>Location</th>
+	</tr>
+	<tr class="product-inputs">
+		<td class="span2"><%= f.file_field :file, class: 'input-mini', id: 'product' %></td>
+		<td class="span2"><%= f.text_field :color, class: '', id: 'product' %></td>
+				<td class="span2 selector"><%= f.select :location, :collection => Artwork::LOCATION %></td>
+		<td class="span1"><%= f.link_to_remove "", :class => "icon-remove" %></td>
+	</tr>
+</table>

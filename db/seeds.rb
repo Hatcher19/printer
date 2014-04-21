@@ -7,4 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
   Account.create!([{subdomain: 'Example Print Shop', id: 1}])
   User.create!([{email: 'info@printonrails.com', password: 'password', password_confirmation: 'password', role:'superadmin', account_id: 1}])
+  Customer.create!([{customer_name: 'Joe Smith', organization: 'Example Company', customer_email: 'exampleco@example.com', customer_phone: '8135555555', user_id: 1, account_id: 1, id: 1}])
 

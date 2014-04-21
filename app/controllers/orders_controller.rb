@@ -26,6 +26,7 @@ class OrdersController < InheritedResources::Base
 
 	def show
 		@order = Order.find(params[:id])
+		@address = Address.find_by(:ship_type => 'shipping')
 	end
 
 	def edit  
@@ -53,8 +54,8 @@ class OrdersController < InheritedResources::Base
 	end 
 
 	def order_params
-        params.fetch(:order).permit(:id, :name, :product_status, :end_date, :category, :ship, :order_type, :order_status, :art_status, :customer_id, :user_id, :account_id, :_destroy,
-      								  :products_attributes => [:id, :style, :color, :quantity, :xs, :small, :medium, :large, :xl, :xxl, :xxxl, :ivxl, :vxl, :vixl],
+        params.fetch(:order).permit(:id, :name, :product_status, :end_date, :category, :shipping, :order_type, :order_status, :art_status, :customer_id, :user_id, :account_id, :_destroy,
+      								  :products_attributes => [:id, :style, :color, :quantity, :xs, :small, :med, :large, :xl, :xxl, :xxxl, :ivxl, :vxl, :vixl],
       								  :artworks_attributes => [:id, :file, :color, :location]) if params[:order]
 	end
 

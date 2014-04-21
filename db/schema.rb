@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404022529) do
+ActiveRecord::Schema.define(version: 20140421010935) do
 
   create_table "accounts", force: true do |t|
     t.datetime "created_at"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140404022529) do
     t.string   "state"
     t.string   "zip"
     t.integer  "customer_id"
+    t.string   "ship_type"
   end
 
   create_table "artworks", force: true do |t|
@@ -60,12 +61,12 @@ ActiveRecord::Schema.define(version: 20140404022529) do
     t.string   "category"
     t.string   "order_type"
     t.string   "order_status"
-    t.boolean  "ship"
     t.string   "product_status"
     t.string   "art_status"
     t.integer  "customer_id"
     t.integer  "user_id"
     t.integer  "account_id"
+    t.string   "shipping"
   end
 
   add_index "orders", ["account_id"], name: "index_orders_on_account_id"

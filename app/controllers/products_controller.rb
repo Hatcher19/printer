@@ -35,6 +35,6 @@ class ProductsController < InheritedResources::Base
 	end  
 
 	def product_params
-      params.require(:product).permit(:id, :style, :color, :quantity, :xs, :small, :medium, :large, :xl, :xxl, :xxxl, :ivxl, :vxl, :vixl)
+      params.require(:product).permit(:id, :style, :color, :quantity, :xs, :small, :med, :large, :xl, :xxl, :xxxl, :ivxl, :vxl, :vixl)
     end
 end
