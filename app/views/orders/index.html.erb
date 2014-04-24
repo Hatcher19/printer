@@ -39,10 +39,10 @@
         <tr>
              <td class="first-column"><%= link_to order.uuid, order %></td>
              <td class="first-column"><%= link_to order.name, order %></td>
-             <td class="first-column"><%= link_to order.category, order %></td>
-             <td class="first-column"><%= link_to order.order_status, order %></td>
-             <td class="first-column"><%= link_to order.art_status, order %></td>
-             <td class="first-column"><%= link_to order.product_status, order %></td>
+             <td class="first-column"><%= best_in_place order, :category, :type => :select, :collection => [['screenprint', 'screenprint'],  ['embroidery', 'embroidery'], ['DTG', 'DTG'], ['heatpress', 'heatpress']] %></td>
+             <td class="first-column"><%= best_in_place order, :order_status, :type => :select, :collection => [['new', 'new'],  ['approved', 'approved'], ['complete', 'complete'], ['cancelled', 'cancelled'], ['hold', 'hold']] %></td>
+             <td class="first-column"><%= best_in_place order, :art_status, :type => :select, :collection => [['pending', 'pending'],  ['approved', 'approved']] %></td>
+             <td class="first-column"><%= best_in_place order, :product_status, :type => :select, :collection => [['purchase', 'purchase'], ['ordered', 'ordered'], ['partial', 'partial'], ['received', 'received']] %></td>
              <td class="first-column"><%= link_to order.end_date.strftime("%m/%d/%y"), order %></td>
         </tr>
         <% end %>

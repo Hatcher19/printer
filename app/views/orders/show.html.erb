@@ -24,7 +24,7 @@
 			</tr>
 			<tr class="order-border">
 				<td>Name</td>
-				<td class="pull-right"><h4><%= @order.name %></h4></td>
+				<td class="pull-right"><h4><%= best_in_place @order, :name %></h4></td>
 			</tr>
 			<tr class="order-border">
 				<td>Due Date</td>
@@ -36,11 +36,11 @@
 			</tr>
 			<tr class="order-border">
 				<td>Category</td>
-				<td class="pull-right"><h4><%= @order.category.titleize %></h4></td>
+				<td class="pull-right"><h4><%= best_in_place @order, :category, :type => :select, :collection => [['screenprint', 'screenprint'],  ['embroidery', 'embroidery'], ['DTG', 'DTG'], ['heatpress', 'heatpress']] %></h4></td>
 			</tr>
 			<tr class="order-border">
 				<td>Type</td>
-				<td class="pull-right"><h4><%= @order.order_type.titleize %></h4></td>
+				<td class="pull-right"><h4><%= best_in_place @order, :order_type, :type => :select, :collection => [['New', 'New'],  ['Re-order', 'Re-order']] %></h4></td>
 			</tr>
 		</table>
 	</div>
@@ -51,16 +51,16 @@
 		<table class="span4">
 			<tr>
 				<td>Order Status</td>
-				<td class="pull-right"><h4><%= @order.order_status %></h4></td>
+				<td class="span1 pull-right"><h4><%= best_in_place @order, :order_status, :type => :select, :collection => [['new', 'new'],  ['approved', 'approved'], ['complete', 'complete'], ['cancelled', 'cancelled'], ['hold', 'hold']] %></h4></td>
 				
 			</tr>
 			<tr>
 				<td>Product Status</td>
-				<td class="pull-right"><h4><%= @order.product_status %></h4></td>
+				<td class="span1 pull-right"><h4><%= best_in_place @order, :product_status, :type => :select, :collection => [['purchase', 'purchase'], ['ordered', 'ordered'], ['partial', 'partial'], ['received', 'received']] %></h4></td>
 			</tr>
 			<tr>
 				<td>Art Status</td>
-				<td class="pull-right"><h4><%= @order.art_status %></h4></td>
+				<td class="span1 pull-right"><h4><%= best_in_place @order, :art_status, :type => :select, :collection => [['pending', 'pending'],  ['approved', 'approved']] %></h4></td>
 			</tr>
 		</table>
 	</div>
@@ -80,7 +80,7 @@
 			</tr>
 			<tr class="order-border">
 				<td>Shipping</td>
-				<td class="pull-right"><h4><%= @order.shipping.titleize %></h4></td>
+				<td class="pull-right"><h4><%= best_in_place @order, :shipping, :type => :select, :collection => [['yes', 'yes'], ['no', 'no']] %></h4></td>
 			</tr>
 			<% if @order.shipping == 'yes' %>
 			<tr class="order-border">

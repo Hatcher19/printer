@@ -11,6 +11,14 @@ GIT
       polyamorous (~> 0.6.0)
 
 GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: df178520bf9ba405baee9528d5dbb630d6ff760c
+  specs:
+    best_in_place (2.1.0)
+      jquery-rails
+      rails (>= 3.1)
+
+GIT
   remote: git://github.com/rails/activerecord-session_store.git
   revision: 55dc59aff9a1101c52004c0604bb88418624ba96
   specs:
@@ -168,6 +176,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-session_store!
+  best_in_place!
   bootstrap-datepicker-rails
   bootstrap-sass
   cancancan (~> 1.7)

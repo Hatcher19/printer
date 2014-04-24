@@ -1,6 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.purr
+//= require best_in_place
 //= require turbolinks
 //= require bootstrap-datepicker
 //= require jquery_nested_form
@@ -19,3 +21,7 @@ function add_fields(link, association, content) {
     before: content.replace(regexp, new_id)
   });
 }
+
+$(document).ready(function() {
+      jQuery(".best_in_place").best_in_place();
+    });

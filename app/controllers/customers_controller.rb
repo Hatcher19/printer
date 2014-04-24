@@ -1,4 +1,5 @@
 class CustomersController < InheritedResources::Base
+	respond_to :html, :json
 	#devise user authentication. 
 	before_filter :authenticate_user!
 	before_filter :new_customer, :only => [:new, :create]
@@ -36,14 +37,16 @@ class CustomersController < InheritedResources::Base
 	      render action: 'new'
 	    end
 	  end
-
+	  
 	def update
-		@customer = Customer.find(params[:id])
-
-		if @customer.update_attributes(customer_params)
-			redirect_to customer_path, notice:  "Your Customer has been successfully updated."
-		else
-			render action: "edit"
+		@customer = Customer.find(params[:id])	
+		respond_to do |format|	
+			if @customer.update_attributes(customer_params)
+				format.json { respond_with_bip(@customer) }
+			else
+				format.html { render action: "edit" }
+				format.json { respond_with_bip(@customer) }
+			end
 		end
 	end 
 

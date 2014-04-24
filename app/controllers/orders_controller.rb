@@ -1,4 +1,5 @@
 class OrdersController < InheritedResources::Base
+	respond_to :html, :json
 	#devise user authentication. 
 	before_filter :authenticate_user!
 	before_filter :new_order, :only => [:new, :create]
@@ -30,26 +31,27 @@ class OrdersController < InheritedResources::Base
 	end
 
 	def edit  
-	    @order = Order.find(params[:id])  
-	    respond_with(@order)  
+	    @order = Order.find(params[:id])   
 	  end 
 
 	def create
 		@order = Order.new(order_params)
-			if @order.save
-				redirect_to @order, notice: 'Order was successfully created.'
-			else
-				render action: 'new'
-			end
+		if @order.save
+			redirect_to @order, notice: 'Order was successfully created.'
+		else
+			render action: 'new'
+		end
 	end
 
 	def update
-		@order = Order.find(params[:id])
-
-		if @order.update_attributes(order_params)
-			redirect_to order_path, notice:  "Your order has been successfully updated."
-		else
-			render action: "edit"
+		@order = Order.find(params[:id])	
+		respond_to do |format|	
+			if @order.update_attributes(order_params)
+				format.json { respond_with_bip(@order) }
+			else
+				format.html { render action: "edit" }
+				format.json { respond_with_bip(@order) }
+			end
 		end
 	end 
 
