@@ -23,6 +23,7 @@
         <th class="first-column">Email</th>
         <th class="first-column">Phone</th>
         <th class="first-column">Customer Since</th>
+        <th class="first-column">Order count</th>
         <th></th>
       </tr>
         <% current_user.account.customers.each do |customer| %>
@@ -32,6 +33,7 @@
              <td class="first-column"><%= link_to customer.customer_email, customer %></td>
              <td class="first-column"><%= link_to customer.customer_phone, customer %></td>
              <td class="first-column"><%= link_to customer.created_at.strftime("%m/%d/%y"), customer %></td>
+             <td class="first-column"><%= customer.orders.count %></td>
           </tr>
         <% end %>
     </table>

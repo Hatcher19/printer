@@ -21,7 +21,7 @@
                 </div>
         </div>
         <div class="span4">
-            <%= f.select :customer_id, Customer.where(:user_id => current_user.id).map{|s|[s.organization, s.id]} %>
+            <%= f.select :customer_id, Customer.where(:user_id => current_user.id).map{|s|[s.organization, s.id]}, include_blank: 'Customer' %>
         </div>
     </div>
     <div class="row">
@@ -108,7 +108,7 @@
         <div class="span12">
             <%= f.link_to_add "Add Artwork", :artworks, class: "blue-button pull-right" %>
             <% if f.object.new_record? %>
-                <%= f.select :art_status, :value => 'pending' %>
+                <%= f.hidden_field :art_status, :value => 'pending' %>
             <% else %>
                 <%= f.select :art_status, Order::ARTSTATUS, {:include_blank => "Art Status"}, class: 'pull-right' %>
             <% end %>

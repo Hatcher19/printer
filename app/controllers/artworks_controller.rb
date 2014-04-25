@@ -1,4 +1,4 @@
-class FilesController < InheritedResources::Base
+class ArtworksController < InheritedResources::Base
 	def index
 		@artworks = Artwork.all
 	end
@@ -26,12 +26,16 @@ class FilesController < InheritedResources::Base
 	    end
 	  end
 
-	def update  
-	  @artwork = Artwork.find(params[:id])  
-	  if @artwork.update_attributes(params[:artwork])  
-	    # flash[:notice] = "Successfully updated customer."  
-	  end  
-	  respond_with(@artwork)  
+	def update
+		@artwork = Artwork.find(params[:id])	
+		respond_to do |format|	
+			if @artwork.update_attributes(artwork_params)
+				format.json { respond_with_bip(@artwork) }
+			else
+				format.html { render action: "edit" }
+				format.json { respond_with_bip(@artwork) }
+			end
+		end
 	end  
 
 	def artwork_params

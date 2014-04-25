@@ -12,6 +12,7 @@ class CustomersController < InheritedResources::Base
 
 	def index
 		@customers = Customer.all
+		@customer = Customer.all
 	end
 
 	def new

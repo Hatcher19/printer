@@ -26,12 +26,16 @@ class ProductsController < InheritedResources::Base
 	    end
 	  end
 
-	def update  
-	  @product = Product.find(params[:id])  
-	  if @product.update_attributes(params[:product])  
-	    # flash[:notice] = "Successfully updated customer."  
-	  end  
-	  respond_with(@product)  
+	def update
+		@product = Product.find(params[:id])	
+		respond_to do |format|	
+			if @product.update_attributes(product_params)
+				format.json { respond_with_bip(@product) }
+			else
+				format.html { render action: "edit" }
+				format.json { respond_with_bip(@product) }
+			end
+		end
 	end  
 
 	def product_params

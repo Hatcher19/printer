@@ -135,20 +135,20 @@
 		        </tr>
 		        <% @order.products.each do |product| %>
 		           <tr>
-		             <td class="first-column"><%= h product.style %></td>
-		             <td class="first-column"><%= h product.color %></td>
-		             <td class="first-column"><%= h product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %></td>
-		             <td class="first-column"><%= h product.xs %></td>
-		             <td class="first-column"><%= h product.small %></td>
-		             <td class="first-column"><%= h product.med %></td>
-		             <td class="first-column"><%= h product.large %></td>
-		             <td class="first-column"><%= h product.xl %></td>
-		             <td class="first-column"><%= h product.xxl %></td>
-		             <td class="first-column"><%= h product.xxxl %></td>
-		             <td class="first-column"><%= h product.ivxl %></td>
-		             <td class="first-column"><%= h product.vxl %></td>
-		             <td class="first-column"><%= h product.vixl %></td>
-		          </tr>
+		                <td class="first-column"><%= best_in_place product, :style %></td>
+		                <td class="first-column"><%= best_in_place product, :color %></td>
+		                <td class="first-column"><%=  product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %></td>
+		                <td class="first-column"><%= best_in_place product, :xs %></td>
+		                <td class="first-column"><%= best_in_place product, :small %></td>
+		                <td class="first-column"><%= best_in_place product, :med %></td>
+		                <td class="first-column"><%= best_in_place product, :large %></td>
+		                <td class="first-column"><%= best_in_place product, :xl %></td>
+		                <td class="first-column"><%= best_in_place product, :xxl %></td>
+		                <td class="first-column"><%= best_in_place product, :xxxl %></td>
+		                <td class="first-column"><%= best_in_place product, :ivxl %></td>
+		                <td class="first-column"><%= best_in_place product, :vxl %></td>
+		                <td class="first-column"><%= best_in_place product, :vixl %></td>
+		            </tr>
 		        <% end %>
 		      </table>
 		<% end %>
@@ -171,8 +171,9 @@
 				</tr>
 				<% @order.artworks.each do |artwork| %>
 					<tr>
-						<td><%= h artwork.color %></td>
-						<td><%= h artwork.location %></td>
+						<td><%= best_in_place artwork, :color %></td>
+						<td><%= best_in_place artwork, :location, :type => :select, :collection => 
+						[['Front', 'Front'], ['Back', 'Back'], ['Chest(L)', 'Chest(L)'], ['Chest(R)', 'Chest(R)'], ['Sleeve(L)', 'Sleeve(L)'], ['Sleeve(R)', 'Sleeve(R)'], ['Leg(L)', 'Leg(L)'], ['Leg(R)', 'Leg(R)'], ['Pocket(L)', 'Pocket(L)'], ['Pocket(R)', 'Pocket(R)'], ['Hat(front)', 'Hat(front)'], ['Hat(back)', 'Hat(back)']] %></td>
 						<td class="span1"><%= link_to artwork.file_url.to_s, download: ["#{@order.name}-#{@order.uuid}-#{artwork.location}"] do %>
 					        <center><div class="green-button">Download</div></center>
 					      <% end %></td>
