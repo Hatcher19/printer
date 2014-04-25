@@ -1,6 +1,10 @@
 Por::Application.routes.draw do
   root :to => "pages#home"
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations" }                                         
+    as :user do
+      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+      put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'            
+    end
   resources :users, only: [:index, :show, :update, :create, :new]
   resources :orders, only: [:index, :show, :update, :create, :new]
   resources :accounts, only: [:index, :show, :update, :create, :new]
