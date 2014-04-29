@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+	has_paper_trail
 	belongs_to :customer
 	belongs_to :user
 	belongs_to :account

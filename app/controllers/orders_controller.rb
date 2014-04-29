@@ -66,5 +66,9 @@ class OrdersController < InheritedResources::Base
       format.html
       format.js
     end
+
+    def history
+	  @versions = PaperTrail::Version.order('created_at DESC')
+	end
   end
 end

@@ -32,3 +32,4 @@ gem 'nested_form'
 gem 'bootstrap-sass'
 gem 'best_in_place', github: 'bernat/best_in_place'
 gem "fog"
+gem 'paper_trail', '~> 3.0.1'
