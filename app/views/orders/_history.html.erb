@@ -1,14 +1,25 @@
 <div class="row">
-  <div class="span4">
+  <div class="span6">
 
   </div>
-  <div class="span9">
+  <div class="span6">
     <h1>History</h1>
- 
-    <ul>
-      <% @order.versions.each do |version| %>
-        <%= link_to User.find(version.whodunnit).email, user_path %> <%= version.event %>d <%= version.item_type %> at <%= l(version.created_at, format: "%I:%M %P on %m/%-d/%Y") %><%= version.changeset %></br>
-      <% end %>
-    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="span6">
+  </div>
+  <div class="span6">
+    <% @order.versions.each_with_index do |version, index| %>
+    <%= version.created_at.localtime.strftime("%I:%M %P") %><br>
+    <%= version.created_at.localtime.strftime("%m/%-d/%Y") %>
+    <%= link_to User.find(version.whodunnit).email, user_path %> <%= version.event %>d <%= version.item_type %><br>
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>">...read more</a>
+    <div id="collapse<%= index.to_s %>" class="accordion-body collapse out">
+      <%= version.changeset %>
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>">...read less</a>
+    </div>
+    <br>
+    <% end %>
   </div>
 </div>

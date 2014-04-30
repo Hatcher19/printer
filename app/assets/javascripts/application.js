@@ -7,6 +7,7 @@
 //= require bootstrap-datepicker
 //= require jquery_nested_form
 //= require bootstrap-modal
+//= require bootstrap-transition
 //= require_tree .
 
 function remove_fields(link) {
