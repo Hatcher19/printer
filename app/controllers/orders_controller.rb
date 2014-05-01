@@ -47,6 +47,7 @@ class OrdersController < InheritedResources::Base
 		@order = Order.find(params[:id])	
 		respond_to do |format|	
 			if @order.update_attributes(order_params)
+				format.html { redirect_to @order  }
 				format.json { respond_with_bip(@order) }
 			else
 				format.html { render action: "edit" }
