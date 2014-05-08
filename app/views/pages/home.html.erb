@@ -1,3 +1,69 @@
+<div class="background-one">
+	<div class="row">
+		<div class="span2 pull-right">
+			<%= link_to new_user_session_path do %>
+				<center><div class="outline-button"><h4>Login</h4></div></center>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span5">
+		</div>
+		<div class="span7 logo">
+			<%= image_tag 'shirt_admin_logo.png' %>
+		</div>
+	</div>
+</div>
+<div class="row grey-background">
+	<div class="span4">
+	</div>
+	<div class="span5">
+		<h3>Manage your print shop NOW!</h3>
+	</div>
+	<div class="span3">
+		<%= link_to new_account_path do %>
+			<center><div class="blue-button"><h4>Free 30 Day Trial</h4></div></center>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="span1">
+	</div>
+	<div class="span5">
+		<center><%= image_tag 'pricing.png', class: 'img-margin-top' %>
+		<h3>How much Does it cost?</h3></center><br>
+		<li><h4>$50/month</h4></li>
+		<li><h4>30 day free trial</h4></li>
+		<li><h4>Cancel anytime</h4></li><br>
+		<%= link_to new_account_path do %>
+			<center><div class="blue-button span3"><h4>Free 30 Day Trial</h4></div></center>
+		<% end %>
+	</div>
+	<div class="span5">
+		<center><%= image_tag 'manage_users.png', class: 'img-margin-top' %>
+		<h3>Manage Users</h3></center><br>
+		<p id="home-p">Add users to your account, control access levels, and more. Our software supports contract printing, by allowing outside salesman to submit and view progress of their orders only.</p>
+	</div>
+	<div class="span5">
+		<center><%= image_tag 'globe.png', class: 'img-margin-top' %>
+		<h3>Produce locally, work globally</h3></center><br>
+		<p id="home-p">Users of your account will enjoy the ability to access data onsite, around the corner, or around the globe. Any internet connected device can use our cloud-based software to keep your business running 24/7.</p>
+	</div>
+</div>
+<div class="row footer">
+	<div class="span5">
+	</div>
+	<div class="span3">
+		Email
+	</div>
+	<div class="span3">
+		Facebook
+	</div>
+	<div class="span3">
+		Twitter
+	</div>
+</div>
+
 <% if user_signed_in? %>
 	<div class="row titlebar well">
 		<div class="span3">

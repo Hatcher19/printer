@@ -4,3 +4,53 @@
 .dash-stats h3 {
 	margin: 0px;
 }
+.background-one {
+	background-image:url('bg_img.png');
+	padding-bottom: 6%;
+}
+.outline-button {
+	border:2px solid white;
+	border-radius:5px;
+	padding: 5px;
+	line-height: 100%;
+	margin-top: 15px;
+	color: white;
+}
+.outline-button:hover {
+	border:2px solid #333845;
+	border-radius:5px;
+	padding: 5px;
+	line-height: 100%;
+	margin-top: 15px;
+	background-color: #333845;
+	color: white;
+}
+.logo {
+	margin-top: 4%;
+}
+#home-blue-button.blue-button {
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+.grey-background {
+	background-color: #333845;
+	color: white;
+	padding: 20px;
+}
+#home-p {
+	font-size: 18px;
+}
+.img-margin-top {
+	margin-top: 30px;
+}
+div.row.footer {
+margin-bottom: 0px;
+background-color: #E26244;
+padding: 20px;
+height: 100%;
+color: white;
+margin-top: 5%;
+}
+.row.footer h1 {
+	color: #333845;
+}
