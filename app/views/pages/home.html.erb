@@ -1,11 +1,30 @@
-<div class="background-one">
-	<div class="row">
-		<div class="span2 pull-right">
-			<%= link_to new_user_session_path do %>
-				<center><div class="outline-button"><h4>Login</h4></div></center>
-			<% end %>
+<% if user_signed_in? %>
+	<div class="row titlebar">
+		<div class="span2">
+		</div>
+		<div class="span4">
+			<h3>Dashboard</h3>
 		</div>
 	</div>
+	<div class="row dash-stats">
+		<div class="span3">
+		</div>
+		<div class="span3">
+			<center><h1><%= current_user.account.orders.count %></h1><br>
+			<h3>Orders</h3></center>
+		</div>
+		<div class="span3">
+			<center><h1><%= current_user.account.customers.count %></h1></br><h3>Customers</h3></center>
+		</div>
+		<div class="span3">
+			<center><h1><%= current_user.account.users.count %></h1><br><h3>Users</h3></center>
+		</div>
+		<div class="span3">
+			<center><h1><%= current_user.orders.count %></h1><br><h3>My Orders</h3></center>
+		</div>
+	</div>
+<% else %>
+<div class="background-one">
 	<div class="row">
 		<div class="span5">
 		</div>
@@ -29,23 +48,29 @@
 <div class="row">
 	<div class="span1">
 	</div>
-	<div class="span5">
-		<center><%= image_tag 'pricing.png', class: 'img-margin-top' %>
-		<h3>How much Does it cost?</h3></center><br>
-		<li><h4>$50/month</h4></li>
-		<li><h4>30 day free trial</h4></li>
-		<li><h4>Cancel anytime</h4></li><br>
-		<%= link_to new_account_path do %>
-			<center><div class="blue-button span3"><h4>Free 30 Day Trial</h4></div></center>
-		<% end %>
+	<div class="span5 home-icon">
+		<center>
+			<%= image_tag 'pricing.png' %>
+			<h3>Pricing</h3><br>
+			<ul class="no-bullets">
+				<div class="li-underlined"><li><h4>$50/month</h4></li></div>
+				<div class="li-underlined"><li><h4>30 day free trial</h4></li></div>
+				<div class="li-underlined"><li><h4>Cancel anytime</h4></li></div><br>
+				<li>
+					<%= link_to new_account_path do %>
+						<center><div class="green-button" id="half-green-width"><h4>Start Now!</h4></div></center>
+					<% end %>
+				</li>
+			</ul>
+		</center>
 	</div>
-	<div class="span5">
-		<center><%= image_tag 'manage_users.png', class: 'img-margin-top' %>
+	<div class="span5 home-icon">
+		<center><%= image_tag 'users-grey.png' %>
 		<h3>Manage Users</h3></center><br>
 		<p id="home-p">Add users to your account, control access levels, and more. Our software supports contract printing, by allowing outside salesman to submit and view progress of their orders only.</p>
 	</div>
-	<div class="span5">
-		<center><%= image_tag 'globe.png', class: 'img-margin-top' %>
+	<div class="span5 home-icon">
+		<center><%= image_tag 'multiple_devices.png' %>
 		<h3>Produce locally, work globally</h3></center><br>
 		<p id="home-p">Users of your account will enjoy the ability to access data onsite, around the corner, or around the globe. Any internet connected device can use our cloud-based software to keep your business running 24/7.</p>
 	</div>
@@ -63,30 +88,4 @@
 		Twitter
 	</div>
 </div>
-
-<% if user_signed_in? %>
-	<div class="row titlebar well">
-		<div class="span3">
-		</div>
-		<div class="span4">
-			<h1>Dashboard</h1>
-		</div>
-	</div>
-	<div class="row dash-stats">
-		<div class="span3">
-		</div>
-		<div class="span3">
-			<center><h1><%= current_user.account.orders.count %></h1><br>
-			<h3>Orders</h3></center>
-		</div>
-		<div class="span3">
-			<center><h1><%= current_user.account.customers.count %></h1></br><h3>Customers</h3></center>
-		</div>
-		<div class="span3">
-			<center><h1><%= current_user.account.users.count %></h1><br><h3>Users</h3></center>
-		</div>
-		<div class="span3">
-			<center><h1><%= current_user.orders.count %></h1><br><h3>My Orders</h3></center>
-		</div>
-	</div>
 <% end %>

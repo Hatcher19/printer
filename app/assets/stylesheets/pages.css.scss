@@ -7,23 +7,7 @@
 .background-one {
 	background-image:url('bg_img.png');
 	padding-bottom: 6%;
-}
-.outline-button {
-	border:2px solid white;
-	border-radius:5px;
-	padding: 5px;
-	line-height: 100%;
-	margin-top: 15px;
-	color: white;
-}
-.outline-button:hover {
-	border:2px solid #333845;
-	border-radius:5px;
-	padding: 5px;
-	line-height: 100%;
-	margin-top: 15px;
-	background-color: #333845;
-	color: white;
+	top: 0;
 }
 .logo {
 	margin-top: 4%;
@@ -53,4 +37,21 @@ margin-top: 5%;
 }
 .row.footer h1 {
 	color: #333845;
+}
+.home-icon {
+	margin-top: 4%;
+}
+.no-bullets {
+	list-style-type: none;
+	line-height: 20px;
+	margin-left: 0px;
+}
+#half-green-width {
+	width: 50%;
+}
+.li-underlined {
+	width: 50%;
+	border-bottom: 1px dashed #262A34;
+	margin-bottom: 3px;
+	padding-bottom: 3px;
 }

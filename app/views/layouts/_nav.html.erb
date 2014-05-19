@@ -1,32 +1,40 @@
 <div class="row navigation-fixed">
-	<div class="span3 brand pull-left">
+	<% if user_signed_in? %>
+	<div class="row span3 brand">
 		<center>
-			<% if user_signed_in? %>
-				<%= link_to current_user.account.subdomain.titleize, root_path %>
-			<% else %>
-				<%= link_to 'Print On Rails', root_path %>
-			<% end %>
+			<h4><%= link_to current_user.account.subdomain.titleize, root_path %></h4>
 		</center>
 	</div>
-	<% if user_signed_in? %>
-		<div class="pull-right">
-			<span class="current-user">
-				<%= link_to "Hello, #{current_user.email}", current_user %>
-			</span>
-			<span class="logout">
-				<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-			</span>
+	<div class="span9 pull-right">
+			<div class="span2 pull-right">
+				<div class="btn-group">
+				  <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i><%= link_to "Hello, #{current_user.email}", current_user %></a>
+				  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><%= link_to 'View my profile', user_path(current_user) %></li>
+				    <li class="divider"></li>
+				    <li><%= link_to 'Edit', edit_user_registration_path %></li>
+				    <li class="divider"></li>
+				    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+				  </ul>
+				</div>
+			</div>	
+		<% else %>
+		<div class="row span3 brand2">
+			<center>
+				<h4>Shirt Admin</h4>
+			</center>
 		</div>
-	<% else %>
-		<div class="span2 pull-right">
-			<%= link_to new_user_session_path do %>
-				<center><div class="green-button">Login</div></center>
-			<% end %>
-		</div>
-		<div class="span2 pull-right">
-			<%= link_to new_account_path do %>
-				<center><div class="blue-button">Sign Up</div></center>
-			<% end %>
-		</div>
-	<% end %>
+			<div class="span2 pull-right" id="nav-login">
+				<%= link_to new_user_session_path do %>
+					<center><div class="green-button">Login</div></center>
+				<% end %>
+			</div>
+			<div class="span2 pull-right" id="nav-login">
+				<%= link_to new_account_path do %>
+					<center><div class="blue-button">Sign Up</div></center>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
 </div>

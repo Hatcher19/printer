@@ -1,17 +1,19 @@
-<div class="row titlebar well">
-  <div class="span3">
+<div class="row titlebar">
+  <div class="span2">
   </div>
   <div class="span4">
-    <h1>Customers</h1>
+    <h3>Customers</h3>
   </div>
-  <% if Customer.exists? %>
   <div class="span2 pull-right">
+    <% if Customer.exists? == false %>
+      Try creating one...
+    <% end %>
     <%= link_to new_customer_path do %>
       <center><div class="green-button titlebar-actions">New Customer</div></center>
     <% end %>
   </div>
 </div>
-<br>
+<% if Customer.exists? %>
 <div class="row">
   <div class="span3">
   </div>
