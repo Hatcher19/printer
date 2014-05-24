@@ -7,7 +7,19 @@
             <div class="input-prepend">
                   <span class="add-on">Email</span>
                     <%= f.text_field :email %>
+            </div>
+            <div class="input-prepend">
+                  <span class="add-on">First Name</span>
+                    <%= f.text_field :first_name %>
             </div> 
+            <div class="input-prepend">
+                  <span class="add-on">Last Nmae</span>
+                    <%= f.text_field :last_name %>
+            </div>
+            <div class="input-prepend">
+                  <span class="add-on">phone number</span>
+                    <%= f.text_field :phone_number %>
+            </div>
                 <%= f.input :role, :collection => User::ROLES, include_blank: 'Role', label: false %>
             <div class="input-prepend">
                   <span class="add-on">Password</span>

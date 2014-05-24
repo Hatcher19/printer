@@ -43,6 +43,6 @@ class UsersController < InheritedResources::Base
 	end  
 
 	def user_params
-      params.fetch(:user).permit(:email, :password, :password_confirmation, :account_id, :role) if params[:user]
+      params.fetch(:user).permit(:email, :password, :password_confirmation, :account_id, :role, :first_name, :last_name, :phone_number) if params[:user]
     end
 end
