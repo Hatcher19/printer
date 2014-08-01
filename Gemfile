@@ -33,3 +33,6 @@ gem 'bootstrap-sass'
 gem 'best_in_place', github: 'bernat/best_in_place'
 gem "fog"
 gem 'paper_trail', '~> 3.0.1'
+gem 'braintree-rails', :github => "lyang/braintree-rails", :branch => 'master'
+gem 'haml-rails'
+gem 'carmen-rails'

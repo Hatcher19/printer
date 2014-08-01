@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
          belongs_to :account
-         validates_uniqueness_of :email, :allow_blank => false
+         validates :email, uniqueness: true, presence: true
          has_many :customers
          has_many :orders
 
@@ -36,5 +36,17 @@ class User < ActiveRecord::Base
 
   def production?
     role? :production
+  end
+
+  ###Braintree###
+  after_destroy :destroy_customer
+
+  def braintree_customer
+    braintree_customer_id && BraintreeRails::Customer.new(braintree_customer_id)
+  end
+
+  private
+  def destroy_customer
+    BraintreeRails::Customer.delete(braintree_customer_id) if braintree_customer_id.present?
   end
 end

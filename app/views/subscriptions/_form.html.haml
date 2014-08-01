@@ -1,0 +1,21 @@
+<center>
+= simple_form_for @subscription, url: url, html: { class: 'form-horizontal' } do |f|
+  - if @plan
+    .control-group.string.optional.subscription_plan
+      %label.string.optional.control-label{for: 'subscription_plan'}= 'Plan'
+      .controls
+        %p#subscription_plan.string.optional= @plan.name
+  - else
+    = f.input :plan_id, options_for_plan_select
+  - if @credit_card
+    .control-group.string.optional.subscription_credit_card
+      %label.string.optional.control-label{for: 'subscription_credit_card'}= 'CreditCard'
+      .controls
+        %p#subscription_credit_card.string.optional= @credit_card.masked_number
+  - else
+    = f.input :payment_method_token, options_for_credit_card_select(@customer || @subscription.credit_card.customer)
+  = f.input :price, :value => 50, :placeholder => "$50.00", :disabled => true
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to 'Cancel', user_braintree_customer_credit_card_subscriptions_path, class: 'btn'
+    </center>

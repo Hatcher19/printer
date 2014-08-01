@@ -5,14 +5,21 @@ Por::Application.routes.draw do
       get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
       put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'            
     end
-  resources :users, only: [:index, :show, :update, :create, :new]
+  resources :users do
+    resource :braintree_customer do
+      resources :credit_cards do
+        resources :subscriptions
+      end
+      resources :braintree_addresses
+    end
+  end
+  resources :subscriptions, except: [:new, :create]
   resources :orders, only: [:index, :show, :update, :create, :new]
   resources :accounts, only: [:index, :show, :update, :create, :new]
   resources :customers, only: [:index, :show, :update, :create, :new]
   resources :products, only: [:show, :update, :create, :new]
   resources :addresses, only: [:show, :update, :create, :new]
   resources :artworks, only: [:show, :update, :create, :new]
-  resources :profiles, only: [:show, :update, :create, :new]
   resources :orders do
     resources :users
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524145302) do
+ActiveRecord::Schema.define(version: 20140601211013) do
 
   create_table "accounts", force: true do |t|
     t.datetime "created_at"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20140524145302) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
+    t.string   "braintree_customer_id"
   end
 
   add_index "users", ["account_id"], name: "index_users_on_account_id"

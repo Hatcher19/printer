@@ -1,0 +1,15 @@
+<center>
+- model_class = BraintreeRails::Customer
+.page-header
+  %h1=t '.title', default: model_class.model_name.human
+- [:first_name, :last_name, :email, :company, :website, :phone, :fax].each do |attribute|
+  %p
+    %strong= model_class.human_attribute_name(attribute) + ':'
+    %br
+    = @customer.send(attribute)
+
+.form-actions
+  = link_to 'Back', users_path, class: 'btn'
+  = link_to 'New Credit Card', new_user_braintree_customer_credit_card_path(@user), class: 'blue-button'
+  = link_to 'Edit', edit_user_braintree_customer_path(@user), class: 'btn'
+</center>
