@@ -1,23 +1,30 @@
-<div class="row titlebar well">
-    <div class="span4">
-    </div>
-    <div class="span6">
-        <h1><%= "#{@user.email}" %></h1>
-    </div>
-    <div class="span2 pull-right">
-    	<%= link_to edit_user_registration_path do %>
-			<center><div class="create-button">Edit User</div></center>
-		<% end %>
-    </div>
-</div>
-
+<div class="row titlebar">
+    <h1 class="pull-left"><%=@user.email %></h1>
+    <%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary pull-right" %>
+  </div>
 <div class="row">
-	<div class="span4">
-	</div>
-	<div class="span9">
+	<ul class="span3 box text-decoration-none" id="margin-right-ten">
+		<li id="light-grey">Full name</li>
+		<li><span class="order-data-bold font-size-bigger"><%= @user.first_name %> <%= @user.last_name %></span></li>
+		<li id="light-grey">Email</li>
+		<li><span class="order-data-bold font-size-bigger"><%= @user.email %></span></li>
+		<li id="light-grey">Phone</li>
+		<li><span class="order-data-bold font-size-bigger"><%= @user.phone_number %></span></li>
+		<li id="light-grey">Role</li>
+		<li><span class="order-data-bold font-size-bigger"><%= @user.role %></span></li>
+		<li id="light-grey">Sign In Count</li>
+		<li><span class="order-data-bold font-size-bigger"><%= @user.sign_in_count %></span></li>
+		<li id="light-grey">Last Signed in on</li>
+		<li><span class="order-data-bold font-size-bigger"><%= @user.last_sign_in_at.strftime("%m/%d/%y") %></span></li>
+		<li id="light-grey">User Since</li>
+		<li><span class="order-data-bold font-size-bigger"><%= @user.created_at.strftime("%m/%d/%y") %></span></li>
+		<li id="light-grey">Total Orders</li>
+		<li><span class="order-data-bold font-size-bigger"><%= @user.orders.count %></span></li>
+	</ul>
+	<div class="span9 box">
 		<table class="table table-striped">
 		  <tbody>
-		  	<h4><span id="orange">Orders</span> placed by <span id="orange"><%= @user.email %></span></h4>
+		  	<h3>My Orders</h3>
 		  	<tr>
 	          <th><%= "ID" %></th>
 	          <th><%= "Name" %></th>
@@ -42,12 +49,7 @@
 		</table>
 	</div>
 </div>
-<div class="row">
-	<div class="span4">
-	</div>
-	<div class="span5">
-		<%= link_to 'Back', users_path, class: 'btn' %>
-		<%= link_to 'Edit', edit_user_path(@user), class: 'btn' %>
-		<%= link_to 'New Customer Info', new_user_braintree_customer_path(@user), class: 'btn' %>	  
-	</div>
-</div>
+
+<%= link_to 'Back', users_path, class: 'btn btn-info btn-large' %>
+<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-warning btn-large' %>
+<%= link_to 'Account', new_user_braintree_customer_path(@user), class: 'btn btn-success btn-large' %>	

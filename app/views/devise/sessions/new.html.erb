@@ -1,33 +1,20 @@
-<div class="row titlebar">
-    <div class="span6">
-    </div>
-    <div class="span5">
-        <h1>Sign In</h1>
-    </div>
+<div class="row sign-in-titlebar center">
+    <h1>Shirt Clerk</h1>
 </div>
-<div>
-    <div class="span6">
-    </div>
-    <div class="span5">
-    	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div>
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  </div>
-	<div class="row">
-		<div class="span8">
-		</div>
-		<div class="span3">
-			<%= f.button :submit, "Sign in" %>
-		</div>
-	</div>
-<% end %>
-  <div class="row">
-	<div class="span6">
-	</div>
-	<div class="span4">
-	    <%= render "devise/shared/links" %>
-	</div>
-    </div>
+<div class="center">
+    <h3>Sign In</h3>
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div>
+            <%= f.input :email, :required => false, :autofocus => true, placeholder: "Email", label: false %>
+            <%= f.input :password, :required => false, placeholder: "Password", label: false %>
+            <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+        </div>
+        <div class="">
+            <%= f.button :submit, "Submit", class: "btn btn-success btn-large" %><br>
+            <%= render "devise/shared/links" %>
+        </div>
+    <% end %>
+</div>
+<div class="row sign-in-footer center">
+    <h4>Don't have an account? <%= link_to "Sign Up", new_account_path, class: "btn btn-primary" %></h4>
 </div>

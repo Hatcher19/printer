@@ -44,7 +44,7 @@ class BraintreeCustomersController < InheritedResources::Base
   protected
   def find_user
     @user = User.find(params[:user_id])
-  end
+  end 
 
   def find_braintree_customer
     @customer = @user.braintree_customer

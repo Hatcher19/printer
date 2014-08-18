@@ -1,25 +1,21 @@
-<div class="row">
-  <div class="span6">
-
-  </div>
-  <div class="span6">
+<div>
+  <div class="row">
     <h1>History</h1>
   </div>
-</div>
-<div class="row">
-  <div class="span6">
-  </div>
-  <div class="span6">
-    <% @order.versions.each_with_index do |version, index| %>
-    <%= version.created_at.localtime.strftime("%I:%M %P") %><br>
-    <%= version.created_at.localtime.strftime("%m/%-d/%Y") %>
-    <%= link_to User.find(version.whodunnit).email, user_path %> <%= version.event %>d <%= version.item_type %><br>
-    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>">...read more</a>
-    <div id="collapse<%= index.to_s %>" class="accordion-body collapse out">
-      <div class="well"><%= version.changeset %></div>
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>">...read less</a>
+  <% @order.versions.each_with_index do |version, index| %>
+    <div class="row box">
+      <div class="span2">
+        <%= version.created_at.localtime.strftime("%I:%M %P") %><br>
+        <%= version.created_at.localtime.strftime("%m/%-d/%Y") %>
+      </div>
+      <div class="span6">
+        <%= link_to User.find(version.whodunnit).email, user_path %> <%= version.event %>d <%= version.item_type %><br>
+        <a class="accordion-toggle btn btn-info btn-mini margin-bottom-ten" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>">More Info</a>
+        <div id="collapse<%= index.to_s %>" class="accordion-body collapse out">
+          <div class="well"><%= version.changeset %></div>
+          <a class="accordion-toggle btn btn-warning btn-small" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>">Less Info</a>
+        </div>
+      </div>
     </div>
-    <br>
-    <% end %>
-  </div>
+  <% end %>
 </div>

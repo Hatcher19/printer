@@ -1,188 +1,127 @@
-<div class="row titlebar well">
-    <div class="span3">
-    </div>
-    <div class="span9 order-titlebar">
-        <h1><%= "#{@order.name.titleize}" %></h1>
+<div class="row titlebar">
+    <div class="span9">
+        <h1>Order <span id="light-grey"><%= "##{@order.id}" %></span></h1>
     </div>
     <div class="span2 pull-right">
-        <%= link_to edit_order_path do %>
-			<center><div class="green-button titlebar-actions">Edit</div></center>
-	    <% end %>
+    	<%= link_to "Edit", edit_order_path, class: "btn btn-success" %>
     </div>
 </div>
-<div class="row">
-	<div class="span4">
+<div class="box">
+	<div class="row box-title">
+		<h3 class="pull-left"><%= "#{current_user.account.subdomain.titleize}" %></h3>
+		<h3 class="pull-right"><span id="light-grey">Order </span><%= " ##{@order.id}" %></h3>
 	</div>
-	<div class="span4">
-		<div class="">
-			<h2>Information</h2>
+	<div class="row order-info">
+		<div class="span1">
 		</div>
-		<table class="span4">
-			<tr class="order-border">
-				<td>Order No.</td>
-				<td class="pull-right"><h4><%= @order.uuid %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>Name</td>
-				<td class="pull-right"><h4><%= best_in_place @order, :name %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>Due Date</td>
-				<td class="pull-right"><h4><%= @order.end_date.strftime("%m/%d/%Y") %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>Sold By</td>
-				<td class="pull-right"><h4><%= link_to "#{@order.user.email}", user_path(@user_id) %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>Category</td>
-				<td class="pull-right"><h4><%= best_in_place @order, :category, :type => :select, :collection => [['screenprint', 'screenprint'],  ['embroidery', 'embroidery'], ['DTG', 'DTG'], ['heatpress', 'heatpress']] %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>Type</td>
-				<td class="pull-right"><h4><%= best_in_place @order, :order_type, :type => :select, :collection => [['New', 'New'],  ['Re-order', 'Re-order']] %></h4></td>
-			</tr>
-		</table>
-	</div>
-	<div class="span2">
-	</div>
-	<div class="span4">
-		<div class="span4">
-		<table class="span4">
-			<tr>
-				<td>Order Status</td>
-				<td class="span1 pull-right"><h4><%= best_in_place @order, :order_status, :type => :select, :collection => [['new', 'new'],  ['approved', 'approved'], ['complete', 'complete'], ['cancelled', 'cancelled'], ['hold', 'hold']] %></h4></td>
-				
-			</tr>
-			<tr>
-				<td>Product Status</td>
-				<td class="span1 pull-right"><h4><%= best_in_place @order, :product_status, :type => :select, :collection => [['purchase', 'purchase'], ['ordered', 'ordered'], ['partial', 'partial'], ['received', 'received']] %></h4></td>
-			</tr>
-			<tr>
-				<td>Art Status</td>
-				<td class="span1 pull-right"><h4><%= best_in_place @order, :art_status, :type => :select, :collection => [['pending', 'pending'],  ['approved', 'approved']] %></h4></td>
-			</tr>
-		</table>
-	</div>
-	</div>
-</div>
-<div class="row">
-	<div class="span4">
-	</div>
-	<div class="span4">
-		<div class="">
-			<h2>Customer</h2>
+		<div class="span6">
+			<div class="margin-bottom-ten">
+				<span class="contrast-red">To</span><br>
+			</div>
+			<ul class="text-decoration-none span4">
+				<li><span id="light-grey">Shipping?</span><span class="order-data-bold bip"> <%= best_in_place @order, :shipping, :type => :select, :collection => [['yes', 'yes'], ['no', 'no']] %></span></li>
+				<li><span class="order-data-bold"> <%= @order.customer.organization %></span></li>
+				<li><span class="order-data-bold"> <%= @order.customer.customer_name %></span></li>
+				<% if @order.shipping == 'yes' %>
+					<li><span class="address-indent"> <%= @address.line_one %></li>
+					<% if @address.line_two.blank? %>
+					<% else %>
+					 <li><span class="address-indent"> <%= @address.line_two %></span></li>
+					<% end %>
+					<li><span class="address-indent"> <%= @address.city %></span></li>
+					<li><span class="address-indent"> <%= @address.state %></span></li>
+					<li><span class="address-indent"> <%= @address.zip %></span></li>
+				<% end %>
+			</ul>
 		</div>
-		<table class="span4">
-			<tr class="order-border">
-				<td>Organization</td>
-				<td class="pull-right"><h4><%= @order.customer.organization %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>Shipping</td>
-				<td class="pull-right"><h4><%= best_in_place @order, :shipping, :type => :select, :collection => [['yes', 'yes'], ['no', 'no']] %></h4></td>
-			</tr>
-			<% if @order.shipping == 'yes' %>
-			<tr class="order-border">
-				<td>Name</td>
-				<td class="pull-right"><h4><%= @order.customer.customer_name %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>Address</td>
-				<td class="pull-right"><h4><%= @address.line_one %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>Apt/Suite</td>
-				<td class="pull-right"><h4><%= @address.line_two %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>City</td>
-				<td class="pull-right"><h4><%= @address.city %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>State</td>
-				<td class="pull-right"><h4><%= @address.state %></h4></td>
-			</tr>
-			<tr class="order-border">
-				<td>zip</td>
-				<td class="pull-right"><h4><%= @address.zip %></h4></td>
-			</tr>
+		<div class="span2">
+		</div>
+		<div class="span5 pull-right">
+			<div class="margin-bottom-ten">
+				<span class="contrast-red">Info</span>
+			</div>
+			<div class="span2">
+				<ul class="text-decoration-none">
+					<li><span>Name:</span></li>
+					<li><span>Due Date:</span></li>
+					<li><span>Sold By:</span></li>
+					<li><span>Category:</span></li>
+					<li><span>Type:</span></li>
+					<li><span>Order Status:</span></li>
+					<li><span>Product Status:</span></li>
+					<li><span>Art Status:</span></li>
+				</ul>
+			</div>
+			<div class="">
+				<ul class="text-decoration-none">
+					<li><span class="order-data-bold bip"> <%= best_in_place @order, :name %></span></li>
+					<li><span class="order-data-bold"> <%= @order.end_date.strftime("%m/%d/%Y") %></span></li>
+					<li><span class="order-data-bold"> <%= link_to "#{@order.user.email}", user_path(@user_id) %></span></li>
+					<li><span class="order-data-bold bip"> <%= best_in_place @order, :category, :type => :select, :collection => [['screenprint', 'screenprint'],  ['embroidery', 'embroidery'], ['DTG', 'DTG'], ['heatpress', 'heatpress']] %></span></li>
+					<li><span class="order-data-bold bip"> <%= best_in_place @order, :order_type, :type => :select, :collection => [['New', 'New'],  ['Re-order', 'Re-order']] %></span></li>
+					<li><span class="order-data-bold bip"> <%= best_in_place @order, :order_status, :type => :select, :collection => [['new', 'new'],  ['approved', 'approved'], ['complete', 'complete'], ['cancelled', 'cancelled'], ['hold', 'hold']] %></span></li>
+					<li><span class="order-data-bold bip"> <%= best_in_place @order, :product_status, :type => :select, :collection => [['purchase', 'purchase'], ['ordered', 'ordered'], ['partial', 'partial'], ['received', 'received']] %></span></li>
+					<li><span class="order-data-bold bip"><%= best_in_place @order, :art_status, :type => :select, :collection => [['pending', 'pending'],  ['approved', 'approved']] %></span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+		<% for product in @order.products %>
+		<table class="table table-striped table-condensed row products-table">
+			<tr>
+        <th>Style</th>
+        <th>Color</th>
+        <th>Quantity</th>
+        <th>XS</th>
+        <th>S</th>
+        <th>M</th>
+        <th>L</th>
+        <th>XL</th>
+        <th>2XL</th>
+        <th>3XL</th>
+        <th>4XL</th>
+        <th>5XL</th>
+        <th>6XL</th>
+      </tr>
+      <% @order.products.each do |product| %>
+	      <tr>
+	      	<td class="bip"><%= best_in_place product, :style %></td>
+          <td class="bip"><%= best_in_place product, :color %></td>
+          <td class="bip"><%=  product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %></td>
+          <td class="bip"><%= best_in_place product, :xs %></td>
+          <td class="bip"><%= best_in_place product, :small %></td>
+          <td class="bip"><%= best_in_place product, :med %></td>
+          <td class="bip"><%= best_in_place product, :large %></td>
+          <td class="bip"><%= best_in_place product, :xl %></td>
+          <td class="bip"><%= best_in_place product, :xxl %></td>
+          <td class="bip"><%= best_in_place product, :xxxl %></td>
+          <td class="bip"><%= best_in_place product, :ivxl %></td>
+          <td class="bip"><%= best_in_place product, :vxl %></td>
+          <td class="bip"><%= best_in_place product, :vixl %></td>
+	      </tr>
+      <% end %>
+    </table>
+	<% end %>
+	<% for artwork in @order.artworks %>
+<!-- 		<table class="table table-striped table-condensed row">
+			<th>Color</th>
+			<th>Location</th>
+			<th></th>
+			<% @order.artworks.each do |artwork| %>
+				<td><%= best_in_place artwork, :color %></td>
+				<td><%= best_in_place artwork, :location, :type => :select, :collection => 
+				[['Front', 'Front'], ['Back', 'Back'], ['Chest(L)', 'Chest(L)'], ['Chest(R)', 'Chest(R)'], ['Sleeve(L)', 'Sleeve(L)'], ['Sleeve(R)', 'Sleeve(R)'], ['Leg(L)', 'Leg(L)'], ['Leg(R)', 'Leg(R)'], ['Pocket(L)', 'Pocket(L)'], ['Pocket(R)', 'Pocket(R)'], ['Hat(front)', 'Hat(front)'], ['Hat(back)', 'Hat(back)']] %></td>
+				<td class="span1"><%= link_to artwork.file_url.to_s, download: ["#{@order.name}-#{@order.uuid}-#{artwork.location}"] do %>
+			        <center><div class="green-button">Download</div></center>
+		    <% end %></td>
 			<% end %>
 		</table>
-	</div>
-</div>
-<div class="row">
-	<div class="span4">
-	</div>
-	<div class="span12">
-		<h3>Product</h3>
-		<% for product in @order.products %>
-			<table class="table table-striped table-condensed">
-		        <tr>
-		          <th>Style</th>
-		          <th>Color</th>
-		          <th>Quantity</th>
-		          <th>XS</th>
-		          <th>S</th>
-		          <th>M</th>
-		          <th>L</th>
-		          <th>XL</th>
-		          <th>2XL</th>
-		          <th>3XL</th>
-		          <th>4XL</th>
-		          <th>5XL</th>
-		          <th>6XL</th>
-		        </tr>
-		        <% @order.products.each do |product| %>
-		           <tr>
-		                <td class="first-column"><%= best_in_place product, :style %></td>
-		                <td class="first-column"><%= best_in_place product, :color %></td>
-		                <td class="first-column"><%=  product.quantity = product.xs.to_i + product.small.to_i + product.med.to_i + product.large.to_i + product.xl.to_i + product.xxl.to_i + product.xxxl.to_i + product.ivxl.to_i + product.vxl.to_i + product.vixl.to_i %></td>
-		                <td class="first-column"><%= best_in_place product, :xs %></td>
-		                <td class="first-column"><%= best_in_place product, :small %></td>
-		                <td class="first-column"><%= best_in_place product, :med %></td>
-		                <td class="first-column"><%= best_in_place product, :large %></td>
-		                <td class="first-column"><%= best_in_place product, :xl %></td>
-		                <td class="first-column"><%= best_in_place product, :xxl %></td>
-		                <td class="first-column"><%= best_in_place product, :xxxl %></td>
-		                <td class="first-column"><%= best_in_place product, :ivxl %></td>
-		                <td class="first-column"><%= best_in_place product, :vxl %></td>
-		                <td class="first-column"><%= best_in_place product, :vixl %></td>
-		            </tr>
-		        <% end %>
-		      </table>
-		<% end %>
-	</div>
-</div>
+	<% end %>
+ --></div>
 
 
 
-<div class="row">
-	<div class="span4">
-	</div>
-	<div class="span9">
-	<h3>Artwork</h3>
-		<% for artwork in @order.artworks %>
-			<table class="table table-striped table-condensed">
-				<tr>
-					<th>Color</th>
-					<th>Location</th>
-					<th></th>
-				</tr>
-				<% @order.artworks.each do |artwork| %>
-					<tr>
-						<td><%= best_in_place artwork, :color %></td>
-						<td><%= best_in_place artwork, :location, :type => :select, :collection => 
-						[['Front', 'Front'], ['Back', 'Back'], ['Chest(L)', 'Chest(L)'], ['Chest(R)', 'Chest(R)'], ['Sleeve(L)', 'Sleeve(L)'], ['Sleeve(R)', 'Sleeve(R)'], ['Leg(L)', 'Leg(L)'], ['Leg(R)', 'Leg(R)'], ['Pocket(L)', 'Pocket(L)'], ['Pocket(R)', 'Pocket(R)'], ['Hat(front)', 'Hat(front)'], ['Hat(back)', 'Hat(back)']] %></td>
-						<td class="span1"><%= link_to artwork.file_url.to_s, download: ["#{@order.name}-#{@order.uuid}-#{artwork.location}"] do %>
-					        <center><div class="green-button">Download</div></center>
-					      <% end %></td>
-					</tr>
-				<% end %>
-			</table>
-		<% end %>
-	</div>
-</div>
+
 <div>
 <%= render 'orders/history' %>
 </div>

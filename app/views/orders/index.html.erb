@@ -1,31 +1,19 @@
-<div class="row titlebar well">
-    <div class="span3">
-    </div>
-    <% if Order.exists? %>
-        <div class="span4">
-        <h1>Orders</h1>
-        </div>
-        <div class="span2 pull-right">
-        <%= link_to new_order_path do %>
-          <center><div class="green-button titlebar-actions">New Order</div></center>
-        <% end %>
-    </div>
-</div>
-<div class="row filters">
-    <div class="span3">
-    </div>
-    <div class="span2">
-        <%= link_to 'Search', orders_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => 'blue-button'}  %>
-        <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <%= render 'orders/filters' %>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="span3">
-    </div>
+<% if Order.exists? %>
+  <div class="row titlebar">
+    <h1 class="pull-left span4">Orders</h1>
+      <%= link_to "New Order", new_order_path, class: "btn btn-primary pull-right" %>
+  </div>
+  <div class="row">
+      <div class="span2">
+          <%= link_to 'Search', orders_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => 'btn btn-success'}  %>
+          <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <%= render 'orders/filters' %>
+          </div>
+      </div>
+  </div>
+  <div class="row">
     <div class="span12">
-        <table class="table table-striped table-condensed index">
+        <table class="table table-hover table-striped table-condensed">
         <tr>
             <th><%= sort_link @search, :uuid, "#" %></th>
             <th><%= sort_link @search, :name, "Name" %></th>
@@ -48,26 +36,15 @@
         <% end %>
         </table>
     </div>
-</div>
-<% else %>
-<br><br><br>
-  <div class="row-fluid">
-    <div class="row">
-      <div class="span5">
-      </div>
-      <div class="span3 no-margin-left">
-        <div class="no-data">
-          <center>
-            Currently, there are <span id="orange">0</span> orders.
-            <br> Try createing one!
-              <%= link_to new_order_path do %>
-                <center><div class="create-button">New Order</div></center>
-              <% end %>
-            </center>
-          </div>
-      </div>
-    </div>
   </div>
-  <% end %>
-
-<br />
+<% else %>
+  <br>
+  <br>
+  <br>
+  <div class="row center">
+    Currently, there are 0 orders.
+    <br> Try Creating one!
+    <br>
+    <%= link_to "New Order", new_order_path, class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,8 +1,5 @@
-<div class="row titlebar well">
-    <div class="span4">
-    </div>
-    <div class="span4">
-        <h1>New Order</h1>
-    </div>
+<div class="row titlebar">
+    <h1 class="pull-left">Order Form</h1>
+    <%= link_to "Cancel", orders_path, class: "btn btn-danger pull-right" %>
 </div>
 <%= render 'form' %>

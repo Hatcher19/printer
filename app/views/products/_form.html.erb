@@ -1,32 +1,41 @@
-<table>
+<table class="center">
 	<tr>
 		<th>Style</th>
 		<th>Color</th>
-		<th>XS</th>
-		<th>S</th>
-		<th>M</th>
-		<th>L</th>
-		<th>XL</th>
-		<th>2XL</th>
-		<th>3XL</th>
-		<th>4XL</th>
-		<th>5XL</th>
-		<th>6XL</th>
 	</tr>
-	<tr class="well product-inputs">
-		<td><%= f.text_field :style, class: 'input-mini', id: 'product', :placeholder => 'Style' %></td>
-		<td><%= f.text_field :color, class: 'input-mini', id: 'product', :placeholder => 'color' %></td>
-		<td><%= f.text_field :xs, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :small, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :med, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :large, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :xl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :xxl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :xxxl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :ivxl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :vxl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.text_field :vixl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
-		<td><%= f.link_to_remove "", :class => "icon-remove" %></td>
-		<td></td>
+	<tr>
+		<td><%= f.text_field :style, class: 'input-medium', id: 'product', :placeholder => 'ex: g500' %></td>
+		<td><%= f.text_field :color, class: 'input-medium', id: 'product', :placeholder => 'Royal' %></td>
 	</tr>
 </table>
+<table class="size-input">
+<tr>
+	<th>XS</th>
+    <th>S</th>
+    <th>M</th>
+    <th>L</th>
+    <th>XL</th>
+</tr>
+<tr>
+	<td><%= f.text_field :xs, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+	<td><%= f.text_field :small, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+	<td><%= f.text_field :med, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+	<td><%= f.text_field :large, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+	<td><%= f.text_field :xl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+</tr>
+<tr>
+    <th>2XL</th>
+    <th>3XL</th>
+    <th>4XL</th>
+    <th>5XL</th>
+    <th>6XL</th>
+</tr>
+<tr>
+	<td><%= f.text_field :xxl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+	<td><%= f.text_field :xxxl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+	<td><%= f.text_field :ivxl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+	<td><%= f.text_field :vxl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+	<td><%= f.text_field :vixl, class: 'input-mini', id: 'product', :placeholder => '0' %></td>
+</tr>
+</table>
+	<td><%= f.link_to_remove "Delete", :class => "btn btn-danger span1" %></td>

@@ -1,62 +1,68 @@
-<div class="row">
-        <div class="span3">
-        </div>
-        <div class="span5">
-            <h3 class="content">General Info</h3>
-        </div>
-        <div class="span1">
-        </div>
-        <div class="span2">
-        </div>
+<div class="form">
+    <div class="form-header row">
+        <div class="pull-left"><%= image_tag 'customers-white.png' %></div>
+        <div><h3>Customer Info</h3></div>
     </div>
-<%= simple_nested_form_for(@order, html: {class: ''}) do |f| %>
-    <%= f.error_notification %>
-    <div class="row">
-        <div class="span5">
+    <div class="form-inputs row">
+        <div class="span6">
+            <h3>Who is the Customer?</h3>
+            <p>This is where we associate the order with a <em>customer.</em> Also, you <br>can select if the order will be <em>shipping?</em> This will tie the customers shipping address to the order for later use.</p>
         </div>
-        <div class="span4">
-            <div class="input-prepend">
-                      <span class="add-on">Name</span>
-                        <%= f.text_field :name %>
-                </div>
-        </div>
-        <div class="span4">
-            <%= f.select :customer_id, Customer.where(:user_id => current_user.id).map{|s|[s.organization, s.id]}, include_blank: 'Customer' %>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span5">
-        </div>
-        <div class="span4">
-            <%= f.input :order_type, label: false, as: :select, :collection => Order::TYPE, include_blank: 'Type' %>
-        </div>
-        <div class="span4">
+        <div class="span6">
+            <%= simple_nested_form_for(@order, html: {class: ''}) do |f| %>
+            <%= f.error_notification %>
+            <%= f.label "Customer Organization" %>
+            <%= f.select :customer_id, Customer.where(:user_id => current_user.id).map{|s|[s.organization, s.id]}, include_blank: 'ABC Printing' %>
+            <%= f.label "Is this order SHIPPING?" %>
             <%= f.input :shipping, as: :select, :collection => Order::SHIP, include_blank: 'Shipping', label: false %>
         </div>
     </div>
-    <div class="row">
-        <div class="span5">
+    <div class="form-header row">
+        <div class="pull-left"><%= image_tag 'orders-white.png' %></div>
+        <div><h3>Order Info</h3></div>
+    </div>
+    <div class="form-inputs row">
+        <div class="span6">
+            <h3>General Order Information.</h3>
+            <p>These are key details that are required to be filled out.<br><em>Order Name</em> the order that may help identify it.</p>
+            <p><em>Type</em> can either be a New or Reorder. Have you done this order before?</p>
+            <p><em>Category</em> is the imprint method. (ex: Screen printing, embroidery)</p>
+            <p>Select a <em>Due Date</em> that the customer needs this order completed by.</p>
         </div>
-        <div class="span4">
-            <%= f.input :category, label: false, :collection => Order::CATEGORY, include_blank: 'Category' %>
-        </div>
-        <div class="span4">
-            <div class="input-prepend">
-                <span class="add-on">Due Date</span>
-                <%= f.text_field :end_date,'data-behaviour' => 'datepicker' %>
-                <script type="text/javascript">
-                $(document).ready(function(){
-                  $('[data-behaviour=datepicker]').datepicker({format: 'yyyy-mm-dd'});
-                });
-                </script>
-            </div>
+        <div class="span6">
+            <%= f.label "Order Name" %>
+            <%= f.text_field :name %>
+            <%= f.input :order_type, label: "Type", as: :select, :collection => Order::TYPE %>
+            <%= f.input :category, label: "Category", :collection => Order::CATEGORY %>
+            <%= f.label "Due Date" %>
+            <%= f.text_field :end_date,'data-behaviour' => 'datepicker' %>
+            <script type="text/javascript">
+            $(document).ready(function(){
+              $('[data-behaviour=datepicker]').datepicker({format: 'yyyy-mm-dd'});
+            });
+            </script>
         </div>
     </div>
-    <br>
-    <br>
-    <div class="row">
-        <div class="span3">
+    <div class="form-header row">
+        <div class="pull-left"><%= image_tag 'shirt-white.png' %></div>
+        <div><h3>Product Information</h3></div>
+    </div>
+    <div class="form-inputs row">
+        <div class="span6">
+            <h3>Color/Style/Sizing</h3>
+            <p>This is important to fill out diligently. It will help many different users do their job around the shop.</p>
+            <p>You can <em>add/ remove</em> product with the green and red buttons respectively. </p>
+            <p>Use the Product status dropdown to help keep track of product.</p>
         </div>
+        <div class="span6">
+            <%= f.fields_for :products do |builder| %>
+                <%= render "products/form", :f => builder %>
+            <% end %>
+            <%= f.link_to_add "Add", :products, class: "btn btn-success span1" %>
+            <%= f.select :product_status, Order::PRODUCTSTATUS, {:include_blank => "Product Status"}, class: 'input-medium' %>
+        </div>
+    </div>
+    <div class="row">
         <div class="span4">
             <% if f.object.new_record? %>
                 <%= f.hidden_field :order_status, :value => "new" %>
@@ -74,39 +80,23 @@
             <% end %>
         </div>
     </div>
-    <div class="row" id="products">
-        <div class="span3">
-        </div>
-        <div class="span12">
-            <h3>Products</h3>
-            <%= f.fields_for :products do |builder| %>
-                <%= render "products/form", :f => builder %>
-            <% end %>
-        </div>
+    <div class="form-header row">
+        <div class="pull-left"><%= image_tag 'upload-white.png' %></div>
+        <div><h3>Artwork Upload</h3></div>
     </div>
-    <div class="row" id="products">
-        <div class="span3">
+    <div class="form-inputs row">
+        <div class="span6">
+            <h3>Upload Art to be Printed.</h3>
+            <p>Select <em>artwork files</em> that are to be printed on the garmet.</p>
+            <p>Then select the <em>color(s)</em> you wish to print.</p>
+            <p>Finally, select the <em>location</em> of the garment to be printed.
         </div>
-        <div class="span12">
-            <%= f.link_to_add "Add Product", :products, class: "blue-button pull-right" %>
-            <%= f.select :product_status, Order::PRODUCTSTATUS, {:include_blank => "Product Status"}, class: 'pull-right' %>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span3">
-        </div>
-        <div class="span12">
-            <h3 class="content">File Upload</h3>
+        <div class="span6">
             <%= f.fields_for :artworks do |builder| %>
-                    <%= render "artworks/form", :f => builder %>
-                <% end %>
-        </div>
-    </div>
-    <div class="row" id="products">
-        <div class="span3">
-        </div>
-        <div class="span12">
-            <%= f.link_to_add "Add Artwork", :artworks, class: "blue-button pull-right" %>
+                <%= render "artworks/form", :f => builder %>
+            <% end %>
+            <%= f.link_to_remove "Delete", :class => "btn btn-danger span1" %>
+            <%= f.link_to_add "Add", :artworks, class: "btn btn-success span1" %>
             <% if f.object.new_record? %>
                 <%= f.hidden_field :art_status, :value => 'pending' %>
             <% else %>
@@ -114,23 +104,21 @@
             <% end %>
         </div>
     </div>
-    <div class="row order-actions">
-        <div class="span6">
-        </div>
-        <div class="span2 order-action">
+    <div class="span4">
+    </div>
+    <div class="row well span4 center">
+        <div class="span2">
             <% if f.object.new_record? %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <%= f.hidden_field :account_id, :value => current_user.account_id %>
                 <%= f.hidden_field :uuid, :value => current_user.account.orders.count + 1 %>
-                <%= f.submit "Create" %>
+                <%= f.submit "Create", class: "btn btn-success btn-large" %>
             <% else %>
-                <%= f.submit "Update" %>
+                <%= f.submit "Update", class: "btn btn-success btn-large" %>
             <% end %>
         </div>
         <div class="span2">
-            <%= link_to orders_path do %>
-                <center><div class="red-button">Cancel</div></center>
-            <% end %>
+            <%= link_to "Cancel", orders_path, class: "btn btn-danger btn-large" %>
         </div>
     </div>
         <% end %>

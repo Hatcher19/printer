@@ -1,35 +1,22 @@
-<div class="row titlebar">
-  <div class="span2">
-  </div>
-  <div class="span4">
-    <h3>Customers</h3>
-  </div>
-  <div class="span2 pull-right">
-    <% if Customer.exists? == false %>
-      Try creating one...
-    <% end %>
-    <%= link_to new_customer_path do %>
-      <center><div class="green-button titlebar-actions">New Customer</div></center>
-    <% end %>
-  </div>
-</div>
 <% if Customer.exists? %>
-<div class="row">
-  <div class="span3">
+  <div class="row titlebar">
+    <h1 class="pull-left span4">Customers</h1>
+    <%= link_to "New Customer", new_customer_path, class: "btn btn-primary pull-right" %>
   </div>
-  <div class="span12">
-    <table class="table table-striped table-condensed index">
-      <tr>
-        <th class="second-column">organization</th>
-        <th class="first-column">Purchaser</th>
-        <th class="first-column">Email</th>
-        <th class="first-column">Phone</th>
-        <th class="first-column">Customer Since</th>
-        <th class="first-column">Order count</th>
-        <th></th>
-      </tr>
-        <% current_user.account.customers.each do |customer| %>
-           <tr>
+  <div class="row">
+    <div class="span12">
+      <table class="table table-hover table-striped table-condensed">
+        <tr>
+          <th class="second-column">organization</th>
+          <th class="first-column">Purchaser</th>
+          <th class="first-column">Email</th>
+          <th class="first-column">Phone</th>
+          <th class="first-column">Customer Since</th>
+          <th class="first-column">Order count</th>
+          <th></th>
+        </tr>
+        <% @customers.each do |customer| %>
+          <tr>
              <td class="first-column"><%= link_to customer.organization, customer %></td>
              <td class="first-column"><%= link_to customer.customer_name, customer %></td>
              <td class="first-column"><%= link_to customer.customer_email, customer %></td>
@@ -38,27 +25,17 @@
              <td class="first-column"><%= customer.orders.count %></td>
           </tr>
         <% end %>
-    </table>
-  </div>
-<% else %>
-<br><br><br>
-  <div class="row-fluid">
-    <div class="row">
-      <div class="span5">
-      </div>
-      <div class="span3 no-margin-left">
-        <div class="no-data">
-          <center>
-            Currently, there are <span id="orange">0</span> customers.
-            <br> Try createing one!
-            <%= link_to new_customer_path do %>
-                <center><div class="create-button">New Customer</div></center>
-              <% end %>
-            </center>
-          </div>
-      </div>
+      </table>
     </div>
   </div>
+<% else %>
+  <br>
+  <br>
+  <br>
+  <div class="row center">
+    Currently, there are 0 Customers.
+    <br> Try Creating one!
+    <br>
+    <%= link_to "New Customer", new_customer_path, class: "btn btn-primary" %>
+  </div>
 <% end %>
-
-<br />

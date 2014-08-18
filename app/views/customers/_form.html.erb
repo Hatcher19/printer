@@ -1,50 +1,43 @@
-<%= simple_nested_form_for(@customer, html: {class: ''}) do |f| %>
-<div class="row">
-    <div class="span4">
+<div class="form">
+    <div class="form-header row">
+        <div class="pull-left"><%= image_tag 'customers-white.png' %></div>
+        <div><h3>Customer Info</h3></div>
     </div>
-    <div class="span8">
-        <div class="row">
-            <div class="span1">
-            </div>
-            <div class="span3">
-                <h3>Contact Info</h3>
-                <%= f.error_notification %>
-                <div class="input-prepend">
-                  <span class="add-on">Organization</span>
-                    <%= f.text_field :organization %>
-                </div>
-                <div class="input-prepend">
-                      <span class="add-on">Purchaser</span>
-                        <%= f.text_field :customer_name %>
-                </div>
-                <div class="input-prepend">
-                      <span class="add-on">Email</span>
-                        <%= f.text_field :customer_email %>
-                </div>
-                <div class="input-prepend">
-                      <span class="add-on">Phone</span>
-                        <%= f.text_field :customer_phone %>
-                </div>
+    <div class="form-inputs row">
+        <div class="span6">
+            <h3>Who is the Customer?</h3>
+            <p>Fill out the form with all the detail for the customer.</p>
+        </div>
+        <div class="span6">
+            <%= simple_nested_form_for(@customer, html: {class: ''}) do |f| %>
+            <%= f.error_notification %>
+            <%= f.label :organization %>
+            <%= f.text_field :organization %>
+            <%= f.label :customer_name %>
+            <%= f.text_field :customer_name %>
+            <%= f.label "Email" %>
+            <%= f.text_field :customer_email %>
+            <%= f.label "Phone" %>
+            <%= f.text_field :customer_phone %>
         </div>
     </div>
-</div>
-<br>
-<div class="row">
-    <div class="span3">
+    <div class="form-header row">
+        <div class="pull-left"><%= image_tag 'customers-white.png' %></div>
+        <div><h3>Addresses</h3></div>
     </div>
-    <div class="span4">
-        <h3></h3>
+    <div class="form-inputs row">
+        <div class="span6">
+            <h3>Where will Orders Ship?</h3>
+            <p>This address will indicate where orders will ship, providing you create an order that ships for this customer.</p>
+        </div>
+        <div class="span6">
+            <%= f.fields_for :addresses do |builder| %>
+                <%= render "addresses/form", :f => builder %>
+            <% end %>
+            <%= f.link_to_remove "Delete", :class => "btn btn-danger span1" %>
+            <%= f.link_to_add "Add", :addresses, class: "btn btn-success span1" %>
+        </div>
     </div>
-</div>
-<%= f.fields_for :addresses do |builder| %>
-        <%= render "addresses/form", :f => builder %>
-    <% end %>
-<div class="row">
-    <div class="span4">
-
-    </div>
-    <div class="span8 pull-right">
-        <%= f.link_to_add "Add Address", :addresses, class: "blue-button" %>
     </div>
 </div>
 <% if f.object.new_record? %>
@@ -52,32 +45,18 @@
     <%= f.hidden_field :account_id, :value => current_user.account_id %>
 <% end %>
 <div class="row">
-    <div class="span4">
+    <div class="span7">
     </div>
-    <div class="span8">
-        <div class="row">
-            <div class="span1">
-            </div>
-            <div class="span2">
-                <% if f.object.new_record? %>
-                    <%= f.submit "Create", :class => "green-button" %>
-                <% else %>
-                    <%= f.submit "Update" %>
-                <% end %>
-            </div>
-            <div class="span1">
-            </div>
-            <div class="span2">
-                <% if f.object.new_record? %>
-                    <%= link_to customers_path do %>
-                        <center><div class="red-button">Cancel</div></center>
-                    <% end %>
-                <% else %>
-                    <%= link_to customer_path do %>
-                        <center><div class="red-button">Cancel</div></center>
-                    <% end %>
-                <% end %>
-            </div>
+    <div class="row well span4 center">
+        <div class="span2">
+            <% if f.object.new_record? %>
+                <%= f.submit "Create", :class => "btn btn-success btn-large" %>
+            <% else %>
+                <%= f.submit "Update", :class => "btn btn-success btn-large" %>
+            <% end %>
+        </div>
+        <div class="span2">
+            <%= link_to "Cancel", customers_path, class: "btn btn-danger btn-large" %>
         </div>
     </div>
 </div>

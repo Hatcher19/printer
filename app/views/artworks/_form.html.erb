@@ -1,13 +1,6 @@
-<table class="content">
-	<tr>
-		<th>File</th>
-		<th>Print Color</th>
-		<th>Location</th>
-	</tr>
-	<tr class="product-inputs">
-		<td class="span2"><%= f.file_field :file, class: 'input-mini', id: 'product' %></td>
-		<td class="span2"><%= f.text_field :color, class: '', id: 'product' %></td>
-				<td class="span2 selector"><%= f.select :location, :collection => Artwork::LOCATION %></td>
-		<td class="span1"><%= f.link_to_remove "", :class => "icon-remove" %></td>
-	</tr>
-</table>
+<%= f.label :file %>
+<%= f.file_field :file, class: '', id: 'product' %>
+<%= f.label :Color %>
+<%= f.text_field :color, class: '', id: 'product' %>
+<%= f.label :location %>
+<%= f.select :location, :collection => Artwork::LOCATION %>

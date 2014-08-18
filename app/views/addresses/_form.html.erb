@@ -1,58 +1,13 @@
-<div class="row">
-    <div class="span4">
-    </div>
-    <div class="span8">
-        <div class="row">
-        	<div class="span1">
-            </div>
-            <div class="span4">
-                <h3>Addresses</h3>
-                <%= f.input :ship_type, :collection => Address::SHIPTYPE, :include_blank => false, label: false %>
-                <div class="input-prepend">
-                      <span class="add-on">Street</span>
-                        <%= f.text_field :line_one %>
-                </div>
-                <div class="input-prepend">
-                      <span class="add-on">Apt/ Suite</span>
-                        <%= f.text_field :line_two %>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="span4">
-    </div>
-    <div class="span8">
-        <div class="row">
-        	<div class="span1">
-            </div>
-            <div class="span2">
-               <div class="input-prepend">
-                      <span class="add-on">City</span>
-                        <%= f.text_field :city %>
-                </div>
-            </div>
-            <div class="span1">
-            </div>
-            <div class="span1">
-                <%= f.select :state, :collection => Address::STATE %>
-            </div>
-            <div class="span2">
-                <div class="input-prepend">
-                      <span class="add-on">Zip</span>
-                        <%= f.text_field :zip %>
-                </div>
-            	<%= f.hidden_field :customer_id %>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="span4">
-
-    </div>
-    <div class="span8 pull-right">
-        <%= f.link_to_remove "", :class => "icon-remove" %>
-    </div>
-</div>
+<%= f.label "Address Type" %>
+<%= f.input :ship_type, :collection => Address::SHIPTYPE, :include_blank => false, label: false %>
+<%= f.label "Address 1" %>
+<%= f.text_field :line_one %>
+<%= f.label "Address 2" %>
+<%= f.text_field :line_two %>
+<%= f.label "City" %>
+<%= f.text_field :city %>
+<%= f.label "State" %>
+<%= f.select :state, :collection => Address::STATE %>
+<%= f.label "Zip Code" %>
+<%= f.text_field :zip %>
+<%= f.hidden_field :customer_id %>

@@ -1,35 +1,27 @@
-<br><br><br>
-<div class="row">
-    <div class="span2">
+<div class="row sign-up-titlebar center">
+    <h1>Shirt Clerk</h1>
+</div>
+<div class="center row">
+  <h3>Sign Up</h3>
+  <%= simple_form_for(@account, html: {class: ''}) do |f| %>
+    <%= f.error_notification %>
+    <ul class="text-decoration-none">
+      <li><%= f.input :subdomain, placeholder: 'Company Name', label: false %></li>
+      <%= f.fields_for :users do |builder| %>
+          <li><%= text_field_tag :email, nil, :required => true, :autofocus => true, placeholder: 'Email', label: false %></li>
+          <li><%= text_field_tag :first_name, nil, :required => true, :autofocus => true, placeholder: 'First Name', label: false %></li>
+          <li><%= text_field_tag :last_name, nil, :required => true, :autofocus => true, placeholder: 'Last Name', label: false %></li>
+          <li><%= text_field_tag :phone_number, nil, :required => true, :autofocus => true, placeholder: 'Phone Number', label: false %></li>
+          <li><%= password_field_tag :password, nil, :required => true, placeholder: 'Password', label: false %></li>
+          <li><%= password_field_tag :password_confirmation, nil, :required => true, placeholder: 'Password Confirmation', label: false %></li>
+          <%= hidden_field_tag :role, "accountadmin" %>
+      <% end %>
+    </ul>
+    <div>
+      <%= f.submit "Create", class: "btn btn-success btn-large" %>
     </div>
-    <div class="span3">
-        <%= simple_form_for(@account, html: {class: ''}) do |f| %>
-            <%= f.error_notification %>
-                <%= f.input :subdomain, label: 'Company Name' %>
-                <%= f.fields_for :users do |builder| %>
-                    <%= f.label :email %>
-                    <%= text_field_tag :email, nil, :required => true, :autofocus => true %>
-
-                    <%= f.label :first_name %>
-                    <%= text_field_tag :first_name, nil, :required => true, :autofocus => true %>
-
-                    <%= f.label :last_name %>
-                    <%= text_field_tag :last_name, nil, :required => true, :autofocus => true %>
-
-                    <%= f.label :phone_number %>
-                    <%= text_field_tag :phone_number, nil, :required => true, :autofocus => true %>
-
-		            <%= f.label :password %>
-                    <%= password_field_tag :password, nil, :required => true %>
-		            <%= f.label :password_confirmation %>
-                    <%= password_field_tag :password_confirmation, nil, :required => true %>
-                    <%= hidden_field_tag :role, "accountadmin" %>
-                <% end %>
-                <% if f.object.new_record? %>
-                    <%= f.submit "Create Account" %>
-                <% else %>
-                    <%= f.submit "Update Account" %>
-                <% end %>
-        <% end %>
-    </div>
+  <% end %>
+</div>
+<div class="row sign-up-footer center">
+    <h4>Already have an account? <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %></h4>
 </div>
