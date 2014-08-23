@@ -98,4 +98,3 @@ while((ret.length&3)>0)ret+=b64pad;return ret;}
 function b64tohex(s){var ret=""
 var i;var k=0;var slop;for(i=0;i<s.length;++i){if(s.charAt(i)==b64pad)break;v=b64map.indexOf(s.charAt(i));if(v<0)continue;if(k==0){ret+=int2char(v>>2);slop=v&3;k=1;}
 else if(k==1){ret+=int2char((slop<<2)|(v>>4));slop=v&0xf;k=2;}
- No newline at end of file
