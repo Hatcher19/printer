@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="span3">
+  </div>
+  <div class="span4">
+    <%= simple_form_for @credit_card, url: user_braintree_customer_credit_cards_path(@user), html: { class: 'form-horizontal', id: 'braintree-credit-card-form' } do |f| %>
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">Credit Card #</label>
+        <div class="controls">
+          <%= f.input(:number, input_html: { 'data-encrypted-name' => true }, label: false) if @credit_card.new_record?  %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">Card Holder Name</label>
+        <div class="controls">
+          <%= f.input :cardholder_name, label: false  %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">CVV</label>
+        <div class="controls">
+          <%= f.input(:cvv, maxlength: 4, input_html: {'data-encrypted-name' => true }, label: false) if @credit_card.new_record?  %>
+        </div>
+      </div>
+      <div class="control-group">
+       <!--  <label class="control-label" for="inputEmail">Expiration Month</label> -->
+        <div class="controls">
+          <%= f.input :expiration_month, options_for_month_select  %>
+        </div>
+      </div>
+      <div class="control-group">
+       <!--  <label class="control-label" for="inputEmail">Phone</label> -->
+        <div class="controls">
+          <%= f.input :expiration_year, options_for_year_select  %>
+        </div>
+      </div>
+      <div class="divider span6 margin-bottom-ten"></div>
+      <%= f.simple_fields_for :billing_address, @credit_card.billing_address do |ba| %>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Address 1</label>
+          <div class="controls">
+            <%= ba.input :street_address, label: false  %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Address 2</label>
+          <div class="controls">
+            <%= ba.input :extended_address, label: false  %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">City</label>
+          <div class="controls">
+            <%= ba.input :locality, :label => false  %>
+          </div>
+        </div>
+        <div class="control-group">
+          <!-- <label class="control-label" for="inputEmail">Country</label> -->
+          <div class="controls">
+            <%= ba.input :country_code_alpha2, options_for_country_select  %>
+          </div>
+        </div>
+        <div class="control-group">
+          <!-- <label class="control-label" for="inputEmail">Region</label> -->
+          <div class="controls">
+            <%= ba.input :region, options_for_region_select  %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Postal Code</label>
+          <div class="controls">
+            <%= ba.input :postal_code, label: false  %>
+          </div>
+        </div>
+      <% end %>
+      <div class="span4 center-submit">
+        <%= f.submit "Continue", class: "btn btn-success btn-large span4" %>
+        <%= content_for :javascript do %>
+          <script type="text/javascript">
+              var braintree = Braintree.create("#{BraintreeRails::Configuration.client_side_encryption_key}")
+              braintree.onSubmitEncryptForm('braintree-credit-card-form');
+              BraintreeData.setup("#{BraintreeRails::Configuration.merchant_id}", "braintree-credit-card-form", BraintreeData.environments.sandbox)
+              BraintreeData.setup("#{BraintreeRails::Configuration.merchant_id}", "braintree-transaction-form", BraintreeData.environments.sandbox)
+          </script>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

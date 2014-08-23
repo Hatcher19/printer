@@ -2,6 +2,7 @@ class SubscriptionsController < ApplicationController
   before_filter :find_subscriptions
   before_filter :find_subscription, except: [:index, :create]
   helper_method :subscription_path, :subscriptions_path
+  skip_before_filter :trial_expired
 
   def index; end
 
@@ -16,6 +17,7 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = @subscriptions.build(params[:subscription])
     if @subscription.save
+      current_user.account.update_attributes(:trial_upgraded => true)
       flash[:notice] = "Subscription has been successfully created."
       redirect_to user_path(@user)
     else

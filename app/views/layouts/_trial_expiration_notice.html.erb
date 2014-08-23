@@ -1,0 +1,15 @@
+<% if current_user.account.trial_upgraded == true %>
+<% elsif (current_user.account.trial_end_date - Date.today).to_i < 0 %>
+	<div class="trial-expired row center">
+		<h1>Your trial has expired!</h1>
+		<div class="row pricing">
+			<h3>Only $50
+				<% if current_user.role == 'accountadmin' %>
+					<%= link_to 'Upgrade', new_user_braintree_customer_path(@user), class: 'btn btn-primary btn-large' %>
+				<% else %>
+					<h3>Please contact your Account Administrator</h3>
+				<% end %>
+			</h3>
+		</div>
+	</div>
+<% end%>

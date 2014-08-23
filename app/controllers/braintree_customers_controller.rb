@@ -1,6 +1,7 @@
 class BraintreeCustomersController < InheritedResources::Base
   before_filter :find_user
   before_filter :find_braintree_customer, except: [:new, :create]
+  skip_before_filter :trial_expired
 
   def new
     @braintree_customer = BraintreeRails::Customer.new(email: @user.email, first_name: @user.first_name, last_name: @user.last_name, phone: @user.phone_number)
@@ -11,7 +12,7 @@ class BraintreeCustomersController < InheritedResources::Base
     if @braintree_customer.save
       @user.update_attribute(:braintree_customer_id, @braintree_customer.id)
       flash[:notice] = "braintree_Customer has been successfully created."
-      redirect_to user_braintree_customer_path and return
+      redirect_to new_user_braintree_customer_credit_card_path and return
     else
       flash[:alert] = @braintree_customer.errors.full_messages.join(".\n")
       render :new

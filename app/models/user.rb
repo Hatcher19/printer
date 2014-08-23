@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
     braintree_customer_id && BraintreeRails::Customer.new(braintree_customer_id)
   end
 
+  def braintree_subscription
+    braintree_customer.credit_cards.first.subscriptions.first
+  end
+
   private
   def destroy_customer
     BraintreeRails::Customer.delete(braintree_customer_id) if braintree_customer_id.present?

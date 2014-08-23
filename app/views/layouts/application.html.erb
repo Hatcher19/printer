@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Shirt Admin</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <head>
+    <title>Shirt Clerk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
-  <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-</head>
-<body>
-
-	<%= render 'layouts/sidebar' %>
-	<%= render 'layouts/nav' %>
-
-	<%= yield %>
-</body>
+    <%= csrf_meta_tags %>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <% if user_signed_in? %>
+        <div class="row">
+          <%= render 'layouts/nav' %>
+        </div>
+        <div class="row span3">
+          <%= render 'layouts/sidebar' %>
+        </div>
+        <div class="app-body pull-right">
+          <%= yield %>
+        </div>
+      <% else %>
+        <div class="home-body">
+          <%= yield %>
+        </div>
+      <% end %>
+    </div>
+    <%= render 'layouts/ga' %>
+  </body>
 </html>

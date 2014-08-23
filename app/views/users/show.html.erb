@@ -1,55 +1,54 @@
+<%= render 'layouts/trial_expiration_notice' %>
 <div class="row titlebar">
-    <h1 class="pull-left"><%=@user.email %></h1>
-    <%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary pull-right" %>
-  </div>
-<div class="row">
-	<ul class="span3 box text-decoration-none" id="margin-right-ten">
-		<li id="light-grey">Full name</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @user.first_name %> <%= @user.last_name %></span></li>
-		<li id="light-grey">Email</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @user.email %></span></li>
-		<li id="light-grey">Phone</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @user.phone_number %></span></li>
-		<li id="light-grey">Role</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @user.role %></span></li>
-		<li id="light-grey">Sign In Count</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @user.sign_in_count %></span></li>
-		<li id="light-grey">Last Signed in on</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @user.last_sign_in_at.strftime("%m/%d/%y") %></span></li>
-		<li id="light-grey">User Since</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @user.created_at.strftime("%m/%d/%y") %></span></li>
-		<li id="light-grey">Total Orders</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @user.orders.count %></span></li>
-	</ul>
-	<div class="span9 box">
-		<table class="table table-striped">
-		  <tbody>
-		  	<h3>My Orders</h3>
-		  	<tr>
-	          <th><%= "ID" %></th>
-	          <th><%= "Name" %></th>
-	          <th><%= "Category" %></th>
-	          <th><%= "Status" %></th>
-	          <th><%= "Art Status" %></th>
-	          <th><%= "Product Status" %></th>
-	          <th><%= "Date" %></th>
-	        </tr>
-		    <% @user.orders.each do |order| %>
-		      <tr>
-	             <td class="first-column"><%= link_to order.uuid, order %></td>
-	             <td class="first-column"><%= link_to order.name, order %></td>
-	             <td class="first-column"><%= best_in_place order, :category, :type => :select, :collection => [['screenprint', 'screenprint'],  ['embroidery', 'embroidery'], ['DTG', 'DTG'], ['heatpress', 'heatpress']] %></td>
-	             <td class="first-column"><%= best_in_place order, :order_status, :type => :select, :collection => [['new', 'new'],  ['approved', 'approved'], ['complete', 'complete'], ['cancelled', 'cancelled'], ['hold', 'hold']] %></td>
-	             <td class="first-column"><%= best_in_place order, :art_status, :type => :select, :collection => [['pending', 'pending'],  ['approved', 'approved']] %></td>
-	             <td class="first-column"><%= best_in_place order, :product_status, :type => :select, :collection => [['purchase', 'purchase'], ['ordered', 'ordered'], ['partial', 'partial'], ['received', 'received']] %></td>
-	             <td class="first-column"><%= link_to order.end_date.strftime("%m/%d/%y"), order %></td>
-	        </tr>
-		    <% end %>
-		  </tbody>
-		</table>
-	</div>
+<h1 class="pull-left"><%=@user.email %></h1>
+	<%= link_to 'Back', users_path, class: 'btn btn-info pull-right' %>
+	<%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary pull-right" %>
 </div>
-
-<%= link_to 'Back', users_path, class: 'btn btn-info btn-large' %>
-<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-warning btn-large' %>
-<%= link_to 'Account', new_user_braintree_customer_path(@user), class: 'btn btn-success btn-large' %>	
+<div class="row hero-unit">
+	<ul class="span4 text-decoration-none" id="margin-right-ten">
+		<h5>Contact info</h5>
+		<li><span class=""><%= @user.first_name %> <%= @user.last_name %></span></li>
+		<li><span class=""><%= @user.role %></span></li>
+		<li><span class=""><%= mail_to @user.email %></span></li>
+		<li><span class=""><%= @user.phone_number %></span></li>
+	</ul>
+	<ul class="span2 text-decoration-none center" id="margin-right-ten">
+		<li><h5>Total Orders</h5></li>
+		<li><h1><%= @user.orders.count %></h1></li>
+	</ul>
+	<ul class="span2 text-decoration-none center" id="margin-right-ten">
+		<li><h5>Sign In Count</h5></li>
+		<li><h1><%= @user.sign_in_count %></h1></li>
+	</ul>
+	<ul class="span2 text-decoration-none center" id="margin-right-ten">
+		<li><h5>Customers</h5></li>
+		<li><h1><%= @user.customers.count %></h1></li>
+	</ul>
+</div>
+<div class="row box">
+	<table class="table table-striped">
+	  <tbody>
+	  	<h3>My Orders</h3>
+	  	<tr>
+          <th><%= "ID" %></th>
+          <th><%= "Name" %></th>
+          <th><%= "Category" %></th>
+          <th><%= "Status" %></th>
+          <th><%= "Art Status" %></th>
+          <th><%= "Product Status" %></th>
+          <th><%= "Date" %></th>
+        </tr>
+	    <% @user.orders.each do |order| %>
+	      <tr>
+             <td class="first-column"><%= link_to order.uuid, order %></td>
+             <td class="first-column"><%= link_to order.name, order %></td>
+             <td class="first-column"><%= best_in_place order, :category, :type => :select, :collection => [['screenprint', 'screenprint'],  ['embroidery', 'embroidery'], ['DTG', 'DTG'], ['heatpress', 'heatpress']] %></td>
+             <td class="first-column"><%= best_in_place order, :order_status, :type => :select, :collection => [['new', 'new'],  ['approved', 'approved'], ['complete', 'complete'], ['cancelled', 'cancelled'], ['hold', 'hold']] %></td>
+             <td class="first-column"><%= best_in_place order, :art_status, :type => :select, :collection => [['pending', 'pending'],  ['approved', 'approved']] %></td>
+             <td class="first-column"><%= best_in_place order, :product_status, :type => :select, :collection => [['purchase', 'purchase'], ['ordered', 'ordered'], ['partial', 'partial'], ['received', 'received']] %></td>
+             <td class="first-column"><%= link_to order.end_date.strftime("%m/%d/%y"), order %></td>
+        </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+</div>

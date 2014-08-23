@@ -1,5 +1,6 @@
 class UsersController < InheritedResources::Base
 	before_filter :new_user, :only => [:new, :create]
+	skip_before_filter :trial_expired , :only => [:show]
 
 	load_and_authorize_resource
 

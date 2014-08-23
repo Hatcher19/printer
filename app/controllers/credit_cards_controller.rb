@@ -1,6 +1,7 @@
 class CreditCardsController < ApplicationController
   before_filter :find_user, :find_customer
   before_filter :find_credit_card, except: [:new, :create]
+  skip_before_filter :trial_expired
 
   def index
     @credit_cards = @customer.credit_cards
@@ -21,7 +22,7 @@ class CreditCardsController < ApplicationController
     @credit_card = @customer.credit_cards.build(params[:credit_card].merge(params.slice(:device_data)))
     if @credit_card.save
       flash[:notice] = "Credit card has been successfully updated."
-      redirect_to user_braintree_customer_credit_card_path(@user, @credit_card)
+      redirect_to new_user_braintree_customer_credit_card_subscription_path(@user, @credit_card)
     else
       flash[:alert] = @credit_card.errors.full_messages.join(".\n")
       p @credit_card.errors.full_messages

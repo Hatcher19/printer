@@ -1,4 +1,14 @@
 - model_class = BraintreeRails::Subscription
-.page-header
-  %h1="New #{model_class.model_name.human}"
+/ .page-header
+/   %h1="New #{model_class.model_name.human}"
+.row.titlebar
+	.pagination.center
+		%ul
+			%li
+				= link_to '1', "#", :id => "green-box"
+			%li
+				= link_to '2', "#", :id => "green-box"
+			%li
+				= link_to '3', "#", :id => "red-box"
+
 = render partial: "form", locals: {url: user_braintree_customer_credit_card_subscriptions_path}

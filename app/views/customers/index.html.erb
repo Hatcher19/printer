@@ -15,7 +15,7 @@
           <th class="first-column">Order count</th>
           <th></th>
         </tr>
-        <% @customers.each do |customer| %>
+        <% current_user.account.customers.each do |customer| %>
           <tr>
              <td class="first-column"><%= link_to customer.organization, customer %></td>
              <td class="first-column"><%= link_to customer.customer_name, customer %></td>

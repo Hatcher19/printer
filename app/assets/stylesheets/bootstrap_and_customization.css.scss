@@ -1,0 +1,352 @@
+@import 'bootstrap';
+@import url(http://fonts.googleapis.com/css?family=Oxygen:400,300,700);
+.body {
+	font-family: 'Oxygen', sans-serif;
+}
+.app-body {
+	margin-top: 60px;
+	width: 80%;
+	padding-right: 20px;
+}
+.container-fluid {
+	padding-right: 0px; 
+	padding-left: 0px; 
+}
+[class*="span"] {
+	float: left;
+	min-height: 1px;
+	margin-left: 0px; 
+}
+.center {
+     text-align: center;
+}
+.font-size-bigger {
+	font-size: 200%;
+}
+.hero-unit {
+	padding: 40px;
+}
+#margin-right-ten {
+	margin-right: 10px;
+}
+/*nav*/
+.navbar {
+	background-color: #333344;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    background-color: #E24E35;
+    color: white;
+    font-size: 20px;
+    line-height: 45px
+}
+.navbar-brand:hover {
+	color: #333344;
+	text-decoration: none;
+}
+.home-nav {
+	background-color: #E24E35;
+	height: 45px;
+	line-height: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.home-nav h3 {
+	margin: 0px;
+}
+#home-brand {
+	color: white;
+	line-height: 45px;
+	margin: 0px;
+}
+a.btn.btn-success.pull-right.margin-top-seven {
+margin-top: 7px;
+}
+/*homepage*/
+.home-one {
+	background-color: #333344;
+	padding: 40px;
+	color: white;
+	height: 30%;
+}
+.home-one h1,h4 {
+	margin: 30px;
+}
+.home-one a.btn.btn-primary.btn-large {
+	margin-bottom: 200px;
+}
+/*homepage end*/
+/*nav end*/
+.sidebar {
+	background-color: #333344;
+	height: 100%;
+	position:fixed;
+	bottom:0;
+	top: 45px;
+}
+.sidebar a {
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+}
+.sidebar .li a:hover {
+	color: #E24E35;
+}
+.sidebar img {
+	margin-right: 10px;
+	border-right: 1px solid black;
+	padding-right: 5px;
+}
+.sidebar li {
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+.titlebar {
+	color: black;
+	border-bottom: 1px solid #333344;
+	margin-bottom: 50px;
+}
+.row {
+	margin-left: 0px;
+}
+.divider {
+	height: 1px;
+	margin: 9px 1px;
+	overflow: hidden;
+	background-color: #e5e5e5;
+	border-bottom: 1px solid white;
+}
+a.btn.btn-info.pull-right {
+margin-top: 15px;
+margin-left: 10px;
+}
+/*buttons on title bars*/
+a.btn.btn-primary.pull-right {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+a.btn.btn-danger.pull-right {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+a.btn.btn-success.pull-right {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+.titlebar-button-group {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+/*current user dropdown link*/
+.dropdown-menu {
+	min-width: 100%;
+}
+.current-user {
+	color: #E24E35;
+	cursor: pointer;
+	line-height: 45px;
+}
+.red-caret
+{
+	border-top-color: #E24E35 !important;
+	border-bottom-color: #E24E35 !important;
+}
+.navbar .nav .dropdown-toggle .caret {
+	margin-top: 20px;
+	margin-right: 10px;
+}
+.form-header {
+	background-color: #22ABF1;
+	color: white;
+	outline: 1px #999 solid;
+	padding: 10px;
+}
+.form-header h3 {
+	margin: 0px;
+	line-height: 30px;
+}
+.form-header img {
+	margin-right: 10px;
+}
+.form-inputs {
+	outline: 1px #999 solid;
+	padding: 20px;
+	margin-bottom: 50px;
+}
+.form-inputs label {
+	font-weight: bold;
+	font-size: 16px;
+}
+.form-inputs .span6 {
+	padding: 5px;
+}
+.form-inputs .span6 p {
+	color: #999;
+}
+.form-inputs .span6 p em {
+	font-weight: bold;
+}
+.no-margin-left {
+	margin-left: 0px;
+}
+a.btn.btn-success.span1.add_nested_fields {
+margin-left: 10px;
+margin-right: 10px;
+}
+
+/*Order show page*/
+.box {
+	padding: 20px;
+	border: 1px solid #dddddd;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+	margin-bottom: 40px;
+}
+.box-title {
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 40px;
+}
+.contrast-red {
+	color: red;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.customer-order-label {
+	margin-left: 20px;
+}
+.order-info {
+	line-height: 10px;
+	margin-bottom: 40px;
+}
+.margin-bottom-ten {
+	margin-bottom: 20px;
+}
+.address-indent {
+	margin-left: 10px;
+}
+.text-decoration-none {
+	list-style-type: none;
+	margin-left: 0px;
+}
+.order-data-bold {
+	color: black;
+	font-weight: bold;
+}
+#light-grey {
+	color: #999999;
+	font-weight: bold;
+}
+.products-table {
+	margin-bottom: 40px;
+}
+
+/*end of order show page*/
+
+/*best in place*/
+.bip:hover {
+	background-color: #E24E35;
+	color: #fff;
+	padding: 4px;
+}
+/*end bip*/
+/*sign up/in form*/
+.sign-in-titlebar {
+	height: 150px;
+	width: 100%;
+	background-color: #E24E35;
+	color: #fff;
+	margin-bottom: 60px;
+}
+.sign-in-titlebar h1 {
+	line-height: 150px;
+}
+.sign-in-footer {
+	height: 150px;
+	width: 100%;
+	background-color: #E24E35;
+	color: #fff;
+	bottom: 0px;
+	position: fixed;
+}
+.sign-up-footer h4 {
+	line-height: 60px;
+	margin: 0px;
+}
+.sign-up-titlebar {
+	height: 125px;
+	width: 100%;
+	background-color: #E24E35;
+	color: #fff;
+	margin-bottom: 20px;
+}
+.sign-up-titlebar h1 {
+	line-height: 125px;
+}
+.sign-up-footer {
+	height: 125px;
+	width: 100%;
+	background-color: #E24E35;
+	color: #fff;
+}
+.sign-up-footer h4 {
+	line-height: 125px;
+}
+/*end sign up/in form*/
+/*footer*/
+.footer {
+	background-color: #333344;
+	color: white;
+	bottom: 0px;
+	position: fixed;
+}
+/*end footer*/
+/*trial expiration notice*/
+.trial-expired {
+	background-color: red;
+	color: #eee;
+	padding: 20px;
+	opacity: .7;
+}
+/*trial exp notice end*/
+
+/*pagination*/
+.pagination ul > li > a, .pagination ul > li > span {
+float: left;
+width: 50px;
+padding: 10px;
+line-height: 20px;
+text-decoration: none;
+background-color: white;
+border: 1px solid #dddddd;
+border-left-width: 0;
+font-size: 30px;
+color: white;
+}
+#red-box {
+background-color: #E24E35;
+cursor: text;
+}
+#green-box {
+background-color: #87D37C;
+cursor: text;
+}
+#grey-box {
+background-color: #95a5a6;
+cursor: text;
+}
+/*pagination end*/
+.span4.center-submit {
+padding-left: 120px;
+}
+.pricing-header {
+background-color: #333344;
+color: white;
+margin-bottom: 10px;
+padding: 10px;
+}
+.money-per-month {
+	color: #e24e35;
+}

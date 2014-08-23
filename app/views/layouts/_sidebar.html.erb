@@ -1,40 +1,8 @@
-<% if user_signed_in? %>
-	<center>
-		<ul class="nav nav-pills nav-stacked span2 sidebar-nav-fixed">
-			<li class="<%= 'active' if current_page?(root_path) %> sidebar-li">
-				<div class="row">
-					<%= link_to image_tag('dashboard.png'), root_path %><br>
-				</div>
-				<div class="row">
-					<%= link_to "Dashboard", root_path %>
-				</div>
-			</li>
-			<li class="divider"></li>
-			<li class="<%= 'active' if current_page?(root_path) %> sidebar-li">
-				<div class="row">
-					<%= link_to image_tag('customer.png'), customers_path %>
-					</div>
-				<div class="row">
-					<%= link_to "Customers", customers_path %>
-				</div>
-			</li>
-			<li class="<%= 'active' if current_page?(root_path) %> sidebar-li">
-				<div class="row">
-					<%= link_to image_tag('order.png'), orders_path %>
-					</div>
-				<div class="row">
-					<%= link_to "Orders", orders_path %>
-				</div>
-			</li>
-			<li class="<%= 'active' if current_page?(root_path) %> sidebar-li">
-				<div class="row">
-					<%= link_to image_tag('users.png'), users_path %>
-				</div>
-				<div class="row">
-					<%= link_to "Users", users_path %>
-				</div>
-			</li>
-		</ul>
-	</center>
-<% else %>
-<% end %>
+<div class="sidebar span3 pull-left">
+	<ul class="no-margin-left">
+		<li><%= link_to image_tag('home.png') + "Dashboard", root_path %></li>
+		<li><%= link_to image_tag('orders.png') + "Orders", orders_path %></li>
+		<li><%= link_to image_tag('customers.png') + "Customers", customers_path %></li>
+		<li><%= link_to image_tag('users.png') + "Users", users_path %></li>
+	</ul>
+</div>
