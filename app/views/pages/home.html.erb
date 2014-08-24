@@ -1,91 +1,40 @@
 <% if user_signed_in? %>
 	<div class="row titlebar">
-		<div class="span2">
-		</div>
-		<div class="span4">
-			<h3>Dashboard</h3>
+		<h1 class="pull-left">Dashboard</h1>
+		<div class="pull-right titlebar-button-group">
+			<%= link_to "New Order", new_order_path, class: "btn btn-info" %>
+			<%= link_to "New Customer", new_customer_path, class: "btn btn-primary" %>
+			<%= link_to "New User", new_user_path, class: "btn btn-success" %>
 		</div>
 	</div>
-	<div class="row dash-stats">
-		<div class="span3">
-		</div>
+	<div class="row hero-unit">
 		<div class="span3">
 			<center><h1><%= current_user.account.orders.count %></h1><br>
-			<h3>Orders</h3></center>
+			<h3><%= link_to "Orders", orders_path %></h3></center>
 		</div>
 		<div class="span3">
-			<center><h1><%= current_user.account.customers.count %></h1></br><h3>Customers</h3></center>
+			<center><h1><%= current_user.account.customers.count %></h1></br><h3><%= link_to "Customers", customers_path %></h3></center>
 		</div>
 		<div class="span3">
-			<center><h1><%= current_user.account.users.count %></h1><br><h3>Users</h3></center>
+			<center><h1><%= current_user.account.users.count %></h1><br><h3><%= link_to "Users", users_path %></h3></center>
 		</div>
 		<div class="span3">
 			<center><h1><%= current_user.orders.count %></h1><br><h3>My Orders</h3></center>
 		</div>
 	</div>
 <% else %>
-<div class="background-one">
-	<div class="row">
-		<div class="span5">
-		</div>
-		<div class="span7 logo">
-			<%= image_tag 'shirt_admin_logo.png' %>
-		</div>
-	</div>
+<div class="home-nav" id="home-brand">
+	<h3 class="pull-left center">Shirt Clerk</h3>
+	<%= link_to 'Log In', new_user_session_path, class: "btn btn-success pull-right margin-top-seven" %>
 </div>
-<div class="row grey-background">
-	<div class="span4">
-	</div>
-	<div class="span5">
-		<h3>Manage your print shop NOW!</h3>
-	</div>
-	<div class="span3">
-		<%= link_to new_account_path do %>
-			<center><div class="blue-button"><h4>Free 30 Day Trial</h4></div></center>
-		<% end %>
-	</div>
+<div class="center home-one">
+	<h1>An Order Management tool for Printers</h1>
+	<h4>Keep all of your information on one platform</h4>
+	<%= link_to "Free Trial", new_account_path, class: "btn btn-primary btn-large" %>
 </div>
-<div class="row">
-	<div class="span1">
-	</div>
-	<div class="span5 home-icon">
-		<center>
-			<%= image_tag 'pricing.png' %>
-			<h3>Pricing</h3><br>
-			<ul class="no-bullets">
-				<div class="li-underlined"><li><h4>$50/month</h4></li></div>
-				<div class="li-underlined"><li><h4>30 day free trial</h4></li></div>
-				<div class="li-underlined"><li><h4>Cancel anytime</h4></li></div><br>
-				<li>
-					<%= link_to new_account_path do %>
-						<center><div class="green-button" id="half-green-width"><h4>Start Now!</h4></div></center>
-					<% end %>
-				</li>
-			</ul>
-		</center>
-	</div>
-	<div class="span5 home-icon">
-		<center><%= image_tag 'users-grey.png' %>
-		<h3>Manage Users</h3></center><br>
-		<p id="home-p">Add users to your account, control access levels, and more. Our software supports contract printing, by allowing outside salesman to submit and view progress of their orders only.</p>
-	</div>
-	<div class="span5 home-icon">
-		<center><%= image_tag 'multiple_devices.png' %>
-		<h3>Produce locally, work globally</h3></center><br>
-		<p id="home-p">Users of your account will enjoy the ability to access data onsite, around the corner, or around the globe. Any internet connected device can use our cloud-based software to keep your business running 24/7.</p>
-	</div>
-</div>
-<div class="row footer">
-	<div class="span5">
-	</div>
-	<div class="span3">
-		Email
-	</div>
-	<div class="span3">
-		Facebook
-	</div>
-	<div class="span3">
-		Twitter
+<div class="row center footer">
+		<%= mail_to "customerservice@shirtclerk.com" %>
+		<%= link_to "@shirtclerk", "https://twitter.com/ShirtClerk" %>
 	</div>
 </div>
 <% end %>
