@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
-         belongs_to :account
-         validates :email, uniqueness: true, presence: true
-         has_many :customers
-         has_many :orders
+  belongs_to :account
+  validates :email, uniqueness: true, presence: true
+  has_many :customers
+  has_many :orders
 
-     ROLES = %w(admin sales broker production)
+  ROLES = %w(admin sales broker production)
 
   def role?(permission)
     self.role == permission.to_s.downcase

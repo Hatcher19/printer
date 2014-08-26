@@ -8,8 +8,8 @@ skip_before_filter :trial_expired
 
 	def create
 		@account = Account.new(account_params)
-	  @account.trial_end_date = Date.today + 30.days
-	  @account.trial_upgraded = false
+	    @account.trial_end_date = Date.today + 30.days
+	    @account.trial_upgraded = false
 			if @account.save
 				@user = @account.users.create(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation], :account_id => params[:account_id], :role => params[:role], :first_name => params[:first_name], :last_name => params[:last_name], :phone_number => params[:phone_number] )
 				sign_in(@user)
