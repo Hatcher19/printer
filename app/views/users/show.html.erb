@@ -4,31 +4,17 @@
 	<%= link_to 'Back', users_path, class: 'btn btn-info pull-right' %>
 	<%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary pull-right" %>
 </div>
-<div class="row hero-unit">
-	<ul class="span4 text-decoration-none" id="margin-right-ten">
-		<h5>Contact info</h5>
-		<li><span class=""><%= @user.first_name %> <%= @user.last_name %></span></li>
-		<li><span class=""><%= @user.role %></span></li>
-		<li><span class=""><%= mail_to @user.email %></span></li>
-		<li><span class=""><%= @user.phone_number %></span></li>
+<div class="row">
+	<ul class="span3 hero-unit text-decoration-none" id="margin-right-ten">
+		<li><span><%= @user.first_name %> <%= @user.last_name %></span></li>
+		<li><span><%= @user.role %></span></li>
+		<li><span><%= mail_to @user.email %></span></li>
+		<li><span><%= @user.phone_number %></span></li>
 	</ul>
-	<ul class="span2 text-decoration-none center" id="margin-right-ten">
-		<li><h5>Total Orders</h5></li>
-		<li><h1><%= @user.orders.count %></h1></li>
-	</ul>
-	<ul class="span2 text-decoration-none center" id="margin-right-ten">
-		<li><h5>Sign In Count</h5></li>
-		<li><h1><%= @user.sign_in_count %></h1></li>
-	</ul>
-	<ul class="span2 text-decoration-none center" id="margin-right-ten">
-		<li><h5>Customers</h5></li>
-		<li><h1><%= @user.customers.count %></h1></li>
-	</ul>
-</div>
-<div class="row box">
+	<div class="span8 box">
 	<table class="table table-striped">
 	  <tbody>
-	  	<h3>My Orders</h3>
+	  	<h3> <%= "#{current_user.email}'s Orders" %></h3>
 	  	<tr>
           <th><%= "ID" %></th>
           <th><%= "Name" %></th>
@@ -51,4 +37,5 @@
 	    <% end %>
 	  </tbody>
 	</table>
+</div>
 </div>

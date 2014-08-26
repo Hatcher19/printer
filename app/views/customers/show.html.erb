@@ -1,33 +1,23 @@
 <div class="row titlebar">
   <h1 class="pull-left"><%= @customer.organization.titleize %></h1>
-  <%= link_to "New Order", new_order_path, class: "btn btn-primary pull-right" %>
-  <%= link_to "New Order", edit_customer_path, class: "btn btn-success pull-right" %>
+  <%= link_to "Edit", edit_customer_path, class: "btn btn-info pull-right" %>
 </div>
 <div class="row">
-	<ul class="span3 box text-decoration-none" id="margin-right-ten">
-		<li id="light-grey">Name</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @customer.customer_name.titleize %></span></li>
-		<li id="light-grey">Email</li>
-		<li><span class="order-data-bold font-size-bigger"><%= mail_to @customer.customer_email %></span></li>
-		<li id="light-grey">Phone</li>
-		<li><span class="order-data-bold font-size-bigger"><%= @customer.customer_phone %></span></li>
+	<ul class="span3 hero-unit text-decoration-none" id="margin-right-ten">
+		<li><span><%= @customer.customer_name.titleize %></span></li>
+		<li><span><%= mail_to @customer.customer_email %></span></li>
+		<li><span><%= @customer.customer_phone %></span></li>
 		<li class="divider"></li>
 		<% for address in @customer.addresses.each %>
-			<li id="light-grey">Type</li>
-			<li><span class="order-data-bold font-size-bigger"><%= h address.ship_type.titleize %></span></li>
-			<li id="light-grey">Line 1</li>
-			<li><span class="order-data-bold font-size-bigger"><%= h address.line_one.titleize %></span></li>
-			<li id="light-grey">Line 2</li>
-			<li><span class="order-data-bold font-size-bigger"><%= h address.line_two.titleize %></span></li>
-			<li id="light-grey">City</li>
-			<li><span class="order-data-bold font-size-bigger"><%= h address.city.titleize %></span></li>
-			<li id="light-grey">State</li>
-			<li><span class="order-data-bold font-size-bigger"><%= h address.state.titleize %></span></li>
-			<li id="light-grey">Zip</li>
-			<li><span class="order-data-bold font-size-bigger"><%= h address.zip.titleize %></span></li>
+			<li><span><%= h address.ship_type.titleize %> address</span></li>
+			<li><span><%= h address.line_one.titleize %></span></li>
+			<li><span><%= h address.line_two.titleize %></span></li>
+			<li><span><%= h address.city.titleize %></span></li>
+			<li><span><%= h address.state.titleize %></span></li>
+			<li><span><%= h address.zip.titleize %></span></li>
 			<% end %>
 	</ul>
-	<div class="span9 box">
+	<div class="span8 box">
 		<table class="table table-striped table-condensed">
 		  <tbody>
 		  	<h3><%= @customer.organization.titleize %>'s Orders</span></h3>
