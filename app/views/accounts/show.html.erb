@@ -1,7 +1,27 @@
-<div class="row titlebar well">
-    <div class="span4">
-    </div>
-    <div class="span4">
-        <h1>My Account</h1>
-    </div>
+<div class="row titlebar">
+	<h1 class="pull-left">Account</h1>
+</div>
+<div class="row hero-unit span3">
+	<h6 class="no-margin">Trial upgraded?</h6>
+	<%= @account.trial_upgraded %>
+	<h6 class="no-margin">Trial ends on:</h6>
+	<%= @account.trial_end_date.strftime("%m/%d/%Y") %>
+	<h6 class="no-margin">Full name</h6>
+	<%= "#{current_user.first_name} #{current_user.last_name}" %>
+	<h6 class="no-margin">Email</h6>
+	<%= current_user.email %>
+</div>
+<div class="row">
+	<div class="span3 center">
+		<h6 class="no-margin">Total Orders</h6>
+		<h1><%= @account.orders.count %></h1>
+	</div>
+	<div class="span3 center">
+		<h6 class="no-margin">Total Users</h6>
+		<h1><%= @account.users.count %></h1>
+	</div>
+	<div class="span3 center">
+		<h6 class="no-margin">Total Customers</h6>
+		<h1><%= @account.customers.count %></h1>
+	</div>
 </div>

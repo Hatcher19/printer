@@ -1,28 +1,32 @@
 <%= render 'layouts/trial_expiration_notice' %>
 <div class="row titlebar">
 <h1 class="pull-left"><%=@user.email %></h1>
-	<%= link_to 'Back', users_path, class: 'btn btn-info pull-right' %>
+	<%= link_to 'All Users', users_path, class: 'btn btn-info pull-right' %>
 	<%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary pull-right" %>
 </div>
 <div class="row">
 	<ul class="span3 hero-unit text-decoration-none" id="margin-right-ten">
+		<li><h6 class="no-margin">Full name</h6></li>
 		<li><span><%= @user.first_name %> <%= @user.last_name %></span></li>
+		<li><h6 class="no-margin">Role</h6></li>
 		<li><span><%= @user.role %></span></li>
+		<li><h6 class="no-margin">Email</h6></li>
 		<li><span><%= mail_to @user.email %></span></li>
+		<li><h6 class="no-margin">Phone</h6></li>
 		<li><span><%= @user.phone_number %></span></li>
 	</ul>
-	<div class="span8 box">
+	<div class="span9 box">
 	<table class="table table-striped">
 	  <tbody>
 	  	<h3> <%= "#{current_user.email}'s Orders" %></h3>
-	  	<tr>
-          <th><%= "ID" %></th>
-          <th><%= "Name" %></th>
-          <th><%= "Category" %></th>
-          <th><%= "Status" %></th>
-          <th><%= "Art Status" %></th>
-          <th><%= "Product Status" %></th>
-          <th><%= "Date" %></th>
+	  	<tr class="hero-unit">
+          <th><h6><%= "ID" %></h6></th>
+          <th><h6><%= "Name" %></h6></th>
+          <th><h6><%= "Category" %></h6></th>
+          <th><h6><%= "Status" %></h6></th>
+          <th><h6><%= "Art Status" %></h6></th>
+          <th><h6><%= "Product Status" %></h6></th>
+          <th><h6><%= "Date" %></h6></th>
         </tr>
 	    <% @user.orders.each do |order| %>
 	      <tr>
