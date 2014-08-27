@@ -5,4 +5,10 @@
 		<li><%= link_to image_tag('customers.png') + "Customers", customers_path %></li>
 		<li><%= link_to image_tag('users.png') + "Users", users_path %></li>
 	</ul>
+	<div class="row center trial-note">
+		<% if current_user.account.trial_upgraded == false %>
+			<h1><%= (current_user.account.trial_end_date - Date.today).to_i %></h1>
+			<h6 class="no-margin">Days left of Trial</h6>
+		<% end %>
+	</div>
 </div>

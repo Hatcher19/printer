@@ -318,10 +318,17 @@ margin-right: 10px;
 /*end footer*/
 /*trial expiration notice*/
 .trial-expired {
-	background-color: red;
+	background-color: #e24e35;
 	color: #eee;
 	padding: 20px;
 	opacity: .7;
+}
+.trial-note {
+	background-color: #e24e35;
+	color: white;
+	position: absolute;
+    bottom: 55px;
+    width: 100%;
 }
 /*trial exp notice end*/
 
