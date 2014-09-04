@@ -16,5 +16,6 @@
 /tmp
 .DS_Store
 /config/application.yml
+/config/initializers/carrierwave.rb
 /config/initializers/braintree.rb
 /db/seeds
