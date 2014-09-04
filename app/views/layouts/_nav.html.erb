@@ -1,20 +1,17 @@
 <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <% if user_signed_in? %>
-      <%= link_to current_user.account.subdomain.titleize, root_path, class: "navbar-brand span3 pull-left center" %>
-      <ul class="nav navbar-nav pull-right"> 
-        <div class="">
-            <div class="dropdown-toggle current-user" data-toggle="dropdown"><%= "#{current_user.email}" %> <span class="caret red-caret"></span></div>
-            <ul class="dropdown-menu" id="dropdown-right">
-              <li><%= link_to 'View my profile', user_path(current_user) %></li>
-              <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-              <% if current_user.role == 'accountadmin' %>
-                <li><%= link_to 'Account', account_path(current_user) %></li>
-              <% end %>
-              <li class="divider"></li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-            </ul>
-        </div>
-      </ul>
-    <% end %>
+  <%= link_to current_user.account.subdomain.titleize, root_path, class: "navbar-brand span3 pull-left center" %>
+  <ul class="nav navbar-nav pull-right"> 
+    <div class="">
+        <div class="dropdown-toggle current-user" data-toggle="dropdown"><%= "#{current_user.email}" %> <span class="caret red-caret"></span></div>
+        <ul class="dropdown-menu" id="dropdown-right">
+          <li><%= link_to 'View my profile', user_path(current_user) %></li>
+          <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+          <% if current_user.role == 'accountadmin' %>
+            <li><%= link_to 'Account', account_path(current_user) %></li>
+          <% end %>
+          <li class="divider"></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        </ul>
+    </div>
+  </ul>
 </nav>

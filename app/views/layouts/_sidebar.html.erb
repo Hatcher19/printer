@@ -1,9 +1,33 @@
-<div class="sidebar span3 pull-left">
+<div class="sidebar pull-left center">
 	<ul class="no-margin-left">
-		<li><%= link_to image_tag('home.png') + "Dashboard", root_path %></li>
-		<li><%= link_to image_tag('orders.png') + "Orders", orders_path %></li>
-		<li><%= link_to image_tag('customers.png') + "Customers", customers_path %></li>
-		<li><%= link_to image_tag('users.png') + "Users", users_path %></li>
+		<%= link_to root_path do %>
+			<li>
+				<%= image_tag 'dashboard.png' %>
+				<br>
+				Dashboard
+			</li>
+		<% end %>
+		<%= link_to orders_path do %>
+			<li>
+				<%= image_tag 'orders.png' %>
+				<br>
+				Orders
+			</li>
+		<% end %>
+		<%= link_to customers_path do %>
+			<li>
+				<%= image_tag 'customers.png' %>
+				<br>
+				Customers
+			</li>
+		<% end %>
+		<%= link_to users_path do %>
+			<li>
+				<%= image_tag 'users.png' %>
+				<br>
+				Users
+			</li>
+		<% end %>
 	</ul>
 	<div class="row center trial-note">
 		<% if current_user.account.trial_upgraded == false %>

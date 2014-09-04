@@ -1,21 +1,48 @@
-<div>
-  <div class="row">
-    <h1>History</h1>
-  </div>
-  <% @order.versions.each_with_index do |version, index| %>
-    <div class="row box">
-      <div class="span2">
-        <%= version.created_at.localtime.strftime("%I:%M %P") %><br>
-        <%= version.created_at.localtime.strftime("%m/%-d/%Y") %>
-      </div>
-      <div class="span6">
-        <%= link_to User.find(version.whodunnit).email, user_path %> <%= version.event %>d <%= version.item_type %><br>
-        <a class="accordion-toggle btn btn-info btn-mini margin-bottom-ten" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>">More Info</a>
-        <div id="collapse<%= index.to_s %>" class="accordion-body collapse out">
-          <div class="well"><%= version.changeset %></div>
-          <a class="accordion-toggle btn btn-warning btn-small" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>">Less Info</a>
+<section id='content'>
+  <div class='container-fluid'>
+    <div class='row-fluid' id='content-wrapper'>
+      <div class='span12'>
+        <div class='row-fluid'>
+          <div class='span12'>
+            <div class='page-header'>
+              <h1 class='pull-left'>
+                <%= image_tag 'history.png' %>
+                <span>History</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class='row-fluid timeline'>
+          <div class='span12'>
+            <ol class='unstyled'>
+              <% @order.versions.each_with_index do |version, index| %>
+                <li>
+                  <% if version.event == 'create' %>
+                    <div class='icon red-background'>
+                      <%= image_tag 'plus.png' %>
+                    </div>
+                  <% else %>
+                    <div class='icon green-background'>
+                      <%= image_tag 'edit.png' %>
+                    </div>
+                  <% end %>
+                  <div class='title'>
+                    <%= link_to User.find(version.whodunnit).email, user_path %> <%= version.event %>d <%= version.item_type %>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= index.to_s %>"><small>more info</small></a>
+                    <small class='muted'><%= time_ago_in_words(version.created_at) %> ago.</small>
+                  </div>
+                  <div id="collapse<%= index.to_s %>" class="accordion-body collapse out">
+                    <div class='content'>
+                      <%= version.changeset %>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ol>
+          </div>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+</section>

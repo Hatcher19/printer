@@ -5,7 +5,9 @@
   </div>
   <div class="row">
       <div class="span2">
-          <%= link_to 'Search', orders_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => 'btn btn-success'}  %>
+        <%= link_to orders_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-info btn-small search-btn'} do %>
+          <i class="icon-search icon-white"></i> Search
+        <% end %>
           <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <%= render 'orders/filters' %>
           </div>

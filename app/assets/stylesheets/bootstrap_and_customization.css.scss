@@ -1,17 +1,23 @@
 @import 'bootstrap';
 @import url(http://fonts.googleapis.com/css?family=Oxygen:400,300,700);
-.body {
+html {
+	height: 100%;
+	background-color: #eeeeee; 
+}
+body {
 	font-family: 'Oxygen', sans-serif;
+	height: 100%;
+	background-color: #eeeeee; 
 }
 .app-body {
-	margin-top: 60px;
-	width: 80%;
+	margin-top: 45px;
+	width: 90%;
 	padding-right: 20px;
+
 }
 .container-fluid {
 	padding-right: 0px; 
 	padding-left: 0px;
-	background-color: #eeeeee; 
 }
 [class*="span"] {
 	float: left;
@@ -19,7 +25,7 @@
 	margin-left: 0px; 
 }
 .center {
-     text-align: center;
+    text-align: center;
 }
 .font-size-bigger {
 	font-size: 200%;
@@ -48,12 +54,11 @@
 }
 /*nav*/
 .navbar {
-	background-color: #333344;
+	background-color: #e24e35;
 }
 
 .navbar-brand {
     font-weight: bold;
-    background-color: #E24E35;
     color: white;
     font-size: 20px;
     line-height: 45px
@@ -105,24 +110,14 @@ margin-top: 7px;
 .sidebar a {
 	color: white;
 	text-decoration: none;
-	font-size: 18px;
-}
-.sidebar .li a:hover {
-	color: #E24E35;
-}
-.sidebar img {
-	margin-right: 10px;
-	border-right: 1px solid black;
-	padding-right: 5px;
+	font-size: 12px;
 }
 .sidebar li {
 	padding: 10px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #292837;
 }
 .titlebar {
-	color: black;
-	border-bottom: 1px solid #ddd;
-	margin-bottom: 50px;
+	color: #333344;
 }
 .row {
 	margin-left: 0px;
@@ -157,10 +152,11 @@ a.btn.btn-success.pull-right {
 }
 /*current user dropdown link*/
 .current-user {
-	color: #E24E35;
+	color: #333344;
 	cursor: pointer;
 	line-height: 45px;
 	margin-right: 15px;
+	font-weight: bold;
 }
 .dropdown-menu {
 -webkit-border-radius: 0px;
@@ -169,8 +165,8 @@ border-radius: 0px;
 }
 .red-caret
 {
-	border-top-color: #E24E35 !important;
-	border-bottom-color: #E24E35 !important;
+	border-top-color: white !important;
+	border-bottom-color: white !important;
 }
 .navbar .nav .dropdown-toggle .caret {
 	margin-top: 20px;
@@ -615,3 +611,9 @@ top: 0;
 left: 20px;
 }
 /*end order history*/
+.titlebar .pull-right {
+	margin-top: 15px;
+}
+.search-btn {
+	margin-bottom: 10px;
+}
