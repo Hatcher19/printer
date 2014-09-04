@@ -15,10 +15,8 @@
 			<li><h6 class="no-margin"><%= h address.ship_type.titleize %> address</h6></li>
 			<li><%= h address.line_one.titleize %></li>
 			<li><%= h address.line_two.titleize %></li>
-			<li><%= h address.city.titleize %></li>
-			<li><%= h address.state.titleize %></li>
-			<li><%= h address.zip.titleize %></li>
-			<% end %>
+			<li><%= h address.city.titleize %>, <%= h address.state.titleize %> <%= h address.zip.titleize %></li>
+		<% end %>
 	</ul>
 	<div class="span8 box">
 		<table class="table table-striped table-condensed">

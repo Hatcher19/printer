@@ -1,0 +1,25 @@
+<% if @artwork.location == 'Front' %>
+	<%= image_tag 'locations/front-location.png' %>
+<% elsif @artwork.location == 'Back' %>
+	<%= image_tag 'locations/back-location.png' %>
+<% elsif @artwork.location == 'Chest(L)' %>
+	<%= image_tag 'locations/left-chest-location.png' %>
+<% elsif @artwork.location == 'Chest(R)' %>
+	<%= image_tag 'locations/right-chest-location.png' %>
+<% elsif @artwork.location == 'Sleeve(L)' %>
+	<%= image_tag 'locations/left-sleeve-location.png' %>
+<% elsif @artwork.location == 'Sleeve(R)' %>
+	<%= image_tag 'locations/right-sleeve-location.png' %>
+<% elsif @artwork.location == 'Leg(L)' %>
+	<%= image_tag 'locations/left-leg-location.png' %>
+<% elsif @artwork.location == 'Leg(R)' %>
+	<%= image_tag 'locations/right-leg-location.png' %>
+<% elsif @artwork.location == 'Pocket(L)' %>
+	<%= image_tag 'locations/left-pocket-location.png' %>
+<% elsif @artwork.location == 'Pocket(R)' %>
+	<%= image_tag 'locations/right-pocket-location.png' %>
+<% elsif @artwork.location == 'Hat(front)' %>
+	<%= image_tag 'locations/front-hat-location.png' %>
+<% elsif @artwork.location == 'Hat(back)' %>
+	<%= image_tag 'locations/back-hat-location.png' %>
+<% end %>
