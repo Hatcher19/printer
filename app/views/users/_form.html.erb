@@ -1,49 +1,38 @@
 <div class="form-header row">
-        <div class="pull-left"><%= image_tag 'customers-white.png' %></div>
-        <div><h3>User Info</h3></div>
+  <div class="pull-left"><%= image_tag 'customers-white.png' %></div>
+    <div><h3>User Info</h3></div>
     </div>
     <div class="form-inputs row">
-        <div class="span6">
-            <h3>Users</h3>
-            <p>Users have the ability to collaborate to get orders moving through the production facility. A <em>User</em> will need to login with the same <em>Email & Password</em> that is entered here.</p>
-            <p>A user <em>Role</em> defines their ability to intereact with <em>Shirt Clerk.</em><br> The <em>Admin Role</em> has the ability to do and see all information.</p>
-            <p>The <em>Sales Role</em> can also be anyone who provides customer service<br> as well as sales people.</p>
-            <p><em>Brokers</em> are third party sales people that operate on their own,<br> but use your shop as a contract printer. Uers with this role can <br>only see their information and not that of your entire companies.</p>
-            <p><em>Production Role</em> is for the employees that only need to see the info<br> and update the statuses.</p>
-        </div>
-        <div class="span6">
-            <%= simple_form_for(@user, html: {class: ''}) do |f| %>
-            <%= f.label :email %>
-            <%= f.text_field :email %>
-            <%= f.label :first_name %>
-            <%= f.text_field :first_name %>
-            <%= f.label :last_name %>
-            <%= f.text_field :last_name %>
-            <%= f.label :phone_number %>
-            <%= f.text_field :phone_number %>
-            <%= f.label :role %>
-            <%= f.input :role, :collection => User::ROLES, include_blank: 'Role', label: false %>
-            <%= f.label :password %>
-            <%= f.text_field :password %>
-            <%= f.label :password_confirmation %>
-            <%= f.text_field :password_confirmation %>
-        </div>
+      <div class="span6">
+        <h3>Users</h3>
+        <p>Users have the ability to collaborate to get orders moving through the production facility. A <em>User</em> will need to login with the same <em>Email & Password</em> that is entered here.</p>
+        <p>A user <em>Role</em> defines their ability to intereact with <em>Shirt Clerk.</em><br> The <em>Admin Role</em> has the ability to do and see all information.</p>
+        <p>The <em>Sales Role</em> can also be anyone who provides customer service<br> as well as sales people.</p>
+        <p><em>Brokers</em> are third party sales people that operate on their own,<br> but use your shop as a contract printer. Uers with this role can <br>only see their information and not that of your entire companies.</p>
+        <p><em>Production Role</em> is for the employees that only need to see the info<br> and update the statuses.</p>
+      </div>
+      <div class="span6">
+        <%= simple_form_for(@user, html: {class: ''}) do |f| %>
+        <%= f.input :email %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :phone_number %>
+        <%= f.input :role, :collection => User::ROLES, label: false %>
+        <%= f.input :password %>
+        <%= f.input :password_confirmation %>
+      </div>
     </div>
     <div class="row">
-        <div class="span4">
-        </div>
-        <div class="row well span4 center">
-            <div class="span2">
-                <% if f.object.new_record? %>
-                    <%= f.hidden_field :account_id, :value => current_user.account_id %>
-                    <%= f.submit "Create", :class => "btn btn-success btn-large" %>
-                <% else %>
-                    <%= f.submit "Update", :class => "btn btn-success btn-large" %>
-                <% end %>
-            </div>
-            <div class="span2">
-                <%= link_to "Cancel", users_path, class: "btn btn-danger btn-large" %>
-            </div>
-        </div>
+      <div class="span4">
+      </div>
+      <div class="row well span4 center">
+          <div class="span2">
+              <%= f.hidden_field :account_id, :value => current_user.account_id %>
+              <%= f.submit "Create", :class => "btn btn-success btn-large" %>
+          </div>
+          <div class="span2">
+              <%= link_to "Cancel", users_path, class: "btn btn-danger btn-large" %>
+          </div>
+      </div>
     </div>
 <% end %>

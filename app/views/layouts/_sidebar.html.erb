@@ -31,8 +31,9 @@
 	</ul>
 	<div class="row center trial-note">
 		<% if current_user.account.trial_upgraded == false %>
+			<h6>Trial</h6>
 			<h1><%= (current_user.account.trial_end_date - Date.today).to_i %></h1>
-			<h6 class="no-margin">Days left of Trial</h6>
+			<h6 class="no-margin">End Date</h6>
 		<% end %>
 	</div>
 </div>

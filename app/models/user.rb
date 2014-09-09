@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 
   belongs_to :account
   validates :email, uniqueness: true, presence: true
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
+  validates :phone_number, presence: true
   has_many :customers
   has_many :orders
 

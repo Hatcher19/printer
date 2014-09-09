@@ -1,11 +1,9 @@
 <%= render 'layouts/trial_expiration_notice' %>
 <div class="row titlebar">
-<h1 class="pull-left"><%=@user.email %></h1>
-	<%= link_to 'All Users', users_path, class: 'btn btn-info pull-right' %>
-	<%= link_to "Edit", edit_user_registration_path, class: "btn btn-primary pull-right" %>
+	<h1 class="pull-left"><%=@user.email %></h1>
 </div>
 <div class="row">
-	<ul class="span3 hero-unit text-decoration-none" id="margin-right-ten">
+	<ul class="span3 hero-unit text-decoration-none box" id="margin-right-ten">
 		<li><h6 class="no-margin">Full name</h6></li>
 		<li><span><%= @user.first_name %> <%= @user.last_name %></span></li>
 		<li><h6 class="no-margin">Role</h6></li>
