@@ -1,43 +1,66 @@
 <%= render 'layouts/trial_expiration_notice' %>
 <div class="row titlebar">
-	<h1 class="pull-left"><%=@user.email %></h1>
+	<h1 class="pull-left">User Profile</h1>
 </div>
 <div class="row">
-	<ul class="span3 hero-unit text-decoration-none box" id="margin-right-ten">
+	<ul class="span3 hero-unit text-decoration-none" id="margin-right-ten">
 		<li><h6 class="no-margin">Full name</h6></li>
 		<li><span><%= @user.first_name %> <%= @user.last_name %></span></li>
+		<li class="divider"></li>
 		<li><h6 class="no-margin">Role</h6></li>
 		<li><span><%= @user.role %></span></li>
+		<li class="divider"></li>
 		<li><h6 class="no-margin">Email</h6></li>
 		<li><span><%= mail_to @user.email %></span></li>
+		<li class="divider"></li>
 		<li><h6 class="no-margin">Phone</h6></li>
 		<li><span><%= @user.phone_number %></span></li>
 	</ul>
 	<div class="span9 box">
-	<table class="table table-striped">
-	  <tbody>
-	  	<h3> <%= "#{current_user.email}'s Orders" %></h3>
-	  	<tr class="hero-unit">
-          <th><h6><%= "ID" %></h6></th>
-          <th><h6><%= "Name" %></h6></th>
-          <th><h6><%= "Category" %></h6></th>
-          <th><h6><%= "Status" %></h6></th>
-          <th><h6><%= "Art Status" %></h6></th>
-          <th><h6><%= "Product Status" %></h6></th>
-          <th><h6><%= "Date" %></h6></th>
-        </tr>
-	    <% @user.orders.each do |order| %>
-	      <tr>
-             <td class="first-column"><%= link_to order.uuid, order %></td>
-             <td class="first-column"><%= link_to order.name, order %></td>
-             <td class="first-column"><%= best_in_place order, :category, :type => :select, :collection => [['screenprint', 'screenprint'],  ['embroidery', 'embroidery'], ['DTG', 'DTG'], ['heatpress', 'heatpress']] %></td>
-             <td class="first-column"><%= best_in_place order, :order_status, :type => :select, :collection => [['new', 'new'],  ['approved', 'approved'], ['complete', 'complete'], ['cancelled', 'cancelled'], ['hold', 'hold']] %></td>
-             <td class="first-column"><%= best_in_place order, :art_status, :type => :select, :collection => [['pending', 'pending'],  ['approved', 'approved']] %></td>
-             <td class="first-column"><%= best_in_place order, :product_status, :type => :select, :collection => [['purchase', 'purchase'], ['ordered', 'ordered'], ['partial', 'partial'], ['received', 'received']] %></td>
-             <td class="first-column"><%= link_to order.end_date.strftime("%m/%d/%y"), order %></td>
-        </tr>
-	    <% end %>
-	  </tbody>
-	</table>
-</div>
+		<table class="table table-striped">
+		  <tbody>
+		  	<h3> <%= "#{current_user.email}'s Orders" %></h3>
+		  	<tr class="hero-unit">
+	          <th><h6><%= "ID" %></h6></th>
+	          <th><h6><%= "Name" %></h6></th>
+	          <th><h6><%= "Category" %></h6></th>
+	          <th><h6><%= "Status" %></h6></th>
+	          <th><h6><%= "Art Status" %></h6></th>
+	          <th><h6><%= "Product Status" %></h6></th>
+	          <th><h6><%= "Date" %></h6></th>
+	        </tr>
+		    <% @user.orders.each do |order| %>
+		      <tr>
+	             <td class="first-column"><%= link_to order.uuid, order %></td>
+	             <td class="first-column"><%= link_to order.name, order %></td>
+	             <td class="first-column"><%= best_in_place order, :category, :type => :select, :collection => [['screenprint', 'screenprint'],  ['embroidery', 'embroidery'], ['DTG', 'DTG'], ['heatpress', 'heatpress']] %></td>
+	             <td class="first-column"><%= best_in_place order, :order_status, :type => :select, :collection => [['new', 'new'],  ['approved', 'approved'], ['complete', 'complete'], ['cancelled', 'cancelled'], ['hold', 'hold']] %></td>
+	             <td class="first-column"><%= best_in_place order, :art_status, :type => :select, :collection => [['pending', 'pending'],  ['approved', 'approved']] %></td>
+	             <td class="first-column"><%= best_in_place order, :product_status, :type => :select, :collection => [['purchase', 'purchase'], ['ordered', 'ordered'], ['partial', 'partial'], ['received', 'received']] %></td>
+	             <td class="first-column"><%= link_to order.end_date.strftime("%m/%d/%y"), order %></td>
+	        </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+	<br>
+	<div class="span9 box">
+		<table class="table table-striped">
+		  <tbody>
+		  	<h3>Recent Customers</h3>
+		  	<tr class="hero-unit">
+	          <th><h6><%= "Email" %></h6></th>
+	          <th><h6><%= "Name" %></h6></th>
+	          <th><h6><%= "Phone Number" %></h6></th>
+	        </tr>
+		    <% @user.customers.each do |customer| %>
+		        <tr>
+		            <td><%= link_to customer.customer_email, customer %></td>
+		            <td><%= link_to customer.customer_name, customer %></td>
+		            <td><%= link_to customer.customer_phone, customer %></td>
+		        </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
 </div>

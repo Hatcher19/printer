@@ -38,18 +38,19 @@ class CustomersController < InheritedResources::Base
 	      render action: 'new'
 	    end
 	  end
-	  
+
 	def update
 		@customer = Customer.find(params[:id])	
 		respond_to do |format|	
 			if @customer.update_attributes(customer_params)
+				format.html { redirect_to @customer  }
 				format.json { respond_with_bip(@customer) }
 			else
 				format.html { render action: "edit" }
 				format.json { respond_with_bip(@customer) }
 			end
 		end
-	end 
+	end
 
 	def customer_params
       params.fetch(:customer).permit(:id, :organization, :customer_name, :customer_email, :customer_phone, :account_id, :user_id,

@@ -1,13 +1,18 @@
 <div class="row titlebar">
-  <h1 class="pull-left"><%= @customer.organization.titleize %></h1>
+  <h1 class="pull-left">Customer Profile</h1>
   <%= link_to "Edit", edit_customer_path, class: "btn btn-info pull-right" %>
 </div>
 <div class="row">
 	<ul class="span3 hero-unit text-decoration-none" id="margin-right-ten">
+		<li><h6 class="no-margin">Organization</h6></li>
+		<li><span><%= @customer.organization.titleize %></span></li>
+		<li class="divider"></li>
 		<li><h6 class="no-margin">Customer name</h6></li>
 		<li><span><%= @customer.customer_name.titleize %></span></li>
+		<li class="divider"></li>
 		<li><h6 class="no-margin">Email</h6></li>
 		<li><span><%= mail_to @customer.customer_email %></span></li>
+		<li class="divider"></li>
 		<li><h6 class="no-margin">Phone number</h6></li>
 		<li><span><%= @customer.customer_phone %></span></li>
 		<li class="divider"></li>

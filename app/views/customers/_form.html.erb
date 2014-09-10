@@ -11,14 +11,10 @@
         <div class="span6">
             <%= simple_nested_form_for(@customer, html: {class: ''}) do |f| %>
             <%= f.error_notification %>
-            <%= f.label :organization %>
-            <%= f.text_field :organization %>
-            <%= f.label :customer_name %>
-            <%= f.text_field :customer_name %>
-            <%= f.label "Email" %>
-            <%= f.text_field :customer_email %>
-            <%= f.label "Phone" %>
-            <%= f.text_field :customer_phone %>
+            <%= f.input :organization, :required => true %>
+            <%= f.input :customer_name, :required => true %>
+            <%= f.input :customer_email, :required => true %>
+            <%= f.input :customer_phone %>
         </div>
     </div>
     <div class="form-header row">
